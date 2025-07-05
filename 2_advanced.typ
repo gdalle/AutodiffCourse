@@ -3,8 +3,8 @@
 
 #import "@preview/numbly:0.1.0": numbly
 
-#set text(font: "Fira Sans")
-#show math.equation: set text(font: "Fira Math")
+// #set text(font: "Fira Sans")
+// #show math.equation: set text(font: "Fira Math")
 
 #show: university-theme.with(config-info(
   title: [Advanced automatic differentiation],
