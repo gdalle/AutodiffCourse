@@ -46,17 +46,21 @@ Derivatives tell how a function input $x$ influences the output $f(x)$.
 
 Essential for nonlinear optimization, e.g. with gradient descent.
 
-#columns[
-  #v(5%)
-  #algo(line-numbers: false)[
-    Start with $x_0$ \
-    For $t = 0, ..., T-1$ #i\
-    $x_(t+1) = x_t - eta nabla f(x_t)$ #d\
-    Return $x_T$
-  ]
-  #colbreak()
-  #image("img/blondel/gradient.png", height: 60%)
-]
+#grid(
+  columns: (auto, auto),
+  [
+    #v(5%)
+    #algo(title: "Gradient descent", line-numbers: false, parameters: ($f$, $x_0$, $T$))[
+      Start with $x_0$ \
+      For $t = 0, ..., T-1$ #i\
+      $x_(t+1) = x_t - eta nabla f(x_t)$ #d\
+      Return $x_T$
+    ]
+  ],
+  [
+    #image("img/blondel/gradient.png", height: 60%)
+  ],
+)
 
 Also useful elsewhere (differential equations, sensitivity analysis).
 
@@ -182,14 +186,14 @@ One perturbation per input dimension!
 
 == Automatic differentiation
 
-Transform the computational graph $f$ into a new graph $partial f$.
+Transform the computational graph $f$ into a new graph $partial f$ and propagate derivatives through it:
 
 - Keeps the compact program encoding ($!=$ symbolic)
 - Yields exact derivative values ($!=$ numeric)
 - Can compute gradients efficiently (in reverse mode)
 
 #important[
-  Automatic differentiation = chain rule + basic functions with known derivatives.
+  Automatic differentiation = chain rule + layers with known derivatives.
 ]
 
 = Forward mode
@@ -206,7 +210,10 @@ $
   )
 $
 
-However, the linear map $v mapsto.long partial f(x)[v]$ is natural to work with, and more efficient.
+However, the linear map $v mapsto.long partial f(x)[v]$ is natural to work with:
+
+- works in arbitrary vector spaces (and even manifolds)
+- no need to materialize a matrix or flatten anything
 
 == The chain rule
 
@@ -218,11 +225,11 @@ The derivative of $f$ is the composition of two linear maps:
 
 $ partial f(x): & u stretch(mapsto)^(partial h(x)) v stretch(mapsto)^(partial g( h(x) )) w $
 
-So we can differentiate any function if we know the derivatives of its layers.
+We can differentiate any function knowing the derivatives of its layers.
 
 == Scalar layers
 
-For a function $f$ and variable $x$, work out $partial f(x) [dot(x)]$ where $dot(x)$ is an arbitrary tangent.
+Let $dot(x)$ denote an arbitrary input tangent (directional derivative).
 
 #align(center)[
   #table(
@@ -255,7 +262,7 @@ Define rules for array functions with known derivatives #cite(<petersenMatrixCoo
   )
 ]
 
-For the inverse, no need for a Jacobian matrix of size $(n times n)^2$: the linear map is more efficient.
+For the inverse, a Jacobian matrix of size $(n times n)^2$ is not needed: the linear map is more efficient.
 
 == More array layers
 
@@ -277,12 +284,14 @@ Again, no need for a big Jacobian matrix.
 
 Something that the chain rule...
 
-- cannot recurse into (implemented in another language).
+- cannot recurse into (because it is implemented in another language).
 - should not recurse into (because we have a better formula).
+
+The layer boundary is a subjective choice (see lecture 2).
 
 == This was forward mode
 
-Propagate the input and its tangent together through a chain of layers (or computational graph).
+Propagate the input and its tangent together through a chain of layers.
 
 #align(center)[
   #image("img/blondel/forward.png", height: 60%)
@@ -330,11 +339,11 @@ Can we compute it row by row instead, in one shot?
 
 == Transpositions and adjoints
 
-The adjoint of a linear map $ell: cal(X) -> cal(Y)$ is the only linear $ell^* : cal(Y) -> cal(X)$ such that
+The adjoint of a linear map $ell: bb(R)^n -> bb(R)^m$ is the only linear map $ell^* : bb(R)^m -> bb(R)^n$ such that
 
-$ forall (x, y) in cal(X) times cal(Y), quad angle.l ell(x), y angle.r = angle.l x, ell^*(y) angle.r $
+$ forall (x, y) in bb(R)^n times bb(R)^m, quad angle.l ell(x), y angle.r = angle.l x, ell^*(y) angle.r $
 
-If $ell$ is represented by a matrix $J$, then $ell^*$ is represented by $J^T$ (for reals).
+If $ell$ is represented by a matrix $A$, then $ell^*$ is represented by $A^T$.
 
 == Vector-Jacobian Products
 
@@ -367,19 +376,19 @@ $
   partial f(x)^*: & u stretch(arrow.l.bar)_(partial h(x)^*) v stretch(arrow.l.bar)_(partial g( h(x) )^*) w
 $
 
-So we can differentiate any function in reverse mode if we know the adjoint derivatives of its layers.
+We can differentiate any function in reverse mode knowing the adjoint derivatives of its layers.
 
 
 == Back to our layer examples
 
-For a function $f$ and variable $x$, work out $partial f(x) [overline(y)]$ where $overline(y)$ is an arbitrary output cotangent (sensitivity).
+Let $overline(y)$ be an arbitrary output cotangent (sensitivity).
 
 #align(center)[
   #table(
     columns: (auto, auto, auto, auto),
     align: horizon,
     inset: 10pt,
-    table.header([*variables*], [*output*], [*function* $f$], [*adjoint* $partial f^*$]),
+    table.header([*variables*], [*output*], [*function* $f(x)$], [*adjoint* $partial f(x)^*[overline(y)]$]),
     [$x in bb(R)$], [$y in bb(R)$], [$sin(x)$], [$cos(x)overline(y)$],
     [$x in bb(R)^n$], [$y in bb(R)^m$], [$A x$], [$A^T overline(y)$],
     [$X in bb(R)^(n times n)$], [$Y in bb(R)^(n times n)$], [$X^(-1)$], [$-X^(-T) overline(Y) X^(-T)$],
@@ -387,19 +396,17 @@ For a function $f$ and variable $x$, work out $partial f(x) [overline(y)]$ where
   )
 ]
 
+More crazy formulas in #cite(<gilesExtendedCollectionMatrix2008>).
+
 == This was reverse mode
 
-Propagate the input through a chain of layers, record enough information, backpropagate output sensitivities.
+Propagate the input through a chain of layers, record enough information, backpropagate the output cotangent.
 
 #align(center)[
   #image("img/blondel/reverse.png", height: 70%)
 ]
 
 = Forward versus reverse
-
-== Interpretation
-
-
 
 == Time complexity
 
@@ -409,8 +416,24 @@ Propagate the input through a chain of layers, record enough information, backpr
 
 Rather easy to believe:
 
-- Individual derivatives are not harder than the corresponding layer
-- Composition of linear maps adds their computational costs
+- Individual derivatives not much harder than the corresponding layer
+- Composition of linear maps adds up their computational costs
+
+== Time complexity (special cases)
+
+Assume the function $f$ can be computed in time $O(tau)$.
+
+#align(center)[
+  #table(
+    columns: (auto, auto, auto, auto),
+    align: horizon,
+    inset: 10pt,
+    table.header([*setting*], [*object*], [*forward mode*], [*reverse mode*]),
+    $bb(R)^n -> bb(R)^m$, [Jacobian matrix], $O(n tau)$, $O(m tau)$,
+    $bb(R)^n -> bb(R)$, [gradient vector], $O(n tau)$, $O(tau)$,
+    $bb(R) -> bb(R)^m$, [derivative vector], $O(tau)$, $O(m tau)$,
+  )
+]
 
 == Space complexity
 
@@ -430,57 +453,251 @@ Rather easy to believe:
   ]
 ]
 
-Strategies like checkpointing can alleviate memory footprint.
+== Saving memory
 
-== Alternatives
+Strategies like checkpointing or reversibility can save memory at the cost of additional compute.
 
-#lorem(20)
+#align(center)[
+  #image("img/blondel/checkpointing.png", height: 50%)
+]
 
-= Hessian matrices
+Alternatives to reverse mode have been suggested based on randomized forward mode #cite(<baydinGradientsBackpropagation2022>).
 
-== From linear map to matrix
+= Higher order
 
-#lorem(20)
+== Hessian matrices
 
-== Jacobian matrix
+The Hessian matrix is very useful for second-order optimization.
 
-#lorem(20)
+#grid(
+  columns: (auto, auto),
+  [
+    #v(5%)
+    #algo(title: "Newton's method", line-numbers: false, parameters: ($f$, $x_0$, $T$))[
+      Start with $x_0$ \
+      For $t = 0, ..., T-1$ #i\
+      $x_(t+1) = x_t - eta nabla^2 f(x_t) -1 nabla f(x_t)$ #d\
+      Return $x_T$
+    ]
+  ],
+  [
+    #image("img/blondel/second_derivative.png", height: 60%)
+  ],
+)
 
-== Hessian-Vector Product
+== Hessian-Vector Products
 
-#lorem(20)
+Autodiff gives us first-order derivatives: how to compose them?
 
-== Hessian matrix
+The Hessian is the Jacobian of the gradient: if $f: bb(R)^n -> bb(R)$ then
 
-#lorem(20)
+$ nabla^2 f(x) = J_(nabla f)(x) $
 
-= Implementations
+An HVP can be computed as a JVP of the gradient (itself a VJP)
+
+$ nabla^2 f(x)[v] = partial (nabla f)(x)[v] $
+
+This is called forward-over-reverse mode #cite(<pearlmutterFastExactMultiplication1994>).
+
+== Sparsity
+
+#columns[
+  In high dimensions, can't afford to compute or store the entire Hessian.
+
+  If there are few nonzero coefficients, its sparsity can be leveraged to perform fewer HVPs.
+
+  #colbreak()
+
+  #align(center)[
+    #image("img/star_coloring.png")
+
+    Link between sparse autodiff and graph coloring #cite(<gebremedhinWhatColorYour2005>)
+  ]
+]
+
+== Iterative solvers
+
+To inverse the Hessian in Newton's method, one can use iterative linear solvers instead of factorization-based solvers #cite(<dagreouHowComputeHessianvector2024>).
+
+#columns[
+  #align(center)[
+    *Pros*
+
+    Only requires lazy HVPs
+
+    Very GPU-friendly
+  ]
+  #colbreak()
+  #align(center)[
+    *Cons*
+
+    Fewer iterations $->$ lower precision
+  ]
+]
+
+= Implementation
+
+== Non-standard interpretation
+
+Autodiff reinterprets a computer program to mean something else #cite(<margossianReviewAutomaticDifferentiation2019>).
+
+We can take the same idea in other directions:
+
+- Uncertainty propagation
+- Physical unit checking
+- Sparsity detection
 
 == Operator overloading
 
-#lorem(20)
+Pass augmented values to language operators & overload their behavior.
+
+Example: `Dual` numbers in `ForwardDiff.jl` #cite(<revelsForwardModeAutomaticDifferentiation2016>).
+
+#text(
+  size: 1em,
+)[
+  #columns[
+    ```julia
+    using ForwardDiff: Dual
+
+    u, u̇ = 2.0, 3.0
+    v, v̇ = 4.0, 5.0
+    du = Dual(u, u̇)
+    dv = Dual(v, v̇)
+    ```
+    #colbreak()
+    ```julia
+    julia> du * dv
+    Dual{Nothing}(8.0,22.0)
+
+    julia> u * v̇ + v * u̇
+    22.0
+
+    julia> du / dv
+    Dual{Nothing}(0.5,0.125)
+
+    julia> (u̇ * v - v̇ * u) / v^2
+    0.125
+    ```
+  ]
+]
 
 == Source transformation
 
-#lorem(20)
+Preprocess the source code to add derivative bookkeeping.
 
-== Software (Python)
+Example: #raw("jaxpr") intermediate representation in #raw("JAX") #cite(<bradburyJAXComposableTransformations2018>)
 
-#lorem(20)
+#text(
+  size: 0.6em,
+)[
+  #columns[
+    ```python
+    import jax
+    import jax.numpy as jnp
 
-== Software (Julia)
+    def selu(x, alpha=1.67, lambda_=1.05):
+        return lambda_ * jnp.where(
+            x > 0,
+            x,
+            alpha * jnp.exp(x) - alpha
+        )
 
-#lorem(20)
+    x = jnp.arange(5.0)
+    jax.make_jaxpr(selu)(x)
+    ```
+    #colbreak()
+    ```python
+    { lambda ; a:f32[5]. let
+        b:bool[5] = gt a 0.0:f32[]
+        c:f32[5] = exp a
+        d:f32[5] = mul 1.6699999570846558:f32[] c
+        e:f32[5] = sub d 1.6699999570846558:f32[]
+        f:f32[5] = jit[
+          name=_where
+          jaxpr={ lambda ; b:bool[5] a:f32[5] e:f32[5]. let
+              f:f32[5] = select_n b e a
+            in (f,) }
+        ] b a e
+        g:f32[5] = mul 1.0499999523162842:f32[] f
+      in (g,) }
+    ```
+  ]
+]
 
-= Pitfalls
+== Software
 
-= Conclusion
+#columns[
+  *Python libraries*
 
-== Literature pointers
+  - #link("https://github.com/HIPS/autograd")[#raw("autograd")]
+  - #link("https://www.tensorflow.org/")[#raw("TensorFlow")]
+  - #link("https://pytorch.org/")[#raw("PyTorch")]
+  - #link("https://docs.jax.dev/en/latest/")[#raw("JAX")]
 
-- #cite(<baydinAutomaticDifferentiationMachine2018>, form: "prose")
-- #cite(<margossianReviewAutomaticDifferentiation2019>, form: "prose")
-- #cite(<blondelElementsDifferentiableProgramming2024>, form: "prose")
+  #colbreak()
+
+  *Julia libraries* (see #cite(<dalleCommonInterfaceAutomatic2025>))
+
+  - #link("https://github.com/JuliaDiff/ForwardDiff.jl")[#raw("ForwardDiff.jl")]
+  - #link("https://github.com/FluxML/Zygote.jl")[#raw("Zygote.jl")]
+  - #link("https://github.com/EnzymeAD/Enzyme.jl")[#raw("Enzyme.jl")]
+  - #link("https://github.com/chalk-lab/Mooncake.jl")[#raw("Mooncake.jl")]
+]
+
+#align(center)[
+  #image("img/di.png", height: 45%)
+]
+
+= What I haven't said
+
+== Complex numbers
+
+The derivative of a function $f : bb(C) -> bb(C)$ is a matrix $f'(x) in bb(R)^(2 times 2)$.
+
+For holomorphic functions, we can identify it with a complex number, otherwise not.
+
+Different autodiff frameworks have different notions of complex gradients #cite(<kramerTutorialAutomaticDifferentiation2024>)!
+
+== Branches and loops
+
+Autodiff returns a locally valid derivative, for the path taken by the primal program.
+
+- #raw("if") / #raw("else"): specific to the chosen branch
+- #raw("for") / #raw("while"): specific to the number of iterations
+
+Some autodiff frameworks error on code with value-dependent control flow.
+
+== Mutation
+
+For efficiency, many numerical programs reuse memory.
+
+Some autodiff frameworks error on code with mutation.
+
+== Non-smoothness
+
+Autodiff acts on programs and not functions #cite(<bolteMathematicalModelAutomatic2020>).
+
+The following programs give different derivatives at 0:
+
+$"relu"(t) = max(0, t) quad "relu"_2(t) = "relu"(-t) + t quad "relu"_3(t) = ("relu"(t) + "relu"_2(t)) / 2$
+
+#align(center)[
+  #image("img/nonsmooth.png", width: 100%)
+]
+
+== Approximations
+
+Computer programs are approximations of mathematical functions #cite(<huckelheimTaxonomyAutomaticDifferentiation2024>).
+
+For example, $f(X) = X^(-1)$ is represented by a program $p(X) = hat(X^(-1))$.
+
+What should the computed "automatic" derivative be?
+
+1. Differentiate the approximation $partial p(X)$
+2. Approximate the derivative $partial f(X)$
+
+More on this next time!
 
 == References
 

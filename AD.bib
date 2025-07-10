@@ -21,6 +21,22 @@
   timestamp = {2025-04-09T12:24:39Z}
 }
 
+@misc{baydinGradientsBackpropagation2022,
+  title = {Gradients without {{Backpropagation}}},
+  author = {Baydin, At{\i}l{\i}m G{\"u}ne{\c s} and Pearlmutter, Barak A. and Syme, Don and Wood, Frank and Torr, Philip},
+  year = {2022},
+  month = feb,
+  number = {arXiv:2202.08587},
+  eprint = {2202.08587},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2202.08587},
+  url = {http://arxiv.org/abs/2202.08587},
+  abstract = {Using backpropagation to compute gradients of objective functions for optimization has remained a mainstay of machine learning. Backpropagation, or reverse-mode differentiation, is a special case within the general family of automatic differentiation algorithms that also includes the forward mode. We present a method to compute gradients based solely on the directional derivative that one can compute exactly and efficiently via the forward mode. We call this formulation the forward gradient, an unbiased estimate of the gradient that can be evaluated in a single forward run of the function, entirely eliminating the need for backpropagation in gradient descent. We demonstrate forward gradient descent in a range of problems, showing substantial savings in computation and enabling training up to twice as fast in some cases.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-10T14:51:48Z}
+}
+
 @article{bezansonJuliaFreshApproach2017,
   title = {Julia: {{A Fresh Approach}} to {{Numerical Computing}}},
   shorttitle = {Julia},
@@ -255,6 +271,17 @@
   timestamp = {2025-04-09T15:54:54Z}
 }
 
+@article{gilesExtendedCollectionMatrix2008,
+  title = {An Extended Collection of Matrix Derivative Results for Forward and Reverse Mode Automatic Differentiation},
+  author = {Giles, M.},
+  year = {2008},
+  publisher = {Unspecified},
+  url = {https://ora.ox.ac.uk/objects/uuid:8d0c0a29-c92b-4153-a1d2-38b276e93124},
+  abstract = {This paper collects together a number of matrix derivative results which are very useful in forward and reverse mode algorithmic differentiation (AD). It highlights in particular the remarkable contribution of a 1948 paper by Dwyer and Macphail which derives the linear and adjoint sensitivities of a matrix product, inverse and determinant, and a number of related results motivated by applications in multivariate analysis in statistics. This is an extended version of a paper which will appear in the proceedings of AD2008, the 5th International Conference on Automatic Differentiation.},
+  langid = {english},
+  timestamp = {2025-07-10T14:45:24Z}
+}
+
 @book{griewankEvaluatingDerivativesPrinciples2008,
   title = {Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation},
   shorttitle = {Evaluating Derivatives},
@@ -298,6 +325,23 @@
   timestamp = {2025-06-18T08:10:51Z}
 }
 
+@article{huckelheimTaxonomyAutomaticDifferentiation2024,
+  title = {A Taxonomy of Automatic Differentiation Pitfalls},
+  author = {H{\"u}ckelheim, Jan and Menon, Harshitha and Moses, William and Christianson, Bruce and Hovland, Paul and Hasco{\"e}t, Laurent},
+  year = {2024},
+  journal = {WIREs Data Mining and Knowledge Discovery},
+  volume = {14},
+  number = {6},
+  pages = {e1555},
+  issn = {1942-4795},
+  doi = {10.1002/widm.1555},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/widm.1555},
+  abstract = {Automatic differentiation is a popular technique for computing derivatives of computer programs. While automatic differentiation has been successfully used in countless engineering, science, and machine learning applications, it can sometimes nevertheless produce surprising results. In this paper, we categorize problematic usages of automatic differentiation, and illustrate each category with examples such as chaos, time-averages, discretizations, fixed-point loops, lookup tables, linear solvers, and probabilistic programs, in the hope that readers may more easily avoid or detect such pitfalls. We also review debugging techniques and their effectiveness in these situations. This article is categorized under: Technologies {$>$} Machine Learning},
+  copyright = {{\copyright} 2024 UChicago Argonne, LLC and The Author(s). WIREs Data Mining and Knowledge Discovery published by Wiley Periodicals LLC. This article has been contributed to by U.S. Government employees and their work is in the public domain in the USA.},
+  langid = {english},
+  timestamp = {2025-07-10T16:19:29Z}
+}
+
 @misc{huckelheimUnderstandingAutomaticDifferentiation2023,
   title = {Understanding {{Automatic Differentiation Pitfalls}}},
   author = {H{\"u}ckelheim, Jan and Menon, Harshitha and Moses, William and Christianson, Bruce and Hovland, Paul and Hasco{\"e}t, Laurent},
@@ -311,6 +355,22 @@
   abstract = {Automatic differentiation, also known as backpropagation, AD, autodiff, or algorithmic differentiation, is a popular technique for computing derivatives of computer programs accurately and efficiently. Sometimes, however, the derivatives computed by AD could be interpreted as incorrect. These pitfalls occur systematically across tools and approaches. In this paper we broadly categorize problematic usages of AD and illustrate each category with examples such as chaos, time-averaged oscillations, discretizations, fixed-point loops, lookup tables, and linear solvers. We also review debugging techniques and their effectiveness in these situations. With this article we hope to help readers avoid unexpected behavior, detect problems more easily when they occur, and have more realistic expectations from AD tools.},
   archiveprefix = {arXiv},
   timestamp = {2024-12-03T07:59:37Z}
+}
+
+@misc{kramerTutorialAutomaticDifferentiation2024,
+  title = {A Tutorial on Automatic Differentiation with Complex Numbers},
+  author = {Kr{\"a}mer, Nicholas},
+  year = {2024},
+  month = dec,
+  number = {arXiv:2409.06752},
+  eprint = {2409.06752},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2409.06752},
+  url = {http://arxiv.org/abs/2409.06752},
+  abstract = {Automatic differentiation is everywhere, but there exists only minimal documentation of how it works in complex arithmetic beyond stating "derivatives in \${\textbackslash}mathbb\{C\}{\textasciicircum}d\$" \${\textbackslash}cong\$ "derivatives in \${\textbackslash}mathbb\{R\}{\textasciicircum}\{2d\}\$" and, at best, shallow references to Wirtinger calculus. Unfortunately, the equivalence \${\textbackslash}mathbb\{C\}{\textasciicircum}d {\textbackslash}cong {\textbackslash}mathbb\{R\}{\textasciicircum}\{2d\}\$ becomes insufficient as soon as we need to derive custom gradient rules, e.g., to avoid differentiating "through" expensive linear algebra functions or differential equation simulators. To combat such a lack of documentation, this article surveys forward- and reverse-mode automatic differentiation with complex numbers, covering topics such as Wirtinger derivatives, a modified chain rule, and different gradient conventions while explicitly avoiding holomorphicity and the Cauchy--Riemann equations (which would be far too restrictive). To be precise, we will derive, explain, and implement a complex version of Jacobian-vector and vector-Jacobian products almost entirely with linear algebra without relying on complex analysis or differential geometry. This tutorial is a call to action, for users and developers alike, to take complex values seriously when implementing custom gradient propagation rules -- the manuscript explains how.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-10T15:44:47Z}
 }
 
 @misc{laueEquivalenceAutomaticSymbolic2022,
@@ -430,6 +490,22 @@
   year = {2012},
   url = {https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf},
   timestamp = {2025-07-10T09:24:23Z}
+}
+
+@misc{revelsForwardModeAutomaticDifferentiation2016,
+  title = {Forward-{{Mode Automatic Differentiation}} in {{Julia}}},
+  author = {Revels, Jarrett and Lubin, Miles and Papamarkou, Theodore},
+  year = {2016},
+  month = jul,
+  number = {arXiv:1607.07892},
+  eprint = {1607.07892},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1607.07892},
+  url = {http://arxiv.org/abs/1607.07892},
+  abstract = {We present ForwardDiff, a Julia package for forward-mode automatic differentiation (AD) featuring performance competitive with low-level languages like C++. Unlike recently developed AD tools in other popular high-level languages such as Python and MATLAB, ForwardDiff takes advantage of just-in-time (JIT) compilation to transparently recompile AD-unaware user code, enabling efficient support for higher-order differentiation and differentiation using custom number types (including complex numbers). For gradient and Jacobian calculations, ForwardDiff provides a variant of vector-forward mode that avoids expensive heap allocation and makes better use of memory bandwidth than traditional vector mode. In our numerical experiments, we demonstrate that for nontrivially large dimensions, ForwardDiff's gradient computations can be faster than a reverse-mode implementation from the Python-based autograd package. We also illustrate how ForwardDiff is used effectively within JuMP, a modeling language for optimization. According to our usage statistics, 41 unique repositories on GitHub depend on ForwardDiff, with users from diverse fields such as astronomy, optimization, finite element analysis, and statistics. This document is an extended abstract that has been accepted for presentation at the AD2016 7th International Conference on Algorithmic Differentiation.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-10T16:06:45Z}
 }
 
 @misc{sapienzaDifferentiableProgrammingDifferential2024,
