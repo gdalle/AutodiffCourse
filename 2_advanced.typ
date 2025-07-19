@@ -126,23 +126,23 @@ $ x_0 = a, quad x_(n+1) = 1/2 (x_n + a/x_n) $
 
 Today's lecture: how to work out these rules, and what to do when they don't exist.
 
-= Stochastic sampling layers
+= Integration layers
 
 == Parametric expectations
 
-Consider the parametric expectation
+Consider the parametric expectation / integral
 
 $
-  F(theta) = bb(E)_(X tilde p(theta))[f(X)] = integral f(x) p(x, theta) "d"x
+  f(theta) = bb(E)_(X tilde p(theta))[g(X)] = integral g(x) p(x, theta) "d"x
 $
 
 approximated by the Monte-Carlo estimate
 
 $
-  F_N (theta) = 1/N sum_(n=1)^N f(x^((n))) quad "where" quad x^((n)) tilde p(theta)
+  f_N (theta) = 1/N sum_(n=1)^N g(x^((n))) quad "where" quad x^((n)) tilde p(theta)
 $
 
-We can estimate $nabla F(theta)$ with a Monte-Carlo approach too #cite(<mohamedMonteCarloGradient2020>).
+We can estimate $nabla f(theta)$ with a Monte-Carlo approach too #cite(<mohamedMonteCarloGradient2020>).
 
 == Score function
 
@@ -155,9 +155,9 @@ $
 We use it as follows:
 
 $
-  nabla F(theta) & = integral f(x) nabla_theta p(x, theta) "d"x                    \
-                 & = integral [f(x) nabla_theta log p(x, theta) ] p(x, theta) "d"x \
-                 & = bb(E)_(X tilde p(theta)) [f(X) nabla_theta log p(X, theta)]
+  nabla f(theta) & = integral g(x) nabla_theta p(x, theta) "d"x                    \
+                 & = integral [g(x) nabla_theta log p(x, theta) ] p(x, theta) "d"x \
+                 & = bb(E)_(X tilde p(theta)) [g(X) nabla_theta log p(X, theta)]
 $
 
 == Score function estimator
@@ -165,39 +165,45 @@ $
 We approximate the gradient
 
 $
-  nabla F(theta) = nabla_theta bb(E)_(X tilde p(theta))[f(X)] = bb(E)_(X tilde p(theta)) [f(X) nabla_theta log p(X, theta)]
+  nabla f(theta) = nabla_theta bb(E)_(X tilde p(theta))[g(X)] = bb(E)_(X tilde p(theta)) [g(X) nabla_theta log p(X, theta)]
 $
 
 with Monte-Carlo using the same distribution $p(theta)$
 
 $
-  G_n^"score" (theta) = 1/N sum_(n=1)^N f(x^((n)) nabla_theta log p(x^((n)), theta))
+  1/N sum_(n=1)^N g(x^((n))) nabla_theta log p(x^((n)), theta)
 $
 
 Also known as REINFORCE gradient.
 
 == Pathwise estimator
 
-Assume we can rewrite $X tilde p(theta)$ as $X = g(theta, Z)$ with $Z tilde q$ independent from $theta$ (decouple sampling and transformation):
+Assume we can rewrite $X tilde p(theta)$ as $X = h(theta, Z)$ with $Z tilde q$ independent from $theta$ (decouple sampling and transformation):
 
 $
-              bb(E)_(X tilde p(theta))[f(X)] & = bb(E)_(Z tilde q) [f(g(theta, Z))]                     \
-  nabla_theta bb(E)_(X tilde p(theta))[f(X)] & = bb(E)_(Z tilde q)[nabla_theta (f compose g)(theta, Z)]
+              bb(E)_(X tilde p(theta))[g(X)] & = bb(E)_(Z tilde q) [g(h(theta, Z))]                     \
+  nabla_theta bb(E)_(X tilde p(theta))[g(X)] & = bb(E)_(Z tilde q)[nabla_theta (g compose h)(theta, Z)]
 $
 
 We approximate with Monte-Carlo using a different distribution $q$:
 
 $
-  G_n^"pathwise" (theta) = 1/N sum_(n=1)^N nabla_theta (f compose g)(theta, z^((n))) quad "where" quad z^((n)) tilde q
+  1/N sum_(n=1)^N nabla_theta (g compose h)(theta, z^((n))) quad "where" quad z^((n)) tilde q
 $
 
 Also known as the reparametrization trick.
 
 == Reparametrizable distributions
 
-- Gaussian: $X tilde cal(N)(mu, Sigma)$ yields $ X = mu + L Z quad "with" quad Z tilde cal(N)(0, I) quad "and" quad L L^top = Sigma $
-- Exponential, Gamma: same idea
-- Invert the cumulative distribution function and go back to $cal(U)(0, 1)$
+- Gaussian: $X tilde cal(N)(mu, Sigma)$ yields
+$
+  X = mu + L Z quad "with" quad Z tilde cal(N)(0, I) quad "and" quad L L^top = Sigma
+$
+- Same idea for other location-scale distributions
+- Invert the cumulative distribution function:
+$
+  X = F^(-1)(U) quad "where" quad F(x) = bb(P)(X <= x) quad "and" quad U tilde cal(U)(0, 1)
+$
 
 == Comparison of estimators
 
@@ -228,13 +234,23 @@ $
   nabla F(theta) = bb(E)_(X tilde p(theta))[(f(X) - beta) nabla_theta log p(X, theta)]
 $
 
-for any constant baseline $beta$. More sophisticated methods allow learning the control variates (actor-critic RL).
+for any constant baseline $beta$.
+
+More sophisticated methods allow learning the baseline (actor-critic RL).
 
 == Discrete reparametrization
 
 Nascent research on reparametrization for discrete distributions #cite(<aryaAutomaticDifferentiationPrograms2022>).
 
 So far not generalized to reverse mode.
+
+== Stochastic functions
+
+What about more complicated mixes of sampling and computation?
+
+Generalize autodiff to stochastic computation graphs #cite(<schulmanGradientEstimationUsing2015>).
+
+#muchpdf(read("img/schulman/simple-scgs2.pdf", encoding: none))
 
 = Continuous optimization layers
 
@@ -357,6 +373,24 @@ More examples in #cite(<blondelEfficientModularImplicit2022>).
 
 #lorem(20)
 
+== The role of strict convexity
+
+Optimality conditions of an unconstrained optimization problem:
+
+$
+  x^star (theta) = limits("argmax")_x thick f(x, theta) quad arrow.double.long quad nabla_x f(x^star (theta), theta) = 0
+$
+
+Implicit function theorem involves the Hessian:
+
+$
+  underbrace(nabla_x^2 f, A) thick underbrace(partial_theta x^star, J) + underbrace(partial_theta nabla_x f, -B) = 0
+$
+
+Strict convexity implies existence of $(nabla_x^2 f)^(-1)$: the optimum varies smoothly with the parameter $theta$.
+
+No longer true in the discrete case: we will need approximations!
+
 = Discrete optimization layers
 
 == Branching (sigmoid)
@@ -375,11 +409,31 @@ More examples in #cite(<blondelEfficientModularImplicit2022>).
 
 #lorem(20)
 
+== Interpolation
+
+#cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>)
+
+#align(center)[
+  #muchpdf(read("img/vlastelica/flambda_2D_nobox.pdf", encoding: none), width: 80%)
+]
+
 == Perturbation
 
-#lorem(20)
+#grid(
+  columns: (auto, auto),
+  cite(<berthetLearningDifferentiablePerturbed2020>),
+  muchpdf(read("img/berthet/perturbed_big.pdf", encoding: none), width: 80%),
+)
+
+== Specific problems
+
+- Sorting and ranking
 
 = Equilibrium layers
+
+== Nash equilibrium
+
+#lorem(20)
 
 == Variational inequalities
 
@@ -407,13 +461,22 @@ More examples in #cite(<blondelEfficientModularImplicit2022>).
 
 == Python
 
-#lorem(20)
+- `cvxpylayers`
+- `TorchOpt`
+- `Theseus`
+- `PyEPO`
 
 == Julia
 
-#lorem(20)
+- `ImplicitDifferentiation.jl`
+- `DiffOpt.jl`
+- `InferOpt.jl`
 
 = What I haven't said
+
+== Submodularity
+
+#lorem(20)
 
 == Compiler tricks
 
