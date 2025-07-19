@@ -47,6 +47,14 @@
   timestamp = {2025-07-19T15:15:39Z}
 }
 
+@phdthesis{batyCombinatorialOptimizationDecisionfocused2025,
+  title = {Combinatorial Optimization and Decision-Focused Learning: Algorithms, Implementations, and Applications at {{Air France}}},
+  author = {Baty, L{\'e}o},
+  year = {2025},
+  school = {{\'E}cole nationale des ponts et chauss{\'e}es},
+  timestamp = {2025-07-19T19:24:58Z}
+}
+
 @article{baydinAutomaticDifferentiationMachine2018,
   title = {Automatic {{Differentiation}} in {{Machine Learning}}: A {{Survey}}},
   shorttitle = {Automatic {{Differentiation}} in {{Machine Learning}}},
@@ -284,6 +292,29 @@
   timestamp = {2025-06-18T08:11:00Z}
 }
 
+@phdthesis{dalleMachineLearningCombinatorial2022,
+  title = {Machine Learning and Combinatorial Optimization Algorithms, with Applications to Railway Planning},
+  author = {Dalle, Guillaume},
+  year = {2022},
+  month = dec,
+  url = {https://pastel.hal.science/tel-04053322},
+  abbr = {Thesis},
+  abstract = {This thesis investigates the frontier between machine learning and combinatorial optimization, two active areas of applied mathematics research. We combine theoretical insights with efficient algorithms, and develop several open source Julia libraries. Inspired by a collaboration with the Soci{\'e}t{\'e} nationale des chemins de fer fran{\c c}ais (SNCF), we study high-impact use cases from the railway world: train failure prediction, delay propagation, and track allocation. In Part I, we provide mathematical background and describe software implementations for various tools that will be needed later on: implicit differentiation, temporal point processes, Hidden Markov Models and Multi-Agent Path Finding. Our publicly available code fills a void in the Julia package ecosystem, aiming at ease of use without compromising on performance. In Part II, we highlight theoretical contributions related to both statistics and decision-making. We consider a Vector AutoRegressive process with partial observations, and prove matching upper and lower bounds on the estimation error. We unify and extend the state of the art for combinatorial optimization layers in deep learning, gathering various approaches in a Julia library called InferOpt.jl. We also seek to differentiate through multi-objective optimization layers, which leads to a novel theory of lexicographic convex analysis. In Part III, these mathematical and algorithmic foundations come together to tackle railway problems. We design a hierarchical model of train failures, propose a graph-based framework for delay propagation, and suggest new avenues for track allocation, with the Flatland challenge as a testing ground.},
+  langid = {english},
+  pdf = {https://pastel.hal.science/tel-04053322},
+  school = {{\'E}cole des Ponts ParisTech},
+  annotation = {HAL\_ID: tel-04053322},
+  timestamp = {2025-07-19T19:20:19Z}
+}
+
+@misc{deepmind2020jax,
+  title = {The {{DeepMind JAX Ecosystem}}},
+  author = {{DeepMind} and Babuschkin, Igor and Baumli, Kate and Bell, Alison and Bhupatiraju, Surya and Bruce, Jake and Buchlovsky, Peter and Budden, David and Cai, Trevor and Clark, Aidan and Danihelka, Ivo and Dedieu, Antoine and Fantacci, Claudio and Godwin, Jonathan and Jones, Chris and Hemsley, Ross and Hennigan, Tom and Hessel, Matteo and Hou, Shaobo and Kapturowski, Steven and Keck, Thomas and Kemaev, Iurii and King, Michael and Kunesch, Markus and Martens, Lena and Merzic, Hamza and Mikulik, Vladimir and Norman, Tamara and Papamakarios, George and Quan, John and Ring, Roman and Ruiz, Francisco and Sanchez, Alvaro and Sartran, Laurent and Schneider, Rosalia and Sezener, Eren and Spencer, Stephen and Srinivasan, Srivatsan and Stanojevi{\'c}, Milo{\v s} and Stokowiec, Wojciech and Wang, Luyu and Zhou, Guangyao and Viola, Fabio},
+  year = {2020},
+  url = {http://github.com/google-deepmind},
+  timestamp = {2025-07-19T19:22:58Z}
+}
+
 @article{ferberMIPaaLMixedInteger2020,
   title = {{{MIPaaL}}: {{Mixed Integer Program}} as a {{Layer}}},
   shorttitle = {{{MIPaaL}}},
@@ -518,6 +549,39 @@
   timestamp = {2025-07-09T15:26:40Z}
 }
 
+@misc{luMPAXMathematicalProgramming2024,
+  title = {{{MPAX}}: {{Mathematical Programming}} in {{JAX}}},
+  shorttitle = {{{MPAX}}},
+  author = {Lu, Haihao and Peng, Zedong and Yang, Jinwen},
+  year = {2024},
+  month = dec,
+  number = {arXiv:2412.09734},
+  eprint = {2412.09734},
+  primaryclass = {math},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2412.09734},
+  url = {http://arxiv.org/abs/2412.09734},
+  abstract = {We introduce MPAX (Mathematical Programming in JAX), a versatile and efficient toolbox for integrating mathematical programming into machine learning workflows. MPAX implemented firstorder methods in JAX, providing native support for hardware accelerations along with features like batch solving, auto-differentiation, and device parallelism. Currently in beta version, MPAX supports linear programming and will be extended to solve more general mathematical programming problems and specialized modules for common machine learning tasks. The solver is available at https://github.com/MIT-Lu-Lab/MPAX.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:29:03Z}
+}
+
+@misc{luOverviewGPUbasedFirstOrder2025,
+  title = {An {{Overview}} of {{GPU-based First-Order Methods}} for {{Linear Programming}} and {{Extensions}}},
+  author = {Lu, Haihao and Yang, Jinwen},
+  year = {2025},
+  month = jun,
+  number = {arXiv:2506.02174},
+  eprint = {2506.02174},
+  primaryclass = {math},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2506.02174},
+  url = {http://arxiv.org/abs/2506.02174},
+  abstract = {The rapid progress in GPU computing has revolutionized many fields, yet its potential in mathematical programming, such as linear programming (LP), has only recently begun to be realized. This survey aims to provide a comprehensive overview of recent advancements in GPU-based first-order methods for LP, with a particular focus on the design and development of cuPDLP. We begin by presenting the design principles and algorithmic foundation of the primal-dual hybrid gradient (PDHG) method, which forms the core of the solver. Practical enhancements, such as adaptive restarts, preconditioning, Halpern-type acceleration and infeasibility detection, are discussed in detail, along with empirical comparisons against industrial-grade solvers, highlighting the scalability and efficiency of cuPDLP. We also provide a unified theoretical framework for understanding PDHG, covering both classical and recent results on sublinear and linear convergence under sharpness conditions. Finally, we extend the discussion to GPU-based optimization beyond LP, including quadratic, semidefinite, conic, and nonlinear programming.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:31:44Z}
+}
+
 @article{mandiDecisionFocusedLearningFoundations2024,
   title = {Decision-{{Focused Learning}}: {{Foundations}}, {{State}} of the {{Art}}, {{Benchmark}} and {{Future Opportunities}}},
   shorttitle = {Decision-{{Focused Learning}}},
@@ -720,6 +784,37 @@
   timestamp = {2025-07-10T09:24:23Z}
 }
 
+@misc{pinedaTheseusLibraryDifferentiable2022,
+  title = {Theseus: {{A Library}} for {{Differentiable Nonlinear Optimization}}},
+  shorttitle = {Theseus},
+  author = {Pineda, Luis and Fan, Taosha and Monge, Maurizio and Venkataraman, Shobha and Sodhi, Paloma and Chen, Ricky and Ortiz, Joseph and DeTone, Daniel and Wang, Austin and Anderson, Stuart and Dong, Jing and Amos, Brandon and Mukadam, Mustafa},
+  year = {2022},
+  month = jul,
+  number = {arXiv:2207.09442},
+  eprint = {2207.09442},
+  primaryclass = {cs, math},
+  publisher = {arXiv},
+  url = {http://arxiv.org/abs/2207.09442},
+  abstract = {We present Theseus, an efficient application-agnostic open source library for differentiable nonlinear least squares (DNLS) optimization built on PyTorch, providing a common framework for end-to-end structured learning in robotics and vision. Existing DNLS implementations are application specific and do not always incorporate many ingredients important for efficiency. Theseus is application-agnostic, as we illustrate with several example applications that are built using the same underlying differentiable components, such as second-order optimizers, standard costs functions, and Lie groups. For efficiency, Theseus incorporates support for sparse solvers, automatic vectorization, batching, GPU acceleration, and gradient computation with implicit differentiation and direct loss minimization. We do extensive performance evaluation in a set of applications, demonstrating significant efficiency gains and better scalability when these features are incorporated. Project page: https://sites.google.com/view/theseus-ai},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:21:14Z}
+}
+
+@article{renTorchOptEfficientLibrary2023,
+  title = {{{TorchOpt}}: {{An Efficient Library}} for {{Differentiable Optimization}}},
+  shorttitle = {{{TorchOpt}}},
+  author = {Ren, Jie and Feng, Xidong and Liu, Bo and Pan, Xuehai and Fu, Yao and Mai, Luo and Yang, Yaodong},
+  year = {2023},
+  journal = {Journal of Machine Learning Research},
+  volume = {24},
+  number = {367},
+  pages = {1--14},
+  issn = {1533-7928},
+  url = {http://jmlr.org/papers/v24/23-0191.html},
+  abstract = {Differentiable optimization algorithms often involve expensive computations of various meta-gradients. To address this, we design and implement TorchOpt, a new PyTorch-based differentiable optimization library. TorchOpt provides an expressive and unified programming interface that simplifies the implementation of explicit, implicit, and zero-order gradients. Moreover, TorchOpt has a distributed execution runtime capable of parallelizing diverse operations linked to differentiable optimization tasks across CPU and GPU devices. Experimental results demonstrate that TorchOpt achieves a 5.2{\texttimes} training time speedup in a cluster. TorchOpt is open-sourced at https://github.com/metaopt/torchopt and has become a PyTorch Ecosystem project.},
+  timestamp = {2025-07-19T19:23:53Z}
+}
+
 @misc{revelsForwardModeAutomaticDifferentiation2016,
   title = {Forward-{{Mode Automatic Differentiation}} in {{Julia}}},
   author = {Revels, Jarrett and Lubin, Miles and Papamarkou, Theodore},
@@ -799,6 +894,21 @@
   timestamp = {2025-07-19T16:13:13Z}
 }
 
+@misc{sharmaFlexibleDifferentiableOptimization2022,
+  title = {Flexible {{Differentiable Optimization}} via {{Model Transformations}}},
+  author = {Sharma, Akshay and Besan{\c c}on, Mathieu and Garcia, Joaquim Dias and Legat, Beno{\^i}t},
+  year = {2022},
+  month = jun,
+  number = {arXiv:2206.06135},
+  eprint = {2206.06135},
+  primaryclass = {cs, math},
+  publisher = {arXiv},
+  url = {http://arxiv.org/abs/2206.06135},
+  abstract = {We introduce DiffOpt.jl, a Julia library to differentiate through the solution of convex optimization problems with respect to arbitrary parameters present in the objective and/or constraints. The library builds upon MathOptInterface, thus leveraging the rich ecosystem of solvers and composing well with modelling languages like JuMP. DiffOpt offers both forward and reverse differentiation modes, enabling multiple use cases from hyperparameter optimization to backpropagation and sensitivity analysis, bridging constrained optimization with end-to-end differentiable programming.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:19:57Z}
+}
+
 @misc{shinAcceleratingOptimalPower2024,
   title = {Accelerating {{Optimal Power Flow}} with {{GPUs}}: {{SIMD Abstraction}} of {{Nonlinear Programs}} and {{Condensed-Space Interior-Point Methods}}},
   shorttitle = {Accelerating {{Optimal Power Flow}} with {{GPUs}}},
@@ -828,6 +938,24 @@
   isbn = {978-0-262-03924-6},
   lccn = {Q325.6 .R45 2018},
   timestamp = {2025-07-19T13:26:48Z}
+}
+
+@article{tangPyEPOPyTorchbasedEndtoend2024,
+  title = {{{PyEPO}}: A {{PyTorch-based}} End-to-End Predict-Then-Optimize Library for Linear and Integer Programming},
+  shorttitle = {{{PyEPO}}},
+  author = {Tang, Bo and Khalil, Elias B.},
+  year = {2024},
+  month = sep,
+  journal = {Mathematical Programming Computation},
+  volume = {16},
+  number = {3},
+  pages = {297--335},
+  issn = {1867-2957},
+  doi = {10.1007/s12532-024-00255-x},
+  url = {https://doi.org/10.1007/s12532-024-00255-x},
+  abstract = {In deterministic optimization, it is typically assumed that all problem parameters are fixed and known. In practice, however, some parameters may be a priori unknown but can be estimated from contextual information. A typical predict-then-optimize approach separates predictions and optimization into two distinct stages. Recently, end-to-end predict-then-optimize has emerged as an attractive alternative. This work introduces the PyEPO package, a PyTorch-based end-to-end predict-then-optimize library in Python. To the best of our knowledge, PyEPO (pronounced like pineapple with a silent ``n") is the first such generic tool for linear and integer programming with predicted objective function coefficients. It includes various algorithms such as surrogate decision losses, black-box solvers, and perturbated methods. PyEPO offers a user-friendly interface for defining new optimization problems, applying state-of-the-art algorithms, and using custom neural network architectures. We conducted experiments comparing various methods on problems such as the Shortest Path, the Multiple Knapsack, and the Traveling Salesperson Problem, discussing empirical insights that may guide future research.~PyEPO and its documentation are available at https://github.com/khalil-research/PyEPO.},
+  langid = {english},
+  timestamp = {2025-07-19T19:21:08Z}
 }
 
 @inproceedings{vaswaniAttentionAllYou2017,
@@ -870,6 +998,22 @@
   timestamp = {2025-07-19T17:16:38Z}
 }
 
+@misc{vivier-ardissonLearningLocalSearch2025,
+  title = {Learning with {{Local Search MCMC Layers}}},
+  author = {{Vivier-Ardisson}, Germain and Blondel, Mathieu and Parmentier, Axel},
+  year = {2025},
+  month = may,
+  number = {arXiv:2505.14240},
+  eprint = {2505.14240},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.14240},
+  url = {http://arxiv.org/abs/2505.14240},
+  abstract = {Integrating combinatorial optimization layers into neural networks has recently attracted significant research interest. However, many existing approaches lack theoretical guarantees or fail to perform adequately when relying on inexact solvers. This is a critical limitation, as many operations research problems are NP-hard, often necessitating the use of neighborhood-based local search heuristics. These heuristics iteratively generate and evaluate candidate solutions based on an acceptance rule. In this paper, we introduce a theoretically-principled approach for learning with such inexact combinatorial solvers. Inspired by the connection between simulated annealing and Metropolis-Hastings, we propose to transform problem-specific neighborhood systems used in local search heuristics into proposal distributions, implementing MCMC on the combinatorial space of feasible solutions. This allows us to construct differentiable combinatorial layers and associated loss functions. Replacing an exact solver by a local search strongly reduces the computational burden of learning on many applications. We demonstrate our approach on a large-scale dynamic vehicle routing problem with time windows.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T18:40:07Z}
+}
+
 @inproceedings{vlastelicaDifferentiationBlackboxCombinatorial2020,
   title = {Differentiation of {{Blackbox Combinatorial Solvers}}},
   booktitle = {8th {{International Conference}} on {{Learning Representations}}},
@@ -896,4 +1040,21 @@
   url = {https://dl.acm.org/doi/10.1145/1322436.1322439},
   abstract = {A new approach for computing a sparsity pattern for a Hessian is presented: nonlinearity information is propagated through the function evaluation yielding the nonzero structure. A complexity analysis of the proposed algorithm is given. Once the sparsity pattern is available, coloring algorithms can be applied to compute a seed matrix. To evaluate the product of the Hessian and the seed matrix, a vector version for evaluating second order adjoints is analysed. New drivers of ADOL-C are provided implementing the presented algorithms. Runtime analyses are given for some problems of the CUTE collection.},
   timestamp = {2025-03-06T13:48:55Z}
+}
+
+@article{yangGraphBLASTHighPerformanceLinear2022,
+  title = {{{GraphBLAST}}: {{A High-Performance Linear Algebra-based Graph Framework}} on the {{GPU}}},
+  shorttitle = {{{GraphBLAST}}},
+  author = {Yang, Carl and Bulu{\c c}, Ayd{\i}n and Owens, John D.},
+  year = {2022},
+  month = feb,
+  journal = {ACM Trans. Math. Softw.},
+  volume = {48},
+  number = {1},
+  pages = {1:1--1:51},
+  issn = {0098-3500},
+  doi = {10.1145/3466795},
+  url = {https://dl.acm.org/doi/10.1145/3466795},
+  abstract = {High-performance implementations of graph algorithms are challenging to implement on new parallel hardware such as GPUs because of three challenges: (1)\&nbsp;the difficulty of coming up with graph building blocks, (2)\&nbsp;load imbalance on parallel hardware, and (3)\&nbsp;graph problems having low arithmetic intensity. To address some of these challenges, GraphBLAS is an innovative, on-going effort by the graph analytics community to propose building blocks based on sparse linear algebra, which allow graph algorithms to be expressed in a performant, succinct, composable, and portable manner. In this paper, we examine the performance challenges of a linear-algebra-based approach to building graph frameworks and describe new design principles for overcoming these bottlenecks. Among the new design principles is exploiting input sparsity, which allows users to write graph algorithms without specifying push and pull direction. Exploiting output sparsity allows users to tell the backend which values of the output in a single vectorized computation they do not want computed. Load-balancing is an important feature for balancing work amongst parallel workers. We describe the important load-balancing features for handling graphs with different characteristics. The design principles described in this paper have been implemented in ``GraphBLAST'', the first high-performance linear algebra-based graph framework on NVIDIA GPUs that is open-source. The results show that on a single GPU, GraphBLAST has on average at least an order of magnitude speedup over previous GraphBLAS implementations SuiteSparse and GBTL, comparable performance to the fastest GPU hardwired primitives and shared-memory graph frameworks Ligra and Gunrock, and better performance than any other GPU graph framework, while offering a simpler and more concise programming model.},
+  timestamp = {2025-07-19T19:33:01Z}
 }

@@ -244,6 +244,11 @@ Nascent research on reparametrization for discrete distributions #cite(<aryaAuto
 
 So far not generalized to reverse mode.
 
+#columns[
+  #muchpdf(read("img/arya/exp.pdf", encoding: none))
+  #muchpdf(read("img/arya/ber1.pdf", encoding: none))
+]
+
 == Stochastic functions
 
 What about more complicated mixes of sampling and computation?
@@ -367,11 +372,45 @@ More examples in #cite(<blondelEfficientModularImplicit2022>).
 
 == Quadratic programs
 
-#lorem(20)
+`OptNet`, the grandfather of optimization layers #cite(<amosOptNetDifferentiableOptimization2017>)
+
+$
+  x^star underbrace((Q, q, A, b, G, h), theta) = limits("argmin")_x thick 1/2 x^top Q x + q^top x quad "s.t." quad A x = b, G x <= h
+$
+
+With dual variables $nu$ and $lambda >= 0$, the Lagrangian is:
+
+$
+  cal(L)(x, nu, lambda) = 1/2 x^top Q x + q^top x + nu^top (A x - b) + lambda^top (G x - h)
+$
+
+== Quadratic programs (2)
+
+The KKT conditions (without inequalities) are:
+
+$
+  Q x^star + q + A^top nu^star + G^top lambda^star & = 0 \
+                                      A x^star - b & = 0 \
+                "diag"(lambda^star) (G x^star - h) & = 0
+$
+
+And we apply the implicit function theorem:
+
+$
+  "d" / ("d" theta) c((x^star (theta), nu^star (theta), lambda^star (theta)), theta) = 0
+$
+
+Requires the dual optimal solution as well.
 
 == Conic programs
 
-#lorem(20)
+The `OptNet` approach generalizes to convex optimization layers reformulated as cone programs:
+
+$
+  x^star (c, A, b) = limits("argmin")_(x, s) thick c^top x quad "s.t." quad cases(delim: "|", A x + s = b, s in cal(K))
+$
+
+Key for usability: automatic reformulation with disciplined convex programming #cite(<agrawalDifferentiableConvexOptimization2019>)
 
 == The role of strict convexity
 
@@ -393,13 +432,61 @@ No longer true in the discrete case: we will need approximations!
 
 = Discrete optimization layers
 
-== Branching (sigmoid)
+== From exact to approximate
 
-#lorem(20)
+Discrete solvers and program elements don't have useful derivatives.
 
-== Choosing (softmax)
+We need a nicely differentiable surrogate to allow backpropagation.
 
-#lorem(20)
+Compromise between:
+
+#columns[
+  - precision
+  #colbreak()
+  - smoothness
+]
+
+== Branching
+
+#columns[
+  #muchpdf(read("img/blondel/greater_equal_ops_hard.pdf", encoding: none))
+  #muchpdf(read("img/blondel/greater_equal_ops_soft_logistic.pdf", encoding: none))
+
+  #colbreak()
+
+  Approximate the step function
+
+  $
+    "step"(u) = cases(1 "if" u >= 0, 0 "otherwise")
+  $
+
+  with a sigmoid function
+
+  $
+    "sigmoid"_beta (u) = 1 / (1 + e^(-beta u))
+  $
+
+  Temperature parameter $1/beta$ controls smoothness and precision.
+
+]
+
+== Choosing
+
+#columns[
+
+  Approximate $"argmax"(theta)$ with
+
+  $
+    "softmax"_beta (theta) = (exp(beta theta_i) / (sum_j exp(beta theta_j)))_i \
+    "sparsemax"(theta) = limits("argmin")_(p in Delta) thick norm(p - theta)^2
+  $
+
+  #colbreak()
+
+  #muchpdf(read("img/blondel/argmax.pdf", encoding: none), height: 45%)
+  #muchpdf(read("img/blondel/softargmax.pdf", encoding: none), height: 45%)
+
+]
 
 == Linear programs
 
@@ -411,7 +498,7 @@ No longer true in the discrete case: we will need approximations!
 
 == Interpolation
 
-#cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>)
+Replace piecewise-constant argmax with affine interpolation #cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>)
 
 #align(center)[
   #muchpdf(read("img/vlastelica/flambda_2D_nobox.pdf", encoding: none), width: 80%)
@@ -421,13 +508,21 @@ No longer true in the discrete case: we will need approximations!
 
 #grid(
   columns: (auto, auto),
-  cite(<berthetLearningDifferentiablePerturbed2020>),
-  muchpdf(read("img/berthet/perturbed_big.pdf", encoding: none), width: 80%),
+  [
+    Use REINFORCE gradient on the perturbed problem #cite(<berthetLearningDifferentiablePerturbed2020>):
+
+    $
+      x^star_epsilon (theta) = bb(E)[limits("argmax")_(x in cal(C)) thick (theta + epsilon Z)^top x]
+    $
+
+    where $Z tilde cal(N)(0, I)$ is Gaussian.
+  ],
+  align(right)[
+    #muchpdf(read("img/berthet/perturbed_big.pdf", encoding: none), width: 80%)
+  ],
 )
 
-== Specific problems
-
-- Sorting and ranking
+== Integer linear programs
 
 = Equilibrium layers
 
@@ -461,22 +556,43 @@ No longer true in the discrete case: we will need approximations!
 
 == Python
 
-- `cvxpylayers`
-- `TorchOpt`
-- `Theseus`
-- `PyEPO`
+- `cvxpylayers` #cite(<agrawalDifferentiableConvexOptimization2019>)
+- `TorchOpt` #cite(<renTorchOptEfficientLibrary2023>)
+- `optax` #cite(<deepmind2020jax>)
+- `Theseus` #cite(<pinedaTheseusLibraryDifferentiable2022>)
+- `PyEPO` #cite(<tangPyEPOPyTorchbasedEndtoend2024>)
 
 == Julia
 
-- `ImplicitDifferentiation.jl`
-- `DiffOpt.jl`
-- `InferOpt.jl`
+- `DiffOpt.jl` #cite(<sharmaFlexibleDifferentiableOptimization2022>)
+- `ImplicitDifferentiation.jl` #cite(<dalleMachineLearningCombinatorial2022>)
+- `DifferentiableExpectations.jl` #cite(<batyCombinatorialOptimizationDecisionfocused2025>)
+- `InferOpt.jl` #cite(<dalleLearningCombinatorialOptimization2022>)
 
-= What I haven't said
+= Going further
 
-== Submodularity
+== Inexact solves
+
+What happens if we don't solve the problem to optimality?
+
+#cite(<vivier-ardissonLearningLocalSearch2025>) studies the case of a local search, framed as MCMC simulation.
+
+== Clever losses
 
 #lorem(20)
+
+== GPU-friendly solvers
+
+Most (I)LP solvers run on CPU only.
+
+Expensive back-and-forth between CPU and GPU during training.
+
+Can we leverage parallel computing for combinatorial optimization?
+
+- For LPs, yes #cite(<luOverviewGPUbasedFirstOrder2025>)
+- For graph algorithms, maybe #cite(<yangGraphBLASTHighPerformanceLinear2022>)
+
+Key question: whether to reuse existing algorithms or design new ones.
 
 == Compiler tricks
 
@@ -489,6 +605,10 @@ The level of abstraction isn't just a mathematical question: it also matters for
   #colbreak()
   #muchpdf(read("img/moses/enzyme_approach.pdf", encoding: none))
 ]
+
+= Conclusion
+
+== Take-home messages
 
 == References
 

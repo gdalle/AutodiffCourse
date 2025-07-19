@@ -668,7 +668,7 @@ Example: #raw("jaxpr") intermediate representation in #raw("JAX") #cite(<bradbur
   ]
 ]
 
-= What I haven't said
+= Going further
 
 == Complex numbers
 
@@ -717,6 +717,10 @@ What should the computed "automatic" derivative be?
 2. Approximate the derivative $hat(partial f(X))$
 
 More on this next time!
+
+= Conclusion
+
+== Take-home messages
 
 == References
 
