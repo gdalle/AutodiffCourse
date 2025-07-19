@@ -6,6 +6,19 @@
   timestamp = {2025-02-18T18:23:38Z}
 }
 
+@inproceedings{aryaAutomaticDifferentiationPrograms2022,
+  title = {Automatic {{Differentiation}} of {{Programs}} with {{Discrete Randomness}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Arya, Gaurav and Schauer, Moritz and Sch{\"a}fer, Frank and Rackauckas, Christopher},
+  year = {2022},
+  month = dec,
+  volume = {35},
+  pages = {10435--10447},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/43d8e5fc816c692f342493331d5e98fc-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-07-19T15:15:39Z}
+}
+
 @article{baydinAutomaticDifferentiationMachine2018,
   title = {Automatic {{Differentiation}} in {{Machine Learning}}: A {{Survey}}},
   shorttitle = {Automatic {{Differentiation}} in {{Machine Learning}}},
@@ -35,6 +48,20 @@
   abstract = {Using backpropagation to compute gradients of objective functions for optimization has remained a mainstay of machine learning. Backpropagation, or reverse-mode differentiation, is a special case within the general family of automatic differentiation algorithms that also includes the forward mode. We present a method to compute gradients based solely on the directional derivative that one can compute exactly and efficiently via the forward mode. We call this formulation the forward gradient, an unbiased estimate of the gradient that can be evaluated in a single forward run of the function, entirely eliminating the need for backpropagation in gradient descent. We demonstrate forward gradient descent in a range of problems, showing substantial savings in computation and enabling training up to twice as fast in some cases.},
   archiveprefix = {arXiv},
   timestamp = {2025-07-10T14:51:48Z}
+}
+
+@misc{beckGentleIncompleteIntroduction2021,
+  title = {A {{Gentle}} and {{Incomplete Introduction}} to {{Bilevel Optimization}}},
+  author = {Beck, Yasmine and Schmidt, Martin},
+  year = {2021},
+  month = jun,
+  number = {17182},
+  eprint = {17182},
+  publisher = {Optimization Online},
+  url = {https://optimization-online.org/?p=17182},
+  archiveprefix = {Optimization Online},
+  langid = {american},
+  timestamp = {2025-07-19T07:22:38Z}
 }
 
 @article{bezansonJuliaFreshApproach2017,
@@ -455,6 +482,36 @@
   timestamp = {2025-06-18T08:10:51Z}
 }
 
+@inproceedings{mosesInsteadRewritingForeign2020,
+  title = {Instead of {{Rewriting Foreign Code}} for {{Machine Learning}}, {{Automatically Synthesize Fast Gradients}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Moses, William and Churavy, Valentin},
+  year = {2020},
+  volume = {33},
+  pages = {12472--12485},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2020/hash/9332c513ef44b682e9347822c2e457ac-Abstract.html},
+  abstract = {Applying differentiable programming techniques and machine learning algorithms to foreign programs requires developers to either rewrite their code in a machine learning framework, or otherwise provide derivatives of the foreign code. This paper presents Enzyme, a high-performance automatic differentiation (AD) compiler plugin for the LLVM compiler framework capable of synthesizing gradients of statically analyzable programs expressed in the LLVM intermediate representation (IR). Enzyme synthesizes gradients for programs written in any language whose compiler targets LLVM IR including C, C++, Fortran, Julia, Rust, Swift, MLIR, etc., thereby providing native AD capabilities in these languages. Unlike traditional source-to-source and operator-overloading tools, Enzyme performs AD on optimized IR. On a machine-learning focused benchmark suite including Microsoft's ADBench, AD on optimized IR achieves a geometric mean speedup of 4.2 times over AD on IR before optimization allowing Enzyme to achieve state-of-the-art performance. Packaging Enzyme for PyTorch and TensorFlow provides convenient access to gradients of foreign code with state-of-the-art performance, enabling foreign code to be directly incorporated into existing machine learning workflows.},
+  timestamp = {2025-07-19T14:05:18Z}
+}
+
+@inproceedings{mosesReversemodeAutomaticDifferentiation2021,
+  title = {Reverse-Mode Automatic Differentiation and Optimization of {{GPU}} Kernels via {{Enzyme}}},
+  booktitle = {Proceedings of the {{International Conference}} for {{High Performance Computing}}, {{Networking}}, {{Storage}} and {{Analysis}}},
+  author = {Moses, William S. and Churavy, Valentin and Paehler, Ludger and H{\"u}ckelheim, Jan and Narayanan, Sri Hari Krishna and Schanen, Michel and Doerfert, Johannes},
+  year = {2021},
+  month = nov,
+  series = {{{SC}} '21},
+  pages = {1--16},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  doi = {10.1145/3458817.3476165},
+  url = {https://doi.org/10.1145/3458817.3476165},
+  abstract = {Computing derivatives is key to many algorithms in scientific computing and machine learning such as optimization, uncertainty quantification, and stability analysis. Enzyme is a LLVM compiler plugin that performs reverse-mode automatic differentiation (AD) and thus generates high performance gradients of programs in languages including C/C++, Fortran, Julia, and Rust. Prior to this work, Enzyme and other AD tools were not capable of generating gradients of GPU kernels. Our paper presents a combination of novel techniques that make Enzyme the first fully automatic reversemode AD tool to generate gradients of GPU kernels. Since unlike other tools Enzyme performs automatic differentiation within a general-purpose compiler, we are able to introduce several novel GPU and AD-specific optimizations. To show the generality and efficiency of our approach, we compute gradients of five GPU-based HPC applications, executed on NVIDIA and AMD GPUs. All benchmarks run within an order of magnitude of the original program's execution time. Without GPU and AD-specific optimizations, gradients of GPU kernels either fail to run from a lack of resources or have infeasible overhead. Finally, we demonstrate that increasing the problem size by either increasing the number of threads or increasing the work per thread, does not substantially impact the overhead from differentiation.},
+  isbn = {978-1-4503-8442-1},
+  timestamp = {2025-07-19T14:05:21Z}
+}
+
 @inproceedings{paszkePyTorchImperativeStyle2019,
   title = {{{PyTorch}}: {{An Imperative Style}}, {{High-Performance Deep Learning Library}}},
   shorttitle = {{{PyTorch}}},
@@ -466,6 +523,19 @@
   url = {https://proceedings.neurips.cc/paper/2019/hash/bdbca288fee7f92f2bfa9f7012727740-Abstract.html},
   abstract = {Deep learning frameworks have often focused on either usability or speed, but not both. PyTorch is a machine learning library that shows that these two goals are in fact compatible: it was designed from first principles to support an imperative and Pythonic programming style that supports code as a model, makes debugging easy and is consistent with other popular scientific computing libraries, while remaining efficient and supporting hardware accelerators such as GPUs. In this paper, we detail the principles that drove the implementation of PyTorch and how they are reflected in its architecture. We emphasize that every aspect of PyTorch is a regular Python program under the full control of its user. We also explain how the careful and pragmatic implementation of the key components of its runtime enables them to work together to achieve compelling performance. We demonstrate the efficiency of individual subsystems, as well as the overall speed of PyTorch on several commonly used benchmarks.},
   timestamp = {2025-02-18T18:23:21Z}
+}
+
+@inproceedings{paulusGradientEstimationStochastic2020,
+  title = {Gradient {{Estimation}} with {{Stochastic Softmax Tricks}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Paulus, Max and Choi, Dami and Tarlow, Daniel and Krause, Andreas and Maddison, Chris J},
+  year = {2020},
+  volume = {33},
+  pages = {5691--5704},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2020/hash/3df80af53dce8435cf9ad6c3e7a403fd-Abstract.html},
+  abstract = {The Gumbel-Max trick is the basis of many relaxed gradient estimators. These estimators are easy to implement and low variance, but the goal of scaling them comprehensively to large combinatorial distributions is still outstanding. Working within the perturbation model framework, we introduce stochastic softmax tricks, which generalize the Gumbel-Softmax trick to combinatorial spaces. Our framework is a unified perspective on existing relaxed estimators for perturbation models, and it contains many novel relaxations. We design structured relaxations for subset selection, spanning trees, arborescences, and others. When compared to less structured baselines, we find that stochastic softmax tricks can be used to train latent variable models that perform better and discover more latent structure.},
+  timestamp = {2025-07-19T15:15:59Z}
 }
 
 @article{pearlmutterFastExactMultiplication1994,
@@ -554,6 +624,21 @@
   abstract = {This paper introduces a framework for solving alternating current optimal power flow (ACOPF) problems using graphics processing units (GPUs). While GPUs have demonstrated remarkable performance in various computing domains, their application in ACOPF has been limited due to challenges associated with porting sparse automatic differentiation (AD) and sparse linear solver routines to GPUs. We address these issues with two key strategies. First, we utilize a single-instruction, multiple-data abstraction of nonlinear programs. This approach enables the specification of model equations while preserving their parallelizable structure and, in turn, facilitates the parallel AD implementation. Second, we employ a condensed-space interior-point method (IPM) with an inequality relaxation. This technique involves condensing the Karush--Kuhn--Tucker (KKT) system into a positive definite system. This strategy offers the key advantage of being able to factorize the KKT matrix without numerical pivoting, which has hampered the parallelization of the IPM algorithm. By combining these strategies, we can perform the majority of operations on GPUs while keeping the data residing in the device memory only. Comprehensive numerical benchmark results showcase the advantage of our approach. Remarkably, our implementations -- MadNLP.jl and ExaModels.jl -- running on NVIDIA GPUs achieve an order of magnitude speedup compared with state-of-the-art tools running on contemporary CPUs.},
   archiveprefix = {arXiv},
   timestamp = {2025-06-18T08:11:37Z}
+}
+
+@book{suttonReinforcementLearningIntroduction2018,
+  title = {Reinforcement Learning: An Introduction},
+  shorttitle = {Reinforcement Learning},
+  author = {Sutton, Richard S. and Barto, Andrew G.},
+  year = {2018},
+  series = {Adaptive Computation and Machine Learning Series},
+  edition = {Second edition},
+  publisher = {The MIT Press},
+  address = {Cambridge, Massachusetts},
+  abstract = {"Reinforcement learning, one of the most active research areas in artificial intelligence, is a computational approach to learning whereby an agent tries to maximize the total amount of reward it receives while interacting with a complex, uncertain environment. In Reinforcement Learning, Richard Sutton and Andrew Barto provide a clear and simple account of the field's key ideas and algorithms."--},
+  isbn = {978-0-262-03924-6},
+  lccn = {Q325.6 .R45 2018},
+  timestamp = {2025-07-19T13:26:48Z}
 }
 
 @inproceedings{vaswaniAttentionAllYou2017,

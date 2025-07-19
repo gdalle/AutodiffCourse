@@ -714,7 +714,7 @@ For example, $f(A, b) = A^(-1) b$ is obtained via a program $p(A, b) approx A^(-
 What should the computed "automatic" derivative be?
 
 1. Differentiate the approximation $partial p(X)$
-2. Approximate the derivative $partial f(X)$
+2. Approximate the derivative $hat(partial f(X))$
 
 More on this next time!
 
