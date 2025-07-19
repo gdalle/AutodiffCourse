@@ -5,11 +5,17 @@
 #import "@preview/algo:0.3.6": algo, code, comment, d, i
 #import "@preview/note-me:0.5.0": *
 #import "@preview/mannot:0.3.0": *
+#import "@preview/muchpdf:0.1.1": *
 
 // #set text(font: "Fira Sans")
 // #show math.equation: set text(font: "Fira Math")
 
 #let colgray(x) = text(fill: gray, $#x$)
+
+#let thanks(body) = {
+  footnote(numbering: _ => [])[#body]
+  counter(footnote).update(n => n - 1)
+}
 
 #show: university-theme.with(config-info(
   title: [Introduction to automatic differentiation],
@@ -25,6 +31,8 @@
 
 = Introduction
 
+#thanks[Figures without attribution are borrowed from #cite(<blondelElementsDifferentiableProgramming2024>)]
+
 == Definitions
 
 Derivative = linear approximation of function $f$ around point $x$:
@@ -34,7 +42,7 @@ $ f(x + v) = f(x) + partial f(x) [v] + o(h) $
 Here $partial f(x)[v]$ means "the linear map $partial f(x)$ applied to $v$".
 
 #columns[
-  #image("img/blondel/derivative.png", height: 60%, alt: "hello")
+  #muchpdf(read("img/blondel/derivative.pdf", encoding: none), height: 60%)
   #colbreak()
   #v(40%)
   In the scalar case, the derivative is just a number $f'(x)$
@@ -58,7 +66,7 @@ Essential for nonlinear optimization, e.g. with gradient descent.
     ]
   ],
   [
-    #image("img/blondel/gradient.png", height: 60%)
+    #muchpdf(read("img/blondel/gradient.pdf", encoding: none), height: 60%)
   ],
 )
 
@@ -79,7 +87,7 @@ Also useful elsewhere (differential equations, sensitivity analysis).
   #colbreak()
 
   #align(center)[
-    #image("img/attention.png")
+    #image("img/vaswani/ModalNet-21.png")
   ]
 ]
 
@@ -89,13 +97,13 @@ Also useful elsewhere (differential equations, sensitivity analysis).
 
   _*Differentiable programming* is a programming paradigm in which *complex computer programs* (including those with control flows and data structures) can be differentiated end-to-end automatically, enabling gradient-based *optimization of parameters* in the program._
 
-  From the book #cite(<blondelElementsDifferentiableProgramming2024>) (source of most pictures used here).
+  From the book #cite(<blondelElementsDifferentiableProgramming2024>)
 
   #colbreak()
 
   #align(center)[
-    #image("img/alice_partial.png", height: 70%)
-    How deep is the differentiable rabbit hole #cite(<scardapaneAlicesAdventuresDifferentiable2024>)?
+    #image("img/scardapane/alice_partial.png", height: 70%)
+    How deep is the \ differentiable rabbit hole #cite(<scardapaneAlicesAdventuresDifferentiable2024>)?
   ]
 ]
 
@@ -118,7 +126,7 @@ Gives an expression for $f'(x)$, but takes away your will to live.
 
 == Symbolic differentiation
 
-#slide()[
+#columns[
   Plug the expression for $f(x)$ into a computer algebra system.
 
   Gives an expression for $f'(x)$, possibly very long.
@@ -127,8 +135,13 @@ Gives an expression for $f'(x)$, but takes away your will to live.
 
   - intermediate variables
   - loops
-][
-  #image("img/expression.png")
+
+  #colbreak()
+
+  #columns[
+    #muchpdf(read("img/laue/DAG.pdf", encoding: none), width: 100%)
+    #muchpdf(read("img/laue/tree.pdf", encoding: none), width: 100%)
+  ]
 
   Graph & tree representations #cite(<laueEquivalenceAutomaticSymbolic2022>)$ f(x) = sin(x_1 + x_2) cos(x_1 + x_2) $
 ]
@@ -137,7 +150,7 @@ Gives an expression for $f'(x)$, but takes away your will to live.
 
 Programs naturally map to directed acyclic graphs.
 
-#image("img/blondel/computational_graph.png")
+#muchpdf(read("img/blondel/graph_comput.pdf", encoding: none))
 
 Computational graph for $f(x) = x_2 e^(x_1) sqrt(x_1 + x_2 e^(x_1))$ .
 
@@ -156,7 +169,7 @@ Great at first glance:
 
 #slide(composer: (65%, auto))[
   #align(center)[
-    #image("img/blondel/finite_differences.png")
+    #muchpdf(read("img/blondel/approx_error.pdf", encoding: none))
   ]
 ][
   #align(horizon)[
@@ -171,7 +184,7 @@ Computing a gradient is expensive: $n+1$ evaluations
 $
   nabla f(x) = mat(
     partial_1 f(x); \
-    partial_n f(x); \
+    partial_2 f(x); \
     ...; \
     partial_n f(x)
   ) approx 1/epsilon mat(
@@ -217,7 +230,7 @@ However, the linear map $v mapsto.long partial f(x)[v]$ is natural to work with:
 
 == The chain rule
 
-Given a function composition $f = g compose h$, we have
+Given a function composition $f = g compose h$ with two layers, we have
 
 $ partial f(x) = partial g(h(x)) compose partial h(x) $
 
@@ -294,7 +307,7 @@ The layer boundary is a subjective choice (see lecture 2).
 Propagate the input and its tangent together through a chain of layers.
 
 #align(center)[
-  #image("img/blondel/forward.png", height: 60%)
+  #muchpdf(read("img/blondel/chain_jvp.pdf", encoding: none), height: 60%)
 ]
 
 == Jacobian-Vector Products
@@ -378,6 +391,9 @@ $
 
 We can differentiate any function in reverse mode knowing the adjoint derivatives of its layers.
 
+== Chain rule recap
+
+#muchpdf(read("img/blondel/chain_rule_recap.pdf", encoding: none), width: 100%)
 
 == Back to our layer examples
 
@@ -403,7 +419,7 @@ More crazy formulas in #cite(<gilesExtendedCollectionMatrix2008>).
 Propagate the input through a chain of layers, record enough information, backpropagate the output cotangent.
 
 #align(center)[
-  #image("img/blondel/reverse.png", height: 70%)
+  #muchpdf(read("img/blondel/chain_vjp.pdf", encoding: none), height: 70%)
 ]
 
 = Forward versus reverse
@@ -439,7 +455,7 @@ Assume the function $f$ can be computed in time $O(tau)$.
 
 #columns[
   #align(center)[
-    #image("img/blondel/forward_memory.png")
+    #muchpdf(read("img/blondel/chain_jvp_memory.pdf", encoding: none))
 
     Forward mode has constant memory cost.
   ]
@@ -447,7 +463,7 @@ Assume the function $f$ can be computed in time $O(tau)$.
   #colbreak()
 
   #align(center)[
-    #image("img/blondel/reverse_memory.png")
+    #muchpdf(read("img/blondel/chain_vjp_memory.pdf", encoding: none))
 
     Reverse mode has linear memory cost (in the depth of the chain).
   ]
@@ -458,7 +474,7 @@ Assume the function $f$ can be computed in time $O(tau)$.
 Strategies like checkpointing or reversibility can save memory at the cost of additional compute.
 
 #align(center)[
-  #image("img/blondel/checkpointing.png", height: 50%)
+  #muchpdf(read("img/blondel/binomial_checkpointing.pdf", encoding: none), height: 50%)
 ]
 
 Alternatives to reverse mode have been suggested based on randomized forward mode #cite(<baydinGradientsBackpropagation2022>).
@@ -476,12 +492,12 @@ The Hessian matrix is very useful for second-order optimization.
     #algo(title: "Newton's method", line-numbers: false, parameters: ($f$, $x_0$, $T$))[
       Start with $x_0$ \
       For $t = 0, ..., T-1$ #i\
-      $x_(t+1) = x_t - eta nabla^2 f(x_t) -1 nabla f(x_t)$ #d\
+      $x_(t+1) = x_t - eta nabla^2 f(x_t)^(-1) nabla f(x_t)$ #d\
       Return $x_T$
     ]
   ],
   [
-    #image("img/blondel/second_derivative.png", height: 60%)
+    #muchpdf(read("img/blondel/second_der.pdf", encoding: none), height: 60%)
   ],
 )
 
@@ -509,7 +525,7 @@ This is called forward-over-reverse mode #cite(<pearlmutterFastExactMultiplicati
   #colbreak()
 
   #align(center)[
-    #image("img/star_coloring.png")
+    #muchpdf(read("img/montoison/graph_sym.pdf", encoding: none))
 
     Link between sparse autodiff and graph coloring #cite(<gebremedhinWhatColorYour2005>)
   ]
@@ -646,7 +662,10 @@ Example: #raw("jaxpr") intermediate representation in #raw("JAX") #cite(<bradbur
 ]
 
 #align(center)[
-  #image("img/di.png", height: 45%)
+  #columns[
+    #muchpdf(read("img/dalle/ecosystem_python.pdf", encoding: none))
+    #muchpdf(read("img/dalle/ecosystem_julia_di.pdf", encoding: none))
+  ]
 ]
 
 = What I haven't said
@@ -683,14 +702,14 @@ The following programs give different derivatives at 0:
 $"relu"(t) = max(0, t) quad "relu"_2(t) = "relu"(-t) + t quad "relu"_3(t) = ("relu"(t) + "relu"_2(t)) / 2$
 
 #align(center)[
-  #image("img/nonsmooth.png", width: 100%)
+  #muchpdf(read("img/bolte/3reluActivations.pdf", encoding: none), width: 100%)
 ]
 
 == Approximations
 
 Computer programs are approximations of mathematical functions #cite(<huckelheimTaxonomyAutomaticDifferentiation2024>).
 
-For example, $f(X) = X^(-1)$ is represented by a program $p(X) = hat(X^(-1))$.
+For example, $f(A, b) = A^(-1) b$ is obtained via a program $p(A, b) approx A^(-1) b$.
 
 What should the computed "automatic" derivative be?
 
