@@ -6,6 +6,7 @@
 #import "@preview/note-me:0.5.0": *
 #import "@preview/mannot:0.3.0": *
 #import "@preview/muchpdf:0.1.1": *
+#import "@preview/fletcher:0.5.8": *
 
 // #set text(font: "Fira Sans")
 // #show math.equation: set text(font: "Fira Math")
@@ -29,18 +30,20 @@
 
 #components.adaptive-columns(outline(depth: 1))
 
-= Motivation
+= Introduction
+
+#thanks[Figures without attribution are borrowed from #cite(<blondelElementsDifferentiableProgramming2024>)]
 
 == Solvers as layers
 
-Here we love all kinds of numerical algorithms:
+We love all kinds of numerical algorithms:
 
 - stochastic simulators
 - optimization solvers
 - physical models
 - game-theoretical equilibria
 
-Let's use them as subroutines in a differentiable programming pipeline.
+Can we use them as differentiable subroutines?
 
 == Bilevel optimization
 
@@ -58,7 +61,7 @@ $
   quad "s.t." quad g(x, y) >= 0
 $
 
-A natural approach is to express $y(x)$ (assuming unicity) in a differentiable manner.
+A natural approach is to express $y^star (x)$ (assuming unicity) in a differentiable manner.
 
 == Decision-focused learning
 
@@ -69,6 +72,7 @@ See #cite(<mandiDecisionFocusedLearningFoundations2024>) (or next lecture) for a
 == Other applications
 
 - Reinforcement learning
+- Probabilistic programming
 - Inverse modeling
 - Sensitivity analysis
 
@@ -119,21 +123,20 @@ $ x_0 = a, quad x_(n+1) = 1/2 (x_n + a/x_n) $
 
   We can circumvent it by defining custom rules for our layers.
 
+  Today's lecture: how to work out these rules, and what to do when they don't exist.
   #colbreak()
 
   #muchpdf(read("img/blondel/chain_rule_recap.pdf", encoding: none))
 ]
 
-Today's lecture: how to work out these rules, and what to do when they don't exist.
-
 = Integration layers
 
 == Parametric expectations
 
-Consider the parametric expectation / integral
+Consider the parametric expectation / integral #cite(<mohamedMonteCarloGradient2020>)
 
 $
-  f(theta) = bb(E)_(X tilde p(theta))[g(X)] = integral g(x) p(x, theta) "d"x
+  f(theta) = bb(E)_(X tilde p(theta))[g(X)] = integral g(x) p(x, theta) thick "d"x
 $
 
 approximated by the Monte-Carlo estimate
@@ -142,7 +145,11 @@ $
   f_N (theta) = 1/N sum_(n=1)^N g(x^((n))) quad "where" quad x^((n)) tilde p(theta)
 $
 
-We can estimate $nabla f(theta)$ with a Monte-Carlo approach too #cite(<mohamedMonteCarloGradient2020>).
+Can we find a Monte-Carlo estimate for $nabla f(theta)$ too? Not obvious:
+
+$
+  nabla f(theta) & = integral g(x) nabla_theta p(x, theta) thick "d"x
+$
 
 == Score function
 
@@ -155,9 +162,9 @@ $
 We use it as follows:
 
 $
-  nabla f(theta) & = integral g(x) nabla_theta p(x, theta) "d"x                    \
-                 & = integral [g(x) nabla_theta log p(x, theta) ] p(x, theta) "d"x \
-                 & = bb(E)_(X tilde p(theta)) [g(X) nabla_theta log p(X, theta)]
+  nabla f(theta) & = integral g(x) nabla_theta p(x, theta) thick "d"x = integral g(x) (nabla_theta p(x, theta)) / p(x, theta) p(x, theta) thick "d"x \
+  & = integral [g(x) nabla_theta log p(x, theta) ] p(x, theta) thick "d"x \
+  & = bb(E)_(X tilde p(theta)) [g(X) nabla_theta log p(X, theta)]
 $
 
 == Score function estimator
@@ -214,6 +221,7 @@ $
     inset: 10pt,
     table.header([], [*Score function*], [*Pathwise*]),
     [Unbiased], [yes], [yes],
+    [Consistent], [yes], [yes],
     [Hypotheses on $p$], [smooth], [reparametrizable],
     [Hypotheses on $f$], [none], [smooth],
     [Variance], [high], [low],
@@ -222,7 +230,7 @@ $
 
 Score function is more widely applicable (black box $f$, discrete $p$).
 
-Pathwise is more robust (lower variance, does not grow with dimension).
+Pathwise is more robust (lower variance, stable with dimension).
 
 == REINFORCE variance reduction
 
@@ -296,7 +304,7 @@ If we compute $x^star (theta)$ with an iterative procedure, we can unroll it: di
 
 #columns[
 
-  - the solver may not be autodiff-friendly
+  - solver may not be autodiff-friendly
   - huge memory footprint in reverse mode
 
   #colbreak()
@@ -430,21 +438,43 @@ Strict convexity implies existence of $(nabla_x^2 f)^(-1)$: the optimum varies s
 
 No longer true in the discrete case: we will need approximations!
 
+== Is unrolling always bad?
+
+#lorem(20)
+
 = Discrete optimization layers
 
 == From exact to approximate
 
 Discrete solvers and program elements don't have useful derivatives.
 
-We need a nicely differentiable surrogate to allow backpropagation.
-
-Compromise between:
-
 #columns[
-  - precision
+
+  #align(center)[
+    #diagram(
+      node-stroke: 1pt,
+      $
+        A edge(theta, ->) edge("d", 1, ->) & B edge("d", 1, ->) \
+                             C edge(1, ->) & D
+      $,
+    )
+  ]
+
   #colbreak()
-  - smoothness
+
+  $
+    "shortest_path"(theta) = cases(
+      "ABD if" theta < 1 \
+      "ACD if" theta > 1 \
+      "both if" theta = 1
+    )
+  $
+
+  Piecewise-constant "function"!
+
 ]
+
+We need a nicely differentiable surrogate to allow backpropagation.
 
 == Branching
 
@@ -481,6 +511,8 @@ Compromise between:
     "sparsemax"(theta) = limits("argmin")_(p in Delta) thick norm(p - theta)^2
   $
 
+  Instead of picking one option, define a probability distribution.
+
   #colbreak()
 
   #muchpdf(read("img/blondel/argmax.pdf", encoding: none), height: 45%)
@@ -490,19 +522,59 @@ Compromise between:
 
 == Linear programs
 
-#lorem(20)
+#columns[
+
+  #muchpdf(read("img/dalle/polytope.pdf", encoding: none))
+
+  #colbreak()
+
+  Focus on LPs where the cost vector $theta$ varies:
+
+  $
+    x^star (theta) = limits("argmax")_x thick theta^top x thick "s.t." thick A x <= b
+  $
+
+  Feasible set is a polyhedron.
+
+  Almost surely on $theta$, the optimum $x^star (theta)$ is a vertex.
+
+  Requires smoothing!
+]
 
 == Regularization
 
-#lorem(20)
+Solve a convex program instead to apply KKT implicit differentiation.
+
+Quadratic regularization #cite(<wilderMeldingDataDecisionsPipeline2019>):
+
+$
+  x^star_gamma (theta) = limits("argmax")_x thick theta^top x - gamma norm(x)^2 thick "s.t." thick A x <= b
+$
+
+Logarithmic barrier #cite(<mandiInteriorPointSolving2020>):
+
+$
+  x^star_gamma (theta) = limits("argmax")_x thick theta^top x - gamma sum_i log(s_i) thick "s.t." thick A x + s = b
+$
+
+Must use a different solver.
+
 
 == Interpolation
 
-Replace piecewise-constant argmax with affine interpolation #cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>)
+Replace piecewise-constant argmax with affine interpolation #cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>).
+
+$
+  x^star_lambda (theta) = x^star (theta + lambda overline(x)) quad "and" quad overline(theta) = -1/lambda (x^star (theta) - x^star_lambda (theta))
+$
 
 #align(center)[
-  #muchpdf(read("img/vlastelica/flambda_2D_nobox.pdf", encoding: none), width: 80%)
+  #muchpdf(read("img/vlastelica/flambda_2D_nobox.pdf", encoding: none), width: 70%)
 ]
+
+== Identity
+
+Just pretend that the solver is the identity #cite(<sahooBackpropagationCombinatorialAlgorithms2023>)
 
 == Perturbation
 
@@ -515,14 +587,30 @@ Replace piecewise-constant argmax with affine interpolation #cite(<vlastelicaDif
       x^star_epsilon (theta) = bb(E)[limits("argmax")_(x in cal(C)) thick (theta + epsilon Z)^top x]
     $
 
-    where $Z tilde cal(N)(0, I)$ is Gaussian.
+    where $Z tilde cal(N)(0, I)$ is Gaussian (other perturbation distributions are possible #cite(<dalleLearningCombinatorialOptimization2022>)).
   ],
   align(right)[
     #muchpdf(read("img/berthet/perturbed_big.pdf", encoding: none), width: 80%)
   ],
 )
 
+== Softmax tricks
+
+#lorem(20)
+
 == Integer linear programs
+
+Intuitive approaches:
+
+- Backpropagate through the continuous relaxation
+- Add cutting planes #cite(<ferberMIPaaLMixedInteger2020>)
+
+== Learning constraints
+
+Much less explored.
+
+- Relax them into the objective
+- Approximate notion of "active constraints" for ILPs #cite(<paulusCombOptNetFitRight2021>)
 
 = Equilibrium layers
 
@@ -579,7 +667,14 @@ What happens if we don't solve the problem to optimality?
 
 == Clever losses
 
-#lorem(20)
+Backpropagating through the solver itself may not be necessary.
+
+Some loss functions provide (sometimes convex) surrogates:
+
+- SPO+ loss #cite(<elmachtoubSmartPredictThen2022>)
+- Fenchel-Young loss #cite(<blondelLearningFenchelYoungLosses2020>)
+- Geometric losses #cite(<tangCaVEConeAlignedApproach2024>) #cite(<berdenSolverFreeDecisionFocusedLearning2025>)
+- Learn the objective composed with the solver #cite(<zharmagambetovLandscapeSurrogateLearning2023>) #cite(<shahDecisionFocusedLearningDecisionMaking2022>)
 
 == GPU-friendly solvers
 
@@ -593,6 +688,8 @@ Can we leverage parallel computing for combinatorial optimization?
 - For graph algorithms, maybe #cite(<yangGraphBLASTHighPerformanceLinear2022>)
 
 Key question: whether to reuse existing algorithms or design new ones.
+
+Inside an instance or for batching across instances?
 
 == Compiler tricks
 

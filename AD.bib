@@ -100,6 +100,23 @@
   timestamp = {2025-07-19T07:22:38Z}
 }
 
+@misc{berdenSolverFreeDecisionFocusedLearning2025,
+  title = {Solver-{{Free Decision-Focused Learning}} for {{Linear Optimization Problems}}},
+  author = {Berden, Senne and Mahmuto{\u g}ullar{\i}, Ali {\.I}rfan and Tsouros, Dimos and Guns, Tias},
+  year = {2025},
+  month = may,
+  number = {arXiv:2505.22224},
+  eprint = {2505.22224},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.22224},
+  url = {http://arxiv.org/abs/2505.22224},
+  abstract = {Mathematical optimization is a fundamental tool for decision-making in a wide range of applications. However, in many real-world scenarios, the parameters of the optimization problem are not known a priori and must be predicted from contextual features. This gives rise to predict-then-optimize problems, where a machine learning model predicts problem parameters that are then used to make decisions via optimization. A growing body of work on decision-focused learning (DFL) addresses this setting by training models specifically to produce predictions that maximize downstream decision quality, rather than accuracy. While effective, DFL is computationally expensive, because it requires solving the optimization problem with the predicted parameters at each loss evaluation. In this work, we address this computational bottleneck for linear optimization problems, a common class of problems in both DFL literature and real-world applications. We propose a solverfree training method that exploits the geometric structure of linear optimization to enable efficient training with minimal degradation in solution quality. Our method is based on the insight that a solution is optimal if and only if it achieves an objective value that is at least as good as that of its adjacent vertices on the feasible polytope. Building on this, our method compares the estimated quality of the ground-truth optimal solution with that of its precomputed adjacent vertices, and uses this as loss function. Experiments demonstrate that our method significantly reduces computational cost while maintaining high decision quality.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:19Z}
+}
+
 @inproceedings{berthetLearningDifferentiablePerturbed2020,
   title = {Learning with {{Differentiable Perturbed Optimizers}}},
   booktitle = {Advances in {{Neural Information Processing Systems}}},
@@ -159,6 +176,20 @@
   timestamp = {2025-06-12T10:38:09Z}
 }
 
+@article{blondelLearningFenchelYoungLosses2020,
+  title = {Learning with {{Fenchel-Young}} Losses},
+  author = {Blondel, Mathieu and Martins, Andr{\'e} F. T. and Niculae, Vlad},
+  year = {2020},
+  journal = {Journal of Machine Learning Research},
+  volume = {21},
+  number = {35},
+  pages = {1--69},
+  issn = {1533-7928},
+  url = {http://jmlr.org/papers/v21/19-021.html},
+  abstract = {Over the past decades, numerous loss functions have been been proposed for a variety of supervised learning tasks, including regression, classification, ranking, and more generally structured prediction. Understanding the core principles and theoretical properties underpinning these losses is key to choose the right loss for the right problem, as well as to create new losses which combine their strengths. In this paper, we introduce Fenchel-Young losses, a generic way to construct a convex loss function for a regularized prediction function. We provide an in-depth study of their properties in a very broad setting, covering all the aforementioned supervised learning tasks, and revealing new connections between sparsity, generalized entropies, and separation margins. We show that Fenchel-Young losses unify many well-known loss functions and allow to create useful new ones easily. Finally, we derive efficient predictive and training algorithms, making Fenchel-Young losses appealing both in theory and practice.},
+  timestamp = {2025-07-21T09:37:51Z}
+}
+
 @inproceedings{bolteMathematicalModelAutomatic2020,
   title = {A Mathematical Model for Automatic Differentiation in Machine Learning},
   booktitle = {Conference on {{Neural Information Processing Systems}}},
@@ -169,6 +200,22 @@
   url = {https://hal.archives-ouvertes.fr/hal-02734446},
   abstract = {Automatic differentiation, as implemented today, does not have a simple mathematical model adapted to the needs of modern machine learning. In this work we articulate the relationships between differentiation of programs as implemented in practice and differentiation of nonsmooth functions. To this end we provide a simple class of functions, a nonsmooth calculus, and show how they apply to stochastic approximation methods. We also evidence the issue of artificial critical points created by algorithmic differentiation and show how usual methods avoid these points with probability one.},
   timestamp = {2024-12-03T07:59:37Z}
+}
+
+@misc{bolteOnestepDifferentiationIterative2023,
+  title = {One-Step Differentiation of Iterative Algorithms},
+  author = {Bolte, J{\'e}r{\^o}me and Pauwels, Edouard and Vaiter, Samuel},
+  year = {2023},
+  month = may,
+  number = {arXiv:2305.13768},
+  eprint = {2305.13768},
+  primaryclass = {cs, math},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2305.13768},
+  url = {http://arxiv.org/abs/2305.13768},
+  abstract = {In appropriate frameworks, automatic differentiation is transparent to the user at the cost of being a significant computational burden when the number of operations is large. For iterative algorithms, implicit differentiation alleviates this issue but requires custom implementation of Jacobian evaluation. In this paper, we study one-step differentiation, also known as Jacobian-free backpropagation, a method as easy as automatic differentiation and as performant as implicit differentiation for fast algorithms (e.g., superlinear optimization methods). We provide a complete theoretical approximation analysis with specific examples (Newton's method, gradient descent) along with its consequences in bilevel optimization. Several numerical examples illustrate the well-foundness of the one-step estimator.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-21T09:10:56Z}
 }
 
 @misc{bradburyJAXComposableTransformations2018,
@@ -313,6 +360,23 @@
   year = {2020},
   url = {http://github.com/google-deepmind},
   timestamp = {2025-07-19T19:22:58Z}
+}
+
+@article{elmachtoubSmartPredictThen2022,
+  title = {Smart ``{{Predict}}, Then {{Optimize}}''},
+  author = {Elmachtoub, Adam N. and Grigas, Paul},
+  year = {2022},
+  month = jan,
+  journal = {Management Science},
+  volume = {68},
+  number = {1},
+  pages = {9--26},
+  issn = {0025-1909, 1526-5501},
+  doi = {10.1287/mnsc.2020.3922},
+  url = {http://pubsonline.informs.org/doi/10.1287/mnsc.2020.3922},
+  abstract = {Many real-world analytics problems involve two significant challenges: prediction and optimization. Because of the typically complex nature of each challenge, the standard paradigm is predict-then-optimize. By and large, machine learning tools are intended to minimize prediction error and do not account for how the predictions will be used in the downstream optimization problem. In contrast, we propose a new and very general framework, called Smart ``Predict, then Optimize'' (SPO), which directly leverages the optimization problem structure---that is, its objective and constraints---for designing better prediction models. A key component of our framework is the SPO loss function, which measures the decision error induced by a prediction. Training a prediction model with respect to the SPO loss is computationally challenging, and, thus, we derive, using duality theory, a convex surrogate loss function, which we call the SPO+ loss. Most importantly, we prove that the SPO+ loss is statistically consistent with respect to the SPO loss under mild conditions. Our SPO+ loss function can tractably handle any polyhedral, convex, or even mixed-integer optimization problem with a linear objective. Numerical experiments on shortest-path and portfolio-optimization problems show that the SPO framework can lead to significant improvement under the predict-then-optimize paradigm, in particular, when the prediction model being trained is misspecified. We find that linear models trained using SPO+ loss tend to dominate random-forest algorithms, even when the ground truth is highly nonlinear.             This paper was accepted by Yinyu Ye, optimization.             Supplemental Material: Data and the online appendix are available at https://doi.org/10.1287/mnsc.2020.3922},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:15Z}
 }
 
 @article{ferberMIPaaLMixedInteger2020,
@@ -515,6 +579,22 @@
   url = {https://papers.nips.cc/paper_files/paper/2022/hash/6294a235c0b80f0a2b224375c546c750-Abstract-Conference.html},
   langid = {english},
   timestamp = {2025-07-19T17:11:26Z}
+}
+
+@misc{kotaryFoldedOptimizationEndtoEnd2023,
+  title = {Folded {{Optimization}} for {{End-to-End Model-Based Learning}}},
+  author = {Kotary, James and Dinh, My H. and Fioretto, Ferdinando},
+  year = {2023},
+  month = jan,
+  number = {arXiv:2301.12047},
+  eprint = {2301.12047},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2301.12047},
+  url = {http://arxiv.org/abs/2301.12047},
+  abstract = {The integration of constrained optimization models as components in deep networks has led to promising advances in both these domains. A primary challenge in this setting is backpropagation through the optimization mapping, which typically lacks a closed form. A common approach is unrolling, which relies on automatic differentiation through the operations of an iterative solver. While flexible and general, unrolling can encounter accuracy and efficiency issues in practice. These issues can be avoided by differentiating the optimization mapping analytically, but current frameworks impose rigid requirements on the optimization problem's form. This paper provides theoretical insights into the backpropagation of unrolled optimizers, which lead to a system for generating equivalent but efficiently solvable analytical models. Additionally, it proposes a unifying view of unrolling and analytical differentiation through constrained optimization mappings. Experiments over various structured prediction and decision-focused learning tasks illustrate the potential of the approach both computationally and in terms of enhanced expressiveness.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-21T09:10:55Z}
 }
 
 @misc{kramerTutorialAutomaticDifferentiation2024,
@@ -894,6 +974,20 @@
   timestamp = {2025-07-19T16:13:13Z}
 }
 
+@inproceedings{shahDecisionFocusedLearningDecisionMaking2022,
+  title = {Decision-{{Focused Learning}} without {{Decision-Making}}: {{Learning Locally Optimized Decision Losses}}},
+  shorttitle = {Decision-{{Focused Learning}} without {{Decision-Making}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Shah, Sanket and Wang, Kai and Wilder, Bryan and Perrault, Andrew and Tambe, Milind},
+  year = {2022},
+  month = dec,
+  volume = {35},
+  pages = {1320--1332},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/0904c7edde20d7134a77fc7f9cd86ea2-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:44Z}
+}
+
 @misc{sharmaFlexibleDifferentiableOptimization2022,
   title = {Flexible {{Differentiable Optimization}} via {{Model Transformations}}},
   author = {Sharma, Akshay and Besan{\c c}on, Mathieu and Garcia, Joaquim Dias and Legat, Beno{\^i}t},
@@ -938,6 +1032,23 @@
   isbn = {978-0-262-03924-6},
   lccn = {Q325.6 .R45 2018},
   timestamp = {2025-07-19T13:26:48Z}
+}
+
+@inproceedings{tangCaVEConeAlignedApproach2024,
+  title = {{{CaVE}}: {{A Cone-Aligned Approach}} for~{{Fast Predict-then-optimize}} with~{{Binary Linear Programs}}},
+  shorttitle = {{{CaVE}}},
+  booktitle = {Integration of {{Constraint Programming}}, {{Artificial Intelligence}}, and {{Operations Research}}},
+  author = {Tang, Bo and Khalil, Elias B.},
+  editor = {Dilkina, Bistra},
+  year = {2024},
+  pages = {193--210},
+  publisher = {Springer Nature Switzerland},
+  address = {Cham},
+  doi = {10.1007/978-3-031-60599-4_12},
+  abstract = {The end-to-end predict-then-optimize framework, also known as decision-focused learning, has gained popularity for its ability to integrate optimization into the training procedure of machine learning models that predict the unknown cost (objective function) coefficients of optimization problems from contextual instance information. Naturally, most of the problems of interest in this space can be cast as integer linear programs. In this work, we focus on binary linear programs (BLPs) and propose a new end-to-end training method to predict-then-optimize. Our method, Cone-aligned Vector Estimation (CaVE), aligns the predicted cost vectors with the normal cone corresponding to the true optimal solution of a training instance. When the predicted cost vector lies inside the cone, the optimal solution to the linear relaxation of the binary problem is optimal. This alignment not only produces decision-aware learning models, but also dramatically reduces training time as it circumvents the need to solve BLPs to compute a loss function with its gradients. Experiments across multiple datasets show that our method exhibits a favorable trade-off between training time and solution quality, particularly with large-scale optimization problems such as vehicle routing, a hard BLP that has yet to benefit from predict-then-optimize methods in the literature due to its difficulty.},
+  isbn = {978-3-031-60599-4},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:21Z}
 }
 
 @article{tangPyEPOPyTorchbasedEndtoend2024,
@@ -1042,6 +1153,22 @@
   timestamp = {2025-03-06T13:48:55Z}
 }
 
+@article{wilderMeldingDataDecisionsPipeline2019,
+  title = {Melding the {{Data-Decisions Pipeline}}: {{Decision-Focused Learning}} for {{Combinatorial Optimization}}},
+  shorttitle = {Melding the {{Data-Decisions Pipeline}}},
+  author = {Wilder, Bryan and Dilkina, Bistra and Tambe, Milind},
+  year = {2019},
+  month = jul,
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {33},
+  pages = {1658--1665},
+  issn = {2374-3468, 2159-5399},
+  doi = {10.1609/aaai.v33i01.33011658},
+  url = {https://aaai.org/ojs/index.php/AAAI/article/view/3982},
+  abstract = {Creating impact in real-world settings requires artificial intelligence techniques to span the full pipeline from data, to predictive models, to decisions. These components are typically approached separately: a machine learning model is first trained via a measure of predictive accuracy, and then its predictions are used as input into an optimization algorithm which produces a decision. However, the loss function used to train the model may easily be misaligned with the end goal, which is to make the best decisions possible. Hand-tuning the loss function to align with optimization is a difficult and error-prone process (which is often skipped entirely).We focus on combinatorial optimization problems and introduce a general framework for decision-focused learning, where the machine learning model is directly trained in conjunction with the optimization algorithm to produce highquality decisions. Technically, our contribution is a means of integrating common classes of discrete optimization problems into deep learning or other predictive models, which are typically trained via gradient descent. The main idea is to use a continuous relaxation of the discrete problem to propagate gradients through the optimization procedure. We instantiate this framework for two broad classes of combinatorial problems: linear programs and submodular maximization. Experimental results across a variety of domains show that decisionfocused learning often leads to improved optimization performance compared to traditional methods. We find that standard measures of accuracy are not a reliable proxy for a predictive model's utility in optimization, and our method's ability to specify the true goal as the model's training objective yields substantial dividends across a range of decision problems.},
+  timestamp = {2025-07-21T09:11:09Z}
+}
+
 @article{yangGraphBLASTHighPerformanceLinear2022,
   title = {{{GraphBLAST}}: {{A High-Performance Linear Algebra-based Graph Framework}} on the {{GPU}}},
   shorttitle = {{{GraphBLAST}}},
@@ -1057,4 +1184,18 @@
   url = {https://dl.acm.org/doi/10.1145/3466795},
   abstract = {High-performance implementations of graph algorithms are challenging to implement on new parallel hardware such as GPUs because of three challenges: (1)\&nbsp;the difficulty of coming up with graph building blocks, (2)\&nbsp;load imbalance on parallel hardware, and (3)\&nbsp;graph problems having low arithmetic intensity. To address some of these challenges, GraphBLAS is an innovative, on-going effort by the graph analytics community to propose building blocks based on sparse linear algebra, which allow graph algorithms to be expressed in a performant, succinct, composable, and portable manner. In this paper, we examine the performance challenges of a linear-algebra-based approach to building graph frameworks and describe new design principles for overcoming these bottlenecks. Among the new design principles is exploiting input sparsity, which allows users to write graph algorithms without specifying push and pull direction. Exploiting output sparsity allows users to tell the backend which values of the output in a single vectorized computation they do not want computed. Load-balancing is an important feature for balancing work amongst parallel workers. We describe the important load-balancing features for handling graphs with different characteristics. The design principles described in this paper have been implemented in ``GraphBLAST'', the first high-performance linear algebra-based graph framework on NVIDIA GPUs that is open-source. The results show that on a single GPU, GraphBLAST has on average at least an order of magnitude speedup over previous GraphBLAS implementations SuiteSparse and GBTL, comparable performance to the fastest GPU hardwired primitives and shared-memory graph frameworks Ligra and Gunrock, and better performance than any other GPU graph framework, while offering a simpler and more concise programming model.},
   timestamp = {2025-07-19T19:33:01Z}
+}
+
+@article{zharmagambetovLandscapeSurrogateLearning2023,
+  title = {Landscape {{Surrogate}}: {{Learning Decision Losses}} for {{Mathematical Optimization Under Partial Information}}},
+  shorttitle = {Landscape {{Surrogate}}},
+  author = {Zharmagambetov, Arman and Amos, Brandon and Ferber, Aaron and Huang, Taoan and Dilkina, Bistra and Tian, Yuandong},
+  year = {2023},
+  month = dec,
+  journal = {Advances in Neural Information Processing Systems},
+  volume = {36},
+  pages = {27332--27350},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/574f145eac328cc4aaf9358e27120eb5-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:34Z}
 }
