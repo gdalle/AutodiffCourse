@@ -55,7 +55,7 @@ sqrt(x0)
 
 # ╔═╡ fa072fec-98bd-495b-a743-27239881b312
 md"""
-## Symbolic differentiation
+## Symbolic
 """
 
 # ╔═╡ cc73da3a-27ce-4963-9e28-775b34d70c29

@@ -2,4 +2,4 @@
 
 Slides: <https://github.com/gdalle/AutodiffCourse/releases/latest>
 
-Notebooks:
+Notebooks: <https://gdalle.github.io/AutodiffCourse/>
