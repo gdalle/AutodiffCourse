@@ -31,7 +31,7 @@
 
 = Introduction
 
-#thanks[Figures without attribution are borrowed from #cite(<blondelElementsDifferentiableProgramming2024>)]
+#thanks[Figures without attribution are borrowed from #cite(<blondelElementsDifferentiableProgramming2024>) or #cite(<hillIllustratedGuideAutomatic2025>)]
 
 == Definitions
 
@@ -41,11 +41,14 @@ $ f(x + v) = f(x) + partial f(x) [v] + o(h) $
 
 Here $partial f(x)[v]$ means "the linear map $partial f(x)$ applied to $v$".
 
+== Special cases
+
 #columns[
-  #muchpdf(read("img/blondel/derivative.pdf", encoding: none), height: 60%)
+  #muchpdf(read("img/blondel/derivative.pdf", encoding: none), width: 100%)
+  In the scalar-to-scalar case, the derivative is just a number $f'(x)$
   #colbreak()
-  #v(40%)
-  In the scalar case, the derivative is just a number $f'(x)$
+  In the scalar-to-vector case, $f'(t)$ is a tangent of the parametric curve.
+  #muchpdf(read("img/blondel/dir_deriv.pdf", encoding: none), width: 100%)
 ]
 
 == Why differentiation?
@@ -139,11 +142,11 @@ Gives an expression for $f'(x)$, but takes away your will to live.
   #colbreak()
 
   #columns[
-    #muchpdf(read("img/laue/DAG.pdf", encoding: none), width: 100%)
     #muchpdf(read("img/laue/tree.pdf", encoding: none), width: 100%)
+    #muchpdf(read("img/laue/DAG.pdf", encoding: none), width: 100%)
   ]
 
-  Graph & tree representations #cite(<laueEquivalenceAutomaticSymbolic2022>)$ f(x) = sin(x_1 + x_2) cos(x_1 + x_2) $
+  Tree & graph representations #cite(<laueEquivalenceAutomaticSymbolic2022>)$ f(x) = sin(x_1 + x_2) cos(x_1 + x_2) $
 ]
 
 == Computational graphs
@@ -173,7 +176,10 @@ Great at first glance:
   ]
 ][
   #align(horizon)[
-    Numerical errors
+    Numerical errors:
+
+    - Taylor truncation
+    - Floating-point round-off
   ]
 ]
 
@@ -230,15 +236,28 @@ However, the linear map $v mapsto.long partial f(x)[v]$ is natural to work with:
 
 == The chain rule
 
-Given a function composition $f = g compose h$ with two layers, we have
+Given a function composition $f = h compose g$ with two layers, we have
 
-$ partial f(x) = partial g(h(x)) compose partial h(x) $
+$ partial f(x) = partial h(g(x)) compose partial g(x) $
 
 The derivative of $f$ is the composition of two linear maps:
 
-$ partial f(x): & u stretch(mapsto)^(partial h(x)) v stretch(mapsto)^(partial g( h(x) )) w $
+$ partial f(x): & u stretch(mapsto)^(partial g(x)) v stretch(mapsto)^(partial h( g(x) )) w $
 
 We can differentiate any function knowing the derivatives of its layers.
+
+== From matmul to map composition
+
+#align(center)[
+  #image("img/hill/chainrule.svg", width: 80%)
+  #image("img/hill/matrixfree.svg", width: 80%)
+]
+
+== From matmul to map composition (2)
+
+#align(center)[
+  #image("img/hill/forward_mode_eval.svg", width: 70%)
+]
 
 == Scalar layers
 
@@ -348,6 +367,19 @@ $
 
 Can we compute it row by row instead, in one shot?
 
+== Columnwise Jacobian
+
+#image("img/hill/forward_mode.svg", width: 100%)
+
+Bad for gradients (just one row)
+
+== Rowwise Jacobian
+
+#grid(
+  columns: (70%, auto),
+  image("img/hill/reverse_mode.svg", width: 100%), [#v(6cm) Good for gradients (just one row)],
+)
+
 = Reverse mode
 
 == Transpositions and adjoints
@@ -376,24 +408,24 @@ In particular, the gradient is just $nabla f(x) = partial f(x)^*[1]$.
 
 == Adjoint chain rule
 
-Adjoint of linear maps behave like matrix transposes: they reverse order.
+Adjoint of linear maps behave like matrix transposes, they reverse order:
 
 $
-  partial f(x) = partial g(h(x)) compose partial h(x) \
-  partial f(x)^* = partial h(x)^* compose partial g(h(x))^*
+  partial f(x) = partial h(g(x)) compose partial g(x) \
+  partial f(x)^* = partial g(x)^* compose partial h(g(x))^*
 $
 
 Now the propagation happens from the output back to the input:
 
 $
-  partial f(x)^*: & u stretch(arrow.l.bar)_(partial h(x)^*) v stretch(arrow.l.bar)_(partial g( h(x) )^*) w
+  partial f(x)^*: & u stretch(arrow.l.bar)_(partial g(x)^*) v stretch(arrow.l.bar)_(partial h( g(x) )^*) w
 $
 
 We can differentiate any function in reverse mode knowing the adjoint derivatives of its layers.
 
-== Chain rule recap
+== From transposed matmul to adjoint composition
 
-#muchpdf(read("img/blondel/chain_rule_recap.pdf", encoding: none), width: 100%)
+#image("img/hill/reverse_mode_eval.svg", width: 100%)
 
 == Back to our layer examples
 
@@ -421,8 +453,6 @@ Propagate the input through a chain of layers, record enough information, backpr
 #align(center)[
   #muchpdf(read("img/blondel/chain_vjp.pdf", encoding: none), height: 70%)
 ]
-
-= Forward versus reverse
 
 == Time complexity
 
@@ -479,14 +509,14 @@ Strategies like checkpointing or reversibility can save memory at the cost of ad
 
 Alternatives to reverse mode have been suggested based on randomized forward mode #cite(<baydinGradientsBackpropagation2022>).
 
-= Higher order
+= Higher order & sparsity
 
 == Hessian matrices
 
 The Hessian matrix is very useful for second-order optimization.
 
 #grid(
-  columns: (auto, auto),
+  columns: (60%, auto),
   [
     #v(5%)
     #algo(title: "Newton's method", line-numbers: false, parameters: ($f$, $x_0$, $T$))[
@@ -500,6 +530,8 @@ The Hessian matrix is very useful for second-order optimization.
     #muchpdf(read("img/blondel/second_der.pdf", encoding: none), height: 60%)
   ],
 )
+
+Requires solving a linear system $H^(-1) g$.
 
 == Hessian-Vector Products
 
@@ -515,31 +547,21 @@ $ nabla^2 f(x)[v] = partial (nabla f)(x)[v] $
 
 This is called forward-over-reverse mode #cite(<pearlmutterFastExactMultiplication1994>).
 
-== Sparsity
+== Iterative linear solver
 
-#columns[
-  In high dimensions, can't afford to compute or store the entire Hessian.
+Iterative linear solvers allow inverting the Hessian by solving
 
-  If there are few nonzero coefficients, its sparsity can be leveraged to perform fewer HVPs.
+$
+  min_x norm(H x - g)^2
+$
 
-  #colbreak()
-
-  #align(center)[
-    #muchpdf(read("img/montoison/graph_sym.pdf", encoding: none))
-
-    Link between sparse autodiff and graph coloring #cite(<gebremedhinWhatColorYour2005>)
-  ]
-]
-
-== Iterative solvers
-
-To inverse the Hessian in Newton's method, one can use iterative linear solvers instead of factorization-based solvers #cite(<dagreouHowComputeHessianvector2024>).
+up to a finite precision.
 
 #columns[
   #align(center)[
     *Pros*
 
-    Only requires lazy HVPs
+    Only requires HVPs
 
     Very GPU-friendly
   ]
@@ -547,9 +569,82 @@ To inverse the Hessian in Newton's method, one can use iterative linear solvers 
   #align(center)[
     *Cons*
 
-    Fewer iterations $->$ lower precision
+    Iteration-dependent precision
+
+    Vulnerable to bad conditioning
   ]
 ]
+
+== Direct linear solver
+
+Another way to solve $H^1 g$ is to factorize the Hessian $H = L L^T$.
+
+But first, we need to compute every coefficient, with $n$ HVPs.
+
+#image("img/hill/forward_mode.svg", width: 100%)
+
+Problem: if $n = 10^6$, then $H in bb(R)^(n times n)$ does not fit in memory.
+
+== Leveraging sparsity
+
+#columns[
+  If most coefficients are zero, fewer products are necessary #cite(<gebremedhinWhatColorYour2005>).
+
+  Non-overlapping Hessian columns can be computed together.
+
+  #colbreak()
+  #image("img/hill/sparse_ad_forward_full.svg", width: 100%)
+]
+
+== Sparsity detection
+
+Prove that a given output only depends on some of the inputs.
+
+#grid(
+  columns: (auto, auto),
+  column-gutter: 1cm,
+  image("img/hill/compute_graph.png"),
+  [
+    $
+      f vec(x_1, x_2, x_3, x_4) = vec(x_1 x_2 + "sign"(x_3), "sign"(x_3) x_4/2)
+    $
+    #image("img/hill/forward_mode_sparse.svg", width: 100%)
+  ],
+)
+
+== Sparse matrix coloring
+
+Form the smallest number of groups with non-overlapping columns.
+
+#align(center)[
+  #image("img/hill/colored_graph.svg", width: 50%)
+]
+#columns[
+  #image("img/hill/colored_graph_infeasible.svg", width: 100%)
+  #colbreak()
+  #image("img/hill/colored_graph_suboptimal.svg", width: 100%)
+]
+
+== Sparse autodiff in 4 steps
+
+#image("img/hill/fig1.png", width: 100%)
+
+Figure from #cite(<hillSparserBetterFaster2025>)
+
+== Complexity: from linear to constant?
+
+#grid(
+  columns: (auto, auto),
+  [
+    $
+                   f(x) & = (x_(i+1) - x_i)_(i in [n-1])    \
+      f^(compose k) (x) & = (f compose dots.c compose f)(x)
+    $
+
+    For banded matrices, the number of colors doesn't scale with dimension.
+  ],
+  image("img/hill/banded.png", height: 100%),
+)
 
 = Implementation
 
@@ -668,6 +763,16 @@ Example: #raw("jaxpr") intermediate representation in #raw("JAX") #cite(<bradbur
   ]
 ]
 
+== A subset of the language
+
+Not every framework can differentiate every operation.
+
+- `PyTorch`, `JAX`: restricted to domain-specific sublanguage
+- `Zygote.jl`, `JAX`: error on code with mutation
+- `ForwardDiff.jl`: errors on code with type constraints
+
+#image("img/jax/thesharpbits.png", height: 50%)
+
 = Going further
 
 == Complex numbers
@@ -686,12 +791,6 @@ Autodiff returns a locally valid derivative, for the path taken by the primal pr
 - #raw("for") / #raw("while"): specific to the number of iterations
 
 Some autodiff frameworks error on code with value-dependent control flow.
-
-== Mutation
-
-For efficiency, many numerical programs reuse memory.
-
-Some autodiff frameworks error on code with mutation.
 
 == Non-smoothness
 
@@ -716,11 +815,14 @@ What should the computed "automatic" derivative be?
 1. Differentiate the approximation $partial p(X)$
 2. Approximate the derivative $hat(partial f(X))$
 
-More on this next time!
-
 = Conclusion
 
 == Take-home messages
+
+- No need to compute derivatives by hand: autodiff exists
+- Reverse mode is fast for gradients but memory-expensive
+- Autodiff frameworks have limitations
+- They can be overcome with custom layers
 
 == References
 
