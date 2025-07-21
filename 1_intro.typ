@@ -29,6 +29,18 @@
 
 #components.adaptive-columns(outline(depth: 1))
 
+== Link to material
+
+#v(3cm)
+
+#align(center)[
+  #text(50pt)[
+    #link(
+      "https://github.com/gdalle/AutodiffCourse/",
+    )[`github.com/gdalle/AutodiffCourse`]
+  ]
+]
+
 = Introduction
 
 #thanks[Figures without attribution are borrowed from #cite(<blondelElementsDifferentiableProgramming2024>) or #cite(<hillIllustratedGuideAutomatic2025>)]
