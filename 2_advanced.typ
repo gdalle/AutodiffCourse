@@ -707,6 +707,12 @@ The level of abstraction isn't just a mathematical question: it also matters for
 
 == Take-home messages
 
+- Define a solver by what it returns and not how it computes
+- Convex optimization problems differentiable with implicit function theorem
+- Discrete optimization problems require smoothing or regularization
+- Clever losses bypass solver backprop
+- Neural surrogates bypass solver altogether
+
 == References
 
 #text(size: 12pt)[
