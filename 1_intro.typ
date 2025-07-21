@@ -49,7 +49,7 @@
 
 Derivative = linear approximation of function $f$ around point $x$:
 
-$ f(x + v) = f(x) + partial f(x) [v] + o(h) $
+$ f(x + v) = f(x) + partial f(x) [v] + o(norm(v)) $
 
 Here $partial f(x)[v]$ means "the linear map $partial f(x)$ applied to $v$".
 
@@ -361,7 +361,7 @@ $
 For a scalar-valued function $f : bb(R)^n -> bb(R)$, the Jacobian has one row:
 
 $
-  J_f (x) = nabla f(x)^T = mat(
+  J_f (x) = nabla f(x)^top = mat(
     (partial f) / (partial x_1) (x), (partial f) / (partial x_2) (x), dots, (partial f) / (partial x_n) (x);
   )
 $
@@ -400,14 +400,14 @@ The adjoint of a linear map $ell: bb(R)^n -> bb(R)^m$ is the only linear map $el
 
 $ forall (x, y) in bb(R)^n times bb(R)^m, quad angle.l ell(x), y angle.r = angle.l x, ell^*(y) angle.r $
 
-If $ell$ is represented by a matrix $A$, then $ell^*$ is represented by $A^T$.
+If $ell$ is represented by a matrix $A$, then $ell^*$ is represented by $A^top$.
 
 == Vector-Jacobian Products
 
 If we could compute $partial f(x)^*$, it would give us rows of the Jacobian through VJPs:
 
 $
-  partial f(x)^*[e_i] = J_f(x)^T e_i = mat(
+  partial f(x)^*[e_i] = J_f(x)^top e_i = mat(
     colgray((partial f_1) / (partial x_1)(x)), colgray(dots), colgray((partial f_1) / (partial x_n)(x));
     colgray(dots.v), colgray(dots.down), colgray(dots.v);
     (partial f_i) / (partial x_1)(x), dots, (partial f_i) / (partial x_n)(x);
@@ -450,9 +450,9 @@ Let $overline(y)$ be an arbitrary output cotangent (sensitivity).
     inset: 10pt,
     table.header([*variables*], [*output*], [*function* $f(x)$], [*adjoint* $partial f(x)^*[overline(y)]$]),
     [$x in bb(R)$], [$y in bb(R)$], [$sin(x)$], [$cos(x)overline(y)$],
-    [$x in bb(R)^n$], [$y in bb(R)^m$], [$A x$], [$A^T overline(y)$],
-    [$X in bb(R)^(n times n)$], [$Y in bb(R)^(n times n)$], [$X^(-1)$], [$-X^(-T) overline(Y) X^(-T)$],
-    [$X in bb(R)^(n times n)$], [$y in bb(R)$], [$log det(X)$], [$overline(y) X^(-T)$],
+    [$x in bb(R)^n$], [$y in bb(R)^m$], [$A x$], [$A^top overline(y)$],
+    [$X in bb(R)^(n times n)$], [$Y in bb(R)^(n times n)$], [$X^(-1)$], [$-X^(-top) overline(Y) X^(-top)$],
+    [$X in bb(R)^(n times n)$], [$y in bb(R)$], [$log det(X)$], [$overline(y) X^(-top)$],
   )
 ]
 
@@ -519,7 +519,7 @@ Strategies like checkpointing or reversibility can save memory at the cost of ad
   #muchpdf(read("img/blondel/binomial_checkpointing.pdf", encoding: none), height: 50%)
 ]
 
-Alternatives to reverse mode have been suggested based on randomized forward mode #cite(<baydinGradientsBackpropagation2022>).
+Alternatives to reverse mode have been suggested based on randomized forward mode #cite(<baydinGradientsBackpropagation2022>) or reversible layers.
 
 = Higher order & sparsity
 
@@ -589,7 +589,7 @@ up to a finite precision.
 
 == Direct linear solver
 
-Another way to solve $H^1 g$ is to factorize the Hessian $H = L L^T$.
+Another way to solve $H^1 g$ is to factorize the Hessian $H = L L^top$.
 
 But first, we need to compute every coefficient, with $n$ HVPs.
 

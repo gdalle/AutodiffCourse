@@ -36,14 +36,14 @@
 
 == Solvers as layers
 
-We love all kinds of numerical algorithms:
+Complex programs involve all kinds of numerical subroutines:
 
 - stochastic simulators
 - optimization solvers
 - physical models
 - game-theoretical equilibria
 
-Can we use them as differentiable subroutines?
+Can we differentiate "through" them?
 
 == Bilevel optimization
 
@@ -248,14 +248,35 @@ More sophisticated methods allow learning the baseline (actor-critic RL).
 
 == Discrete reparametrization
 
-Nascent research on reparametrization for discrete distributions #cite(<aryaAutomaticDifferentiationPrograms2022>).
+Soft argmax $X tilde p(theta)$ satisfies $bb(P)(X = e_i) = exp(theta_i) \/ sum_j exp(theta_j)$.
 
-So far not generalized to reverse mode.
+Admits a Gumbel-based reparametrization #cite(<maddisonConcreteDistributionContinuous2017>) #cite(<jangCategoricalReparameterizationGumbelSoftmax2017>):
 
-#columns[
-  #muchpdf(read("img/arya/exp.pdf", encoding: none))
-  #muchpdf(read("img/arya/ber1.pdf", encoding: none))
-]
+$
+  X_i = exp((theta_i + G_i) / lambda) \/ sum_j exp((theta_j + G_j) / lambda) quad "where" quad G_i stretch(tilde)^"iid" -log(-log cal(U))
+$
+
+Bias controlled by temperature $lambda$.
+
+#grid(
+  columns: (auto, auto, auto, auto),
+  muchpdf(read("img/maddison/simplex1.pdf", encoding: none), width: 80%),
+  muchpdf(read("img/maddison/simplex2.pdf", encoding: none), width: 80%),
+  muchpdf(read("img/maddison/simplex3.pdf", encoding: none), width: 80%),
+  muchpdf(read("img/maddison/simplex4.pdf", encoding: none), width: 80%),
+)
+
+== Straight-through
+
+Sometimes, smoothed values are not accepted by later layers.
+
+Straight-through estimator #cite(<bengioEstimatingPropagatingGradients2013>): replace sample with expectation during backward pass.
+
+$
+  X tilde cal(B)(p) wide "but" wide overline(p) = overline(X)
+$
+
+More general idea: differentiate through something else than what was computed.
 
 == Stochastic functions
 
@@ -300,7 +321,7 @@ $
   x^star (theta) = limits("argmax")_(x in cal(X)) thick f(x, theta)
 $
 
-If we compute $x^star (theta)$ with an iterative procedure, we can unroll it: differentiate through every iteration. But...
+If we compute $x^star (theta)$ with an iterative procedure, we can unroll it. But...
 
 #columns[
 
@@ -356,28 +377,6 @@ $ A J = B quad "with" A = partial_x c, B = -partial_theta c, J = partial_theta x
   2. Compute $u^top B$
 ]
 
-== Picking optimality conditions
-
-Related to the algorithm used for $limits("argmax")_(x in cal(X)) thick f(x, theta)$.
-
-#align(center)[
-  #table(
-    columns: (auto, auto, auto),
-    align: horizon,
-    inset: 15pt,
-    table.header([*Constraints*], [*Algo*], [*Conditions*]),
-    [$cal(X) = bb(R)^n$], [Gradient descent], [$nabla_x f(x, theta) = 0$],
-    [$cal(X) = cases(G(x, theta) <= 0, H(x, theta) = 0)$], [Primal-dual], [Karush-Kuhn-Tucker],
-    [$cal(X)$ projection-\ friendly],
-    [Projected \ gradient descent],
-    [$"proj"_(cal(X))(x - eta nabla_x f(x, theta)) = 0$],
-
-    [$cal(X)$ LP-friendly], [Frank-Wolfe], [Projected GD on the simplex],
-  )
-]
-
-More examples in #cite(<blondelEfficientModularImplicit2022>).
-
 == Quadratic programs
 
 `OptNet`, the grandfather of optimization layers #cite(<amosOptNetDifferentiableOptimization2017>)
@@ -420,6 +419,29 @@ $
 
 Key for usability: automatic reformulation with disciplined convex programming #cite(<agrawalDifferentiableConvexOptimization2019>)
 
+
+== Picking optimality conditions
+
+Related to the algorithm used for $limits("argmax")_(x in cal(X)) thick f(x, theta)$.
+
+#align(center)[
+  #table(
+    columns: (auto, auto, auto),
+    align: horizon,
+    inset: 15pt,
+    table.header([*Constraints*], [*Algo*], [*Conditions*]),
+    [$cal(X) = bb(R)^n$], [Gradient descent], [$nabla_x f(x, theta) = 0$],
+    [$cal(X) = cases(G(x, theta) <= 0, H(x, theta) = 0)$], [Primal-dual], [Karush-Kuhn-Tucker],
+    [$cal(X)$ projection-\ friendly],
+    [Projected \ gradient descent],
+    [$"proj"_(cal(X))(x - eta nabla_x f(x, theta)) = 0$],
+
+    [$cal(X)$ LP-friendly], [Frank-Wolfe], [Projected GD on the simplex],
+  )
+]
+
+More examples in #cite(<blondelEfficientModularImplicit2022>).
+
 == The role of strict convexity
 
 Optimality conditions of an unconstrained optimization problem:
@@ -437,10 +459,6 @@ $
 Strict convexity implies existence of $(nabla_x^2 f)^(-1)$: the optimum varies smoothly with the parameter $theta$.
 
 No longer true in the discrete case: we will need approximations!
-
-== Is unrolling always bad?
-
-#lorem(20)
 
 = Discrete optimization layers
 
@@ -511,8 +529,6 @@ We need a nicely differentiable surrogate to allow backpropagation.
     "sparsemax"(theta) = limits("argmin")_(p in Delta) thick norm(p - theta)^2
   $
 
-  Instead of picking one option, define a probability distribution.
-
   #colbreak()
 
   #muchpdf(read("img/blondel/argmax.pdf", encoding: none), height: 45%)
@@ -559,22 +575,39 @@ $
 
 Must use a different solver.
 
-
 == Interpolation
 
 Replace piecewise-constant argmax with affine interpolation #cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>).
 
-$
-  x^star_lambda (theta) = x^star (theta + lambda overline(x)) quad "and" quad overline(theta) = -1/lambda (x^star (theta) - x^star_lambda (theta))
-$
 
 #align(center)[
-  #muchpdf(read("img/vlastelica/flambda_2D_nobox.pdf", encoding: none), width: 70%)
+  #muchpdf(read("img/vlastelica/flambda_2D_nobox.pdf", encoding: none), width: 100%)
+]
+
+== Interpolation (2)
+
+$
+  y(w) = limits("argmin")_y thick c(w, y) wide y_lambda(w) = limits("argmin")_y thick c(w, y) + lambda f(y) \
+  f_lambda(w) = f(y_lambda(w)) - 1/lambda [c(w, y(w)) - c(w, y_lambda (w))]
+$
+
+#columns[
+  #muchpdf(read("img/vlastelica/f-lambda-small.pdf", encoding: none), width: 100%)
+
+  #colbreak()
+
+  #muchpdf(read("img/vlastelica/f-lambda-big.pdf", encoding: none), width: 100%)
 ]
 
 == Identity
 
 Just pretend that the solver is the identity #cite(<sahooBackpropagationCombinatorialAlgorithms2023>)
+
+#align(center)[
+  #muchpdf(read("img/sahoo/pipeline_identity_proj.pdf", encoding: none), width: 100%)
+]
+
+Generalizes straight-through by forgetting constraints, or replacing them with a simpler set (sphere, hyperplane) to preserve invariances.
 
 == Perturbation
 
@@ -587,58 +620,86 @@ Just pretend that the solver is the identity #cite(<sahooBackpropagationCombinat
       x^star_epsilon (theta) = bb(E)[limits("argmax")_(x in cal(C)) thick (theta + epsilon Z)^top x]
     $
 
-    where $Z tilde cal(N)(0, I)$ is Gaussian (other perturbation distributions are possible #cite(<dalleLearningCombinatorialOptimization2022>)).
+    Other perturbations are possible to ensure positivity #cite(<dalleLearningCombinatorialOptimization2022>).
   ],
   align(right)[
-    #muchpdf(read("img/berthet/perturbed_big.pdf", encoding: none), width: 80%)
+    #muchpdf(read("img/berthet/perturbed_big.pdf", encoding: none), width: 100%)
   ],
 )
 
-== Softmax tricks
+== Probabilistic interpretation
 
-#lorem(20)
+Instead of picking a single vertex, construct a probability distribution over vertices #cite(<dalleLearningCombinatorialOptimization2022>).
 
 == Integer linear programs
 
-Intuitive approaches:
+Anything that only calls a black-box solver #cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>) works out of the box.
 
-- Backpropagate through the continuous relaxation
-- Add cutting planes #cite(<ferberMIPaaLMixedInteger2020>)
+ILP is an LP on the convex hull of integer solutions.
 
-== Learning constraints
+#muchpdf(read("img/vlastelica/pipeline_newer.pdf", encoding: none))
 
-Much less explored.
+Other approaches: backpropagate through the continuous relaxation, or strengthen it with e.g. cutting planes #cite(<ferberMIPaaLMixedInteger2020>).
+
+== Differentiating through constraints
+
+Much less explored in the literature (learning needs negative examples).
 
 - Relax them into the objective
 - Approximate notion of "active constraints" for ILPs #cite(<paulusCombOptNetFitRight2021>)
 
-= Equilibrium layers
+= Avoiding backpropagation
 
-== Nash equilibrium
+== Clever losses
 
-#lorem(20)
+Backpropagating through the solver itself may not be necessary.
 
-== Variational inequalities
+Some loss functions provide (sometimes convex) surrogates #cite(<mandiDecisionFocusedLearningFoundations2024>):
 
-#lorem(20)
+#columns[
 
-== Fixed points
+  - SPO+ loss #cite(<elmachtoubSmartPredictThen2022>)
+  - Fenchel-Young loss #cite(<blondelLearningFenchelYoungLosses2020>)
+  #colbreak()
+  - Geometric losses #cite(<tangCaVEConeAlignedApproach2024>) #cite(<berdenSolverFreeDecisionFocusedLearning2025>)
+  - Local losses #cite(<zharmagambetovLandscapeSurrogateLearning2023>) #cite(<shahDecisionFocusedLearningDecisionMaking2022>)
+]
 
-#lorem(20)
-
-= Neural surrogates
+#align(center)[
+  #muchpdf(read("img/mandi/Fig3.pdf", encoding: none), height: 50%)
+]
 
 == Graph neural networks
 
-#lorem(20)
+Graph-equivariant functions $f$ are defined on node features $X$ such that
 
-== Dynamic programming
+$
+  f(P X) = P f(X) "for all permutations" P
+$
 
-#lorem(20)
+#columns[
 
-== Large language models
+  Message-passing neural networks #cite(<velickovicMessagePassingAll2022>) are one such family:
 
-#lorem(20)
+  $
+    h_u = phi(x_u, limits(xor.big)_(v in cal(N)_u) psi(x_u, x_v))
+  $
+
+  #colbreak()
+
+  #muchpdf(read("img/velickovic/GNN_GDL_TYPES_MP.pdf", encoding: none))
+
+]
+
+== Neural surrogates
+
+Many dynamic programming algorithms (e.g. Bellman-Ford) aggregate information over neighborhoods.
+
+Message-passing GNNs have the right inductive bias to learn these algorithms #cite(<ibarzGeneralistNeuralAlgorithmic2022>): fully differentiable, multi-task approximation.
+
+#align(center)[
+  #muchpdf(read("img/ibarz/multi_algo_blueprint.pdf", encoding: none), width: 60%)
+]
 
 = Implementations
 
@@ -665,17 +726,6 @@ What happens if we don't solve the problem to optimality?
 
 #cite(<vivier-ardissonLearningLocalSearch2025>) studies the case of a local search, framed as MCMC simulation.
 
-== Clever losses
-
-Backpropagating through the solver itself may not be necessary.
-
-Some loss functions provide (sometimes convex) surrogates:
-
-- SPO+ loss #cite(<elmachtoubSmartPredictThen2022>)
-- Fenchel-Young loss #cite(<blondelLearningFenchelYoungLosses2020>)
-- Geometric losses #cite(<tangCaVEConeAlignedApproach2024>) #cite(<berdenSolverFreeDecisionFocusedLearning2025>)
-- Learn the objective composed with the solver #cite(<zharmagambetovLandscapeSurrogateLearning2023>) #cite(<shahDecisionFocusedLearningDecisionMaking2022>)
-
 == GPU-friendly solvers
 
 Most (I)LP solvers run on CPU only.
@@ -690,6 +740,16 @@ Can we leverage parallel computing for combinatorial optimization?
 Key question: whether to reuse existing algorithms or design new ones.
 
 Inside an instance or for batching across instances?
+
+== Beyond optimization
+
+Nash equilibrium layers: differentiate through variational inequality
+
+$
+  "find" x^star "such that" f_theta (x^star)^top (x - x^star) >= 0
+$
+
+Reformulate as fixed-point equation & apply implicit differentiation #cite(<liEndtoEndLearningIntervention2020>)
 
 == Compiler tricks
 
