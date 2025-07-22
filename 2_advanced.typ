@@ -223,12 +223,12 @@ $
     [Unbiased], [yes], [yes],
     [Consistent], [yes], [yes],
     [Hypotheses on $p$], [smooth], [reparametrizable],
-    [Hypotheses on $f$], [none], [smooth],
+    [Hypotheses on $g$], [none], [smooth],
     [Variance], [high], [low],
   )
 ]
 
-Score function is more widely applicable (black box $f$, discrete $p$).
+Score function is more widely applicable (black box $g$, discrete $p$).
 
 Pathwise is more robust (lower variance, stable with dimension).
 
@@ -239,7 +239,7 @@ Pathwise is more robust (lower variance, stable with dimension).
 *Control variates*: since $bb(E)_(X tilde p(theta))[nabla_theta log p(X, theta)] = 0$, we also have
 
 $
-  nabla F(theta) = bb(E)_(X tilde p(theta))[(f(X) - beta) nabla_theta log p(X, theta)]
+  nabla g(theta) = bb(E)_(X tilde p(theta))[(g(X) - beta) nabla_theta log p(X, theta)]
 $
 
 for any constant baseline $beta$.
