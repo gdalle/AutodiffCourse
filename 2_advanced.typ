@@ -627,10 +627,6 @@ Generalizes straight-through by forgetting constraints, or replacing them with a
   ],
 )
 
-== Probabilistic interpretation
-
-Instead of picking a single vertex, construct a probability distribution over vertices #cite(<dalleLearningCombinatorialOptimization2022>).
-
 == Integer linear programs
 
 Anything that only calls a black-box solver #cite(<vlastelicaDifferentiationBlackboxCombinatorial2020>) works out of the box.
@@ -647,6 +643,12 @@ Much less explored in the literature (learning needs negative examples).
 
 - Relax them into the objective
 - Approximate notion of "active constraints" for ILPs #cite(<paulusCombOptNetFitRight2021>)
+
+== Probabilistic interpretation
+
+Instead of picking a single polytope vertex, construct a probability distribution over solutions #cite(<dalleLearningCombinatorialOptimization2022>) #cite(<niepertImplicitMLEBackpropagating2021>) #cite(<paulusGradientEstimationStochastic2020>).
+
+Generalizes beyond optimality: #cite(<vivier-ardissonLearningLocalSearch2025>) studies the case of a local search, framed as MCMC simulation.
 
 = Avoiding backpropagation
 
@@ -719,12 +721,6 @@ Message-passing GNNs have the right inductive bias to learn these algorithms #ci
 - `InferOpt.jl` #cite(<dalleLearningCombinatorialOptimization2022>)
 
 = Going further
-
-== Inexact solves
-
-What happens if we don't solve the problem to optimality?
-
-#cite(<vivier-ardissonLearningLocalSearch2025>) studies the case of a local search, framed as MCMC simulation.
 
 == GPU-friendly solvers
 
