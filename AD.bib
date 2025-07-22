@@ -1,0 +1,1309 @@
+@misc{abadiTensorFlowLargescaleMachine2015,
+  title = {{{TensorFlow}}: {{Large-scale}} Machine Learning on Heterogeneous Systems},
+  author = {Abadi, Mart{\'i}n and Agarwal, Ashish and Barham, Paul and Brevdo, Eugene and Chen, Zhifeng and Citro, Craig and Corrado, Greg S. and Davis, Andy and Dean, Jeffrey and Devin, Matthieu and Ghemawat, Sanjay and Goodfellow, Ian and Harp, Andrew and Irving, Geoffrey and Isard, Michael and Jia, Yangqing and Jozefowicz, Rafal and Kaiser, Lukasz and Kudlur, Manjunath and Levenberg, Josh and Man{\'e}, Dandelion and Monga, Rajat and Moore, Sherry and Murray, Derek and Olah, Chris and Schuster, Mike and Shlens, Jonathon and Steiner, Benoit and Sutskever, Ilya and Talwar, Kunal and Tucker, Paul and Vanhoucke, Vincent and Vasudevan, Vijay and Vi{\'e}gas, Fernanda and Vinyals, Oriol and Warden, Pete and Wattenberg, Martin and Wicke, Martin and Yu, Yuan and Zheng, Xiaoqiang},
+  year = {2015},
+  url = {https://www.tensorflow.org/},
+  timestamp = {2025-02-18T18:23:38Z}
+}
+
+@inproceedings{agrawalDifferentiableConvexOptimization2019,
+  title = {Differentiable {{Convex Optimization Layers}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Agrawal, Akshay and Amos, Brandon and Barratt, Shane and Boyd, Stephen and Diamond, Steven and Kolter, J. Zico},
+  year = {2019},
+  volume = {32},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2019/hash/9ce3c52fc54362e22053399d3181c638-Abstract.html},
+  abstract = {Recent work has shown how to embed differentiable optimization problems (that is, problems whose solutions can be backpropagated through) as layers within deep learning architectures. This method provides a useful inductive bias for certain problems, but existing software for differentiable optimization layers is rigid and difficult to apply to new settings. In this paper, we propose an approach to differentiating through disciplined convex programs, a subclass of convex optimization problems used by domain-specific languages (DSLs) for convex optimization. We introduce disciplined parametrized programming, a subset of disciplined convex programming, and we show that every disciplined parametrized program can be represented as the composition of an affine map from parameters to problem data, a solver, and an affine map from the solver's solution to a solution of the original problem (a new form we refer to as affine-solver-affine form). We then demonstrate how to efficiently differentiate through each of these components, allowing for end-to-end analytical differentiation through the entire convex program. We implement our methodology in version 1.1 of CVXPY, a popular Python-embedded DSL for convex optimization, and additionally implement differentiable layers for disciplined convex programs in PyTorch and TensorFlow 2.0. Our implementation significantly lowers the barrier to using convex optimization problems in differentiable programs. We present applications in linear machine learning models and in stochastic control, and we show that our layer is competitive (in execution time) compared to specialized differentiable solvers from past work.},
+  timestamp = {2025-07-19T17:10:40Z}
+}
+
+@inproceedings{amosOptNetDifferentiableOptimization2017,
+  title = {{{OptNet}}: {{Differentiable Optimization}} as a {{Layer}} in {{Neural Networks}}},
+  shorttitle = {{{OptNet}}},
+  booktitle = {Proceedings of the 34th {{International Conference}} on {{Machine Learning}}},
+  author = {Amos, Brandon and Kolter, J. Zico},
+  year = {2017},
+  month = jul,
+  pages = {136--145},
+  publisher = {PMLR},
+  issn = {2640-3498},
+  url = {https://proceedings.mlr.press/v70/amos17a.html},
+  abstract = {This paper presents OptNet, a network architecture that integrates optimization problems (here, specifically in the form of quadratic programs) as individual layers in larger end-to-end trainable deep networks. These layers encode constraints and complex dependencies between the hidden states that traditional convolutional and fully-connected layers often cannot capture. In this paper, we explore the foundations for such an architecture: we show how techniques from sensitivity analysis, bilevel optimization, and implicit differentiation can be used to exactly differentiate through these layers and with respect to layer parameters; we develop a highly efficient solver for these layers that exploits fast GPU-based batch solves within a primal-dual interior point method, and which provides backpropagation gradients with virtually no additional cost on top of the solve; and we highlight the application of these approaches in several problems. In one notable example, we show that the method is capable of learning to play mini-Sudoku (4x4) given just input and output games, with no a priori information about the rules of the game; this highlights the ability of our architecture to learn hard constraints better than other neural architectures.},
+  langid = {english},
+  timestamp = {2025-07-19T16:05:25Z}
+}
+
+@inproceedings{aryaAutomaticDifferentiationPrograms2022,
+  title = {Automatic {{Differentiation}} of {{Programs}} with {{Discrete Randomness}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Arya, Gaurav and Schauer, Moritz and Sch{\"a}fer, Frank and Rackauckas, Christopher},
+  year = {2022},
+  month = dec,
+  volume = {35},
+  pages = {10435--10447},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/43d8e5fc816c692f342493331d5e98fc-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-07-19T15:15:39Z}
+}
+
+@phdthesis{batyCombinatorialOptimizationDecisionfocused2025,
+  title = {Combinatorial Optimization and Decision-Focused Learning: Algorithms, Implementations, and Applications at {{Air France}}},
+  author = {Baty, L{\'e}o},
+  year = {2025},
+  school = {{\'E}cole nationale des ponts et chauss{\'e}es},
+  timestamp = {2025-07-19T19:24:58Z}
+}
+
+@article{baydinAutomaticDifferentiationMachine2018,
+  title = {Automatic {{Differentiation}} in {{Machine Learning}}: A {{Survey}}},
+  shorttitle = {Automatic {{Differentiation}} in {{Machine Learning}}},
+  author = {Baydin, Atilim Gunes and Pearlmutter, Barak A. and Radul, Alexey Andreyevich and Siskind, Jeffrey Mark},
+  year = {2018},
+  journal = {Journal of Machine Learning Research},
+  volume = {18},
+  number = {153},
+  pages = {1--43},
+  issn = {1533-7928},
+  url = {http://jmlr.org/papers/v18/17-468.html},
+  abstract = {Derivatives, mostly in the form of gradients and Hessians, are ubiquitous in machine learning. Automatic differentiation (AD), also called algorithmic differentiation or simply "autodiff", is a family of techniques similar to but more general than backpropagation for efficiently and accurately evaluating derivatives of numeric functions expressed as computer programs. AD is a small but established field with applications in areas including computational fluid dynamics, atmospheric sciences, and engineering design optimization. Until very recently, the fields of machine learning and AD have largely been unaware of each other and, in some cases, have independently discovered each other's results. Despite its relevance, general-purpose AD has been missing from the machine learning toolbox, a situation slowly changing with its ongoing adoption under the names "dynamic computational graphs" and "differentiable programming". We survey the intersection of AD and machine learning, cover applications where AD has direct relevance, and address the main implementation techniques. By precisely defining the main differentiation techniques and their interrelationships, we aim to bring clarity to the usage of the terms "autodiff", "automatic differentiation", and "symbolic differentiation" as these are encountered more and more in machine learning settings.},
+  timestamp = {2025-04-09T12:24:39Z}
+}
+
+@misc{baydinGradientsBackpropagation2022,
+  title = {Gradients without {{Backpropagation}}},
+  author = {Baydin, At{\i}l{\i}m G{\"u}ne{\c s} and Pearlmutter, Barak A. and Syme, Don and Wood, Frank and Torr, Philip},
+  year = {2022},
+  month = feb,
+  number = {arXiv:2202.08587},
+  eprint = {2202.08587},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2202.08587},
+  url = {http://arxiv.org/abs/2202.08587},
+  abstract = {Using backpropagation to compute gradients of objective functions for optimization has remained a mainstay of machine learning. Backpropagation, or reverse-mode differentiation, is a special case within the general family of automatic differentiation algorithms that also includes the forward mode. We present a method to compute gradients based solely on the directional derivative that one can compute exactly and efficiently via the forward mode. We call this formulation the forward gradient, an unbiased estimate of the gradient that can be evaluated in a single forward run of the function, entirely eliminating the need for backpropagation in gradient descent. We demonstrate forward gradient descent in a range of problems, showing substantial savings in computation and enabling training up to twice as fast in some cases.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-10T14:51:48Z}
+}
+
+@misc{beckGentleIncompleteIntroduction2021,
+  title = {A {{Gentle}} and {{Incomplete Introduction}} to {{Bilevel Optimization}}},
+  author = {Beck, Yasmine and Schmidt, Martin},
+  year = {2021},
+  month = jun,
+  number = {17182},
+  eprint = {17182},
+  publisher = {Optimization Online},
+  url = {https://optimization-online.org/?p=17182},
+  archiveprefix = {Optimization Online},
+  langid = {american},
+  timestamp = {2025-07-19T07:22:38Z}
+}
+
+@misc{bengioEstimatingPropagatingGradients2013,
+  title = {Estimating or {{Propagating Gradients Through Stochastic Neurons}} for {{Conditional Computation}}},
+  author = {Bengio, Yoshua and L{\'e}onard, Nicholas and Courville, Aaron},
+  year = {2013},
+  month = aug,
+  number = {arXiv:1308.3432},
+  eprint = {1308.3432},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1308.3432},
+  url = {http://arxiv.org/abs/1308.3432},
+  abstract = {Stochastic neurons and hard non-linearities can be useful for a number of reasons in deep learning models, but in many cases they pose a challenging problem: how to estimate the gradient of a loss function with respect to the input of such stochastic or non-smooth neurons? I.e., can we "back-propagate" through these stochastic neurons? We examine this question, existing approaches, and compare four families of solutions, applicable in different settings. One of them is the minimum variance unbiased gradient estimator for stochatic binary neurons (a special case of the REINFORCE algorithm). A second approach, introduced here, decomposes the operation of a binary stochastic neuron into a stochastic binary part and a smooth differentiable part, which approximates the expected effect of the pure stochatic binary neuron to first order. A third approach involves the injection of additive or multiplicative noise in a computational graph that is otherwise differentiable. A fourth approach heuristically copies the gradient with respect to the stochastic output directly as an estimator of the gradient with respect to the sigmoid argument (we call this the straight-through estimator). To explore a context where these estimators are useful, we consider a small-scale version of \{{\textbackslash}em conditional computation\}, where sparse stochastic units form a distributed representation of gaters that can turn off in combinatorially many ways large chunks of the computation performed in the rest of the neural network. In this case, it is important that the gating units produce an actual 0 most of the time. The resulting sparsity can be potentially be exploited to greatly reduce the computational cost of large deep networks for which conditional computation would be useful.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-21T20:24:05Z}
+}
+
+@misc{berdenSolverFreeDecisionFocusedLearning2025,
+  title = {Solver-{{Free Decision-Focused Learning}} for {{Linear Optimization Problems}}},
+  author = {Berden, Senne and Mahmuto{\u g}ullar{\i}, Ali {\.I}rfan and Tsouros, Dimos and Guns, Tias},
+  year = {2025},
+  month = may,
+  number = {arXiv:2505.22224},
+  eprint = {2505.22224},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.22224},
+  url = {http://arxiv.org/abs/2505.22224},
+  abstract = {Mathematical optimization is a fundamental tool for decision-making in a wide range of applications. However, in many real-world scenarios, the parameters of the optimization problem are not known a priori and must be predicted from contextual features. This gives rise to predict-then-optimize problems, where a machine learning model predicts problem parameters that are then used to make decisions via optimization. A growing body of work on decision-focused learning (DFL) addresses this setting by training models specifically to produce predictions that maximize downstream decision quality, rather than accuracy. While effective, DFL is computationally expensive, because it requires solving the optimization problem with the predicted parameters at each loss evaluation. In this work, we address this computational bottleneck for linear optimization problems, a common class of problems in both DFL literature and real-world applications. We propose a solverfree training method that exploits the geometric structure of linear optimization to enable efficient training with minimal degradation in solution quality. Our method is based on the insight that a solution is optimal if and only if it achieves an objective value that is at least as good as that of its adjacent vertices on the feasible polytope. Building on this, our method compares the estimated quality of the ground-truth optimal solution with that of its precomputed adjacent vertices, and uses this as loss function. Experiments demonstrate that our method significantly reduces computational cost while maintaining high decision quality.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:19Z}
+}
+
+@inproceedings{berthetLearningDifferentiablePerturbed2020,
+  title = {Learning with {{Differentiable Perturbed Optimizers}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Berthet, Quentin and Blondel, Mathieu and Teboul, Olivier and Cuturi, Marco and Vert, Jean-Philippe and Bach, Francis},
+  year = {2020},
+  volume = {33},
+  pages = {9508--9519},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2020/hash/6bb56208f672af0dd65451f869fedfd9-Abstract.html},
+  abstract = {Machine learning pipelines often rely on optimizers procedures to make discrete decisions (e.g., sorting, picking closest neighbors, or shortest paths). Although these discrete decisions are easily computed in a forward manner, they break the back-propagation of computational graphs. In order to expand the scope of learning problems that can be solved in an end-to-end fashion, we propose a systematic method to transform optimizers into operations that are differentiable and never locally constant. Our approach relies on stochastically perturbed optimizers, and can be used readily within existing solvers. Their derivatives can be evaluated efficiently, and smoothness tuned via the chosen noise amplitude. We also show how this framework can be connected to a family of losses developed in structured prediction, and give theoretical guarantees for their use in learning tasks. We demonstrate experimentally the performance of our approach on various tasks.},
+  timestamp = {2025-07-19T17:11:10Z}
+}
+
+@article{bertsimasDatadrivenEstimationEquilibrium2015,
+  title = {Data-Driven Estimation in Equilibrium Using Inverse Optimization},
+  author = {Bertsimas, Dimitris and Gupta, Vishal and Paschalidis, Ioannis Ch.},
+  year = {2015},
+  month = nov,
+  journal = {Mathematical Programming},
+  volume = {153},
+  number = {2},
+  pages = {595--633},
+  issn = {1436-4646},
+  doi = {10.1007/s10107-014-0819-4},
+  url = {https://doi.org/10.1007/s10107-014-0819-4},
+  abstract = {Equilibrium modeling is common in a variety of fields such as game theory and transportation science. The inputs for these models, however, are often difficult to estimate, while their outputs, i.e., the equilibria they are meant to describe, are often directly observable. By combining ideas from inverse optimization with the theory of variational inequalities, we develop an efficient, data-driven technique for estimating the parameters of these models from observed equilibria. We use this technique to estimate the utility functions of players in a game from their observed actions and to estimate the congestion function on a road network from traffic count data. A distinguishing feature of our approach is that it supports both parametric and nonparametric estimation by leveraging ideas from statistical learning (kernel methods and regularization operators). In computational experiments involving Nash and Wardrop equilibria in a nonparametric setting, we find that a) we effectively estimate the unknown demand or congestion function, respectively, and b) our proposed regularization technique substantially improves the out-of-sample performance of our estimators.},
+  langid = {english},
+  timestamp = {2025-07-21T21:08:42Z}
+}
+
+@article{bezansonJuliaFreshApproach2017,
+  title = {Julia: {{A Fresh Approach}} to {{Numerical Computing}}},
+  shorttitle = {Julia},
+  author = {Bezanson, Jeff and Edelman, Alan and Karpinski, Stefan and Shah, Viral B.},
+  year = {2017},
+  month = jan,
+  journal = {SIAM Review},
+  volume = {59},
+  number = {1},
+  pages = {65--98},
+  issn = {0036-1445, 1095-7200},
+  doi = {10.1137/141000671},
+  url = {https://epubs.siam.org/doi/10.1137/141000671},
+  langid = {english},
+  timestamp = {2025-04-09T13:18:17Z}
+}
+
+@inproceedings{blondelEfficientModularImplicit2022,
+  title = {Efficient and {{Modular Implicit Differentiation}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Blondel, Mathieu and Berthet, Quentin and Cuturi, Marco and Frostig, Roy and Hoyer, Stephan and {Llinares-Lopez}, Felipe and Pedregosa, Fabian and Vert, Jean-Philippe},
+  year = {2022},
+  month = dec,
+  volume = {35},
+  pages = {5230--5242},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/228b9279ecf9bbafe582406850c57115-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-03-26T13:43:32Z}
+}
+
+@misc{blondelElementsDifferentiableProgramming2024,
+  title = {The {{Elements}} of {{Differentiable Programming}}},
+  author = {Blondel, Mathieu and Roulet, Vincent},
+  year = {2024},
+  month = jul,
+  number = {arXiv:2403.14606},
+  eprint = {2403.14606},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2403.14606},
+  url = {http://arxiv.org/abs/2403.14606},
+  abstract = {Artificial intelligence has recently experienced remarkable advances, fueled by large models, vast datasets, accelerated hardware, and, last but not least, the transformative power of differentiable programming. This new programming paradigm enables end-to-end differentiation of complex computer programs (including those with control flows and data structures), making gradient-based optimization of program parameters possible. As an emerging paradigm, differentiable programming builds upon several areas of computer science and applied mathematics, including automatic differentiation, graphical models, optimization and statistics. This book presents a comprehensive review of the fundamental concepts useful for differentiable programming. We adopt two main perspectives, that of optimization and that of probability, with clear analogies between the two. Differentiable programming is not merely the differentiation of programs, but also the thoughtful design of programs intended for differentiation. By making programs differentiable, we inherently introduce probability distributions over their execution, providing a means to quantify the uncertainty associated with program outputs.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-06-12T10:38:09Z}
+}
+
+@article{blondelLearningFenchelYoungLosses2020,
+  title = {Learning with {{Fenchel-Young}} Losses},
+  author = {Blondel, Mathieu and Martins, Andr{\'e} F. T. and Niculae, Vlad},
+  year = {2020},
+  journal = {Journal of Machine Learning Research},
+  volume = {21},
+  number = {35},
+  pages = {1--69},
+  issn = {1533-7928},
+  url = {http://jmlr.org/papers/v21/19-021.html},
+  abstract = {Over the past decades, numerous loss functions have been been proposed for a variety of supervised learning tasks, including regression, classification, ranking, and more generally structured prediction. Understanding the core principles and theoretical properties underpinning these losses is key to choose the right loss for the right problem, as well as to create new losses which combine their strengths. In this paper, we introduce Fenchel-Young losses, a generic way to construct a convex loss function for a regularized prediction function. We provide an in-depth study of their properties in a very broad setting, covering all the aforementioned supervised learning tasks, and revealing new connections between sparsity, generalized entropies, and separation margins. We show that Fenchel-Young losses unify many well-known loss functions and allow to create useful new ones easily. Finally, we derive efficient predictive and training algorithms, making Fenchel-Young losses appealing both in theory and practice.},
+  timestamp = {2025-07-21T09:37:51Z}
+}
+
+@inproceedings{bolteMathematicalModelAutomatic2020,
+  title = {A Mathematical Model for Automatic Differentiation in Machine Learning},
+  booktitle = {Conference on {{Neural Information Processing Systems}}},
+  author = {Bolte, Jerome and Pauwels, Edouard},
+  year = {2020},
+  month = dec,
+  address = {Vancouver, Canada},
+  url = {https://hal.archives-ouvertes.fr/hal-02734446},
+  abstract = {Automatic differentiation, as implemented today, does not have a simple mathematical model adapted to the needs of modern machine learning. In this work we articulate the relationships between differentiation of programs as implemented in practice and differentiation of nonsmooth functions. To this end we provide a simple class of functions, a nonsmooth calculus, and show how they apply to stochastic approximation methods. We also evidence the issue of artificial critical points created by algorithmic differentiation and show how usual methods avoid these points with probability one.},
+  timestamp = {2024-12-03T07:59:37Z}
+}
+
+@misc{bolteOnestepDifferentiationIterative2023,
+  title = {One-Step Differentiation of Iterative Algorithms},
+  author = {Bolte, J{\'e}r{\^o}me and Pauwels, Edouard and Vaiter, Samuel},
+  year = {2023},
+  month = may,
+  number = {arXiv:2305.13768},
+  eprint = {2305.13768},
+  primaryclass = {cs, math},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2305.13768},
+  url = {http://arxiv.org/abs/2305.13768},
+  abstract = {In appropriate frameworks, automatic differentiation is transparent to the user at the cost of being a significant computational burden when the number of operations is large. For iterative algorithms, implicit differentiation alleviates this issue but requires custom implementation of Jacobian evaluation. In this paper, we study one-step differentiation, also known as Jacobian-free backpropagation, a method as easy as automatic differentiation and as performant as implicit differentiation for fast algorithms (e.g., superlinear optimization methods). We provide a complete theoretical approximation analysis with specific examples (Newton's method, gradient descent) along with its consequences in bilevel optimization. Several numerical examples illustrate the well-foundness of the one-step estimator.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-21T09:10:56Z}
+}
+
+@misc{bradburyJAXComposableTransformations2018,
+  title = {{{JAX}}: Composable Transformations of {{Python}}+{{NumPy}} Programs},
+  author = {Bradbury, James and Frostig, Roy and Hawkins, Peter and Johnson, Matthew James and Leary, Chris and Maclaurin, Dougal and Necula, George and Paszke, Adam and VanderPlas, Jake and {Wanderman-Milne}, Skye and Zhang, Qiao},
+  year = {2018},
+  url = {http://github.com/google/jax},
+  timestamp = {2025-02-18T18:23:31Z}
+}
+
+@article{cappartCombinatorialOptimizationReasoning2023,
+  title = {Combinatorial {{Optimization}} and {{Reasoning}} with {{Graph Neural Networks}}},
+  author = {Cappart, Quentin and Ch{\'e}telat, Didier and Khalil, Elias B. and Lodi, Andrea and Morris, Christopher and Veli{\v c}kovi{\'c}, Petar},
+  year = {2023},
+  journal = {Journal of Machine Learning Research},
+  volume = {24},
+  number = {130},
+  pages = {1--61},
+  issn = {1533-7928},
+  url = {http://jmlr.org/papers/v24/21-0449.html},
+  abstract = {Combinatorial optimization is a well-established area in operations research and computer science. Until recently, its methods have focused on solving problem instances in isolation, ignoring that they often stem from related data distributions in practice. However, recent years have seen a surge of interest in using machine learning, especially graph neural networks, as a key building block for combinatorial tasks, either directly as solvers or by enhancing exact solvers. The inductive bias of GNNs effectively encodes combinatorial and relational input due to their invariance to permutations and awareness of input sparsity. This paper presents a conceptual review of recent key advancements in this emerging field, aiming at optimization and machine learning researchers.},
+  timestamp = {2025-07-19T17:12:04Z}
+}
+
+@article{colemanEfficientComputationSparse1998,
+  title = {The {{Efficient Computation}} of {{Sparse Jacobian Matrices Using Automatic Differentiation}}},
+  author = {Coleman, Thomas F. and Verma, Arun},
+  year = {1998},
+  month = jan,
+  journal = {SIAM Journal on Scientific Computing},
+  volume = {19},
+  number = {4},
+  pages = {1210--1233},
+  publisher = {{Society for Industrial and Applied Mathematics}},
+  issn = {1064-8275},
+  doi = {10.1137/S1064827595295349},
+  url = {https://epubs.siam.org/doi/abs/10.1137/S1064827595295349},
+  abstract = {The computation of large sparse Jacobian matrices is required in many important large-scale scientific problems. Three approaches to computing such matrices are considered: hand-coding, difference approximations, and automatic differentiation using the ADIFOR (automatic differentiation in Fortran) tool. The authors compare the numerical reliability and computational efficiency of these approaches on applications from the MINPACK-2 test problem collection. The conclusion is that ADIFOR is the method of choice, leading to results that are as accurate as hand-coded derivatives, while at the same time outperforming difference approximations in both accuracy and speed.},
+  timestamp = {2025-06-18T11:24:23Z}
+}
+
+@article{colemanEstimationSparseHessian1984,
+  title = {Estimation of Sparse Hessian Matrices and Graph Coloring Problems},
+  author = {Coleman, Thomas F. and Mor{\'e}, Jorge J.},
+  year = {1984},
+  month = oct,
+  journal = {Mathematical Programming},
+  volume = {28},
+  number = {3},
+  pages = {243--270},
+  issn = {1436-4646},
+  doi = {10.1007/BF02612334},
+  url = {https://doi.org/10.1007/BF02612334},
+  abstract = {Large scale optimization problems often require an approximation to the Hessian matrix. If the Hessian matrix is sparse then estimation by differences of gradients is attractive because the number of required differences is usually small compared to the dimension of the problem. The problem of estimating Hessian matrices by differences can be phrased as follows: Given the sparsity structure of a symmetric matrixA, obtain vectorsd1,d2, {\dots}dp such thatAd1,Ad2, {\dots}Adp determineA uniquely withp as small as possible. We approach this problem from a graph theoretic point of view and show that both direct and indirect approaches to this problem have a natural graph coloring interpretation. The complexity of the problem is analyzed and efficient practical heuristic procedures are developed. Numerical results illustrate the differences between the various approaches.},
+  langid = {english},
+  timestamp = {2025-03-06T16:58:33Z}
+}
+
+@article{curtisEstimationSparseJacobian1974,
+  title = {On the {{Estimation}} of {{Sparse Jacobian Matrices}}},
+  author = {Curtis, A. R. and Powell, M. J. D. and Reid, J. K.},
+  year = {1974},
+  month = feb,
+  journal = {IMA Journal of Applied Mathematics},
+  volume = {13},
+  number = {1},
+  pages = {117--119},
+  issn = {0272-4960},
+  doi = {10.1093/imamat/13.1.117},
+  url = {https://doi.org/10.1093/imamat/13.1.117},
+  abstract = {We show how to use known constant elements in a Jacobian matrix to reduce the work required to estimate the remaining elements by finite differences.},
+  timestamp = {2025-03-06T17:42:00Z}
+}
+
+@inproceedings{dagreouHowComputeHessianvector2024,
+  title = {How to Compute {{Hessian-vector}} Products?},
+  booktitle = {The {{Third Blogpost Track}} at {{ICLR}} 2024},
+  author = {Dagr{\'e}ou, Mathieu and Ablin, Pierre and Vaiter, Samuel and Moreau, Thomas},
+  year = {2024},
+  month = feb,
+  url = {https://openreview.net/forum?id=rTgjQtGP3O},
+  abstract = {The products between the Hessian of a function and a vector, so-called Hessian-vector product (HVPs) is a quantity that appears in optimization and machine learning. However, the computation of HVPs is often considered prohibitive, preventing practitioners from using algorithms that rely on these quantities. Standard automatic differentiation theory predicts that computing a HVP has a cost of the same order of magnitude as computing a gradient. The goal of this blog post is to provide a practical counterpart to this theoretical result, showing that modern automatic differentiation frameworks, Jax and Pytorch, allow for efficient computation of these HVPs in standard deep learning cost functions.},
+  langid = {english},
+  timestamp = {2025-04-09T14:39:02Z}
+}
+
+@misc{dalleCommonInterfaceAutomatic2025,
+  title = {A {{Common Interface}} for {{Automatic Differentiation}}},
+  author = {Dalle, Guillaume and Hill, Adrian},
+  year = {2025},
+  month = may,
+  number = {arXiv:2505.05542},
+  eprint = {2505.05542},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.05542},
+  url = {http://arxiv.org/abs/2505.05542},
+  abbr = {Preprint},
+  abstract = {For scientific machine learning tasks with a lot of custom code, picking the right Automatic Differentiation (AD) system matters. Our Julia package DifferentiationInterface.jl provides a common frontend to a dozen AD backends, unlocking easy comparison and modular development. In particular, its built-in preparation mechanism leverages the strengths of each backend by amortizing one-time computations. This is key to enabling sophisticated features like sparsity handling without putting additional burdens on the user.},
+  archiveprefix = {arXiv},
+  code = {https://github.com/JuliaDiff/DifferentiationInterface.jl},
+  timestamp = {2025-06-18T08:10:48Z}
+}
+
+@misc{dalleLearningCombinatorialOptimization2022,
+  title = {Learning with {{Combinatorial Optimization Layers}}: A {{Probabilistic Approach}}},
+  shorttitle = {Learning with {{Combinatorial Optimization Layers}}},
+  author = {Dalle, Guillaume and Baty, L{\'e}o and Bouvier, Louis and Parmentier, Axel},
+  year = {2022},
+  month = dec,
+  number = {arXiv:2207.13513},
+  eprint = {2207.13513},
+  primaryclass = {cs, math, stat},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2207.13513},
+  url = {http://arxiv.org/abs/2207.13513},
+  abbr = {Preprint},
+  abstract = {Combinatorial optimization (CO) layers in machine learning (ML) pipelines are a powerful tool to tackle data-driven decision tasks, but they come with two main challenges. First, the solution of a CO problem often behaves as a piecewise constant function of its objective parameters. Given that ML pipelines are typically trained using stochastic gradient descent, the absence of slope information is very detrimental. Second, standard ML losses do not work well in combinatorial settings. A growing body of research addresses these challenges through diverse methods. Unfortunately, the lack of well-maintained implementations slows down the adoption of CO layers. In this paper, building upon previous works, we introduce a probabilistic perspective on CO layers, which lends itself naturally to approximate differentiation and the construction of structured losses. We recover many approaches from the literature as special cases, and we also derive new ones. Based on this unifying perspective, we present InferOpt.jl, an open-source Julia package that 1) allows turning any CO oracle with a linear objective into a differentiable layer, and 2) defines adequate losses to train pipelines containing such layers. Our library works with arbitrary optimization algorithms, and it is fully compatible with Julia's ML ecosystem. We demonstrate its abilities using a pathfinding problem on video game maps as guiding example, as well as three other applications from operations research.},
+  archiveprefix = {arXiv},
+  code = {https://github.com/JuliaDecisionFocusedLearning/InferOpt.jl},
+  timestamp = {2025-06-18T08:11:00Z}
+}
+
+@phdthesis{dalleMachineLearningCombinatorial2022,
+  title = {Machine Learning and Combinatorial Optimization Algorithms, with Applications to Railway Planning},
+  author = {Dalle, Guillaume},
+  year = {2022},
+  month = dec,
+  url = {https://pastel.hal.science/tel-04053322},
+  abbr = {Thesis},
+  abstract = {This thesis investigates the frontier between machine learning and combinatorial optimization, two active areas of applied mathematics research. We combine theoretical insights with efficient algorithms, and develop several open source Julia libraries. Inspired by a collaboration with the Soci{\'e}t{\'e} nationale des chemins de fer fran{\c c}ais (SNCF), we study high-impact use cases from the railway world: train failure prediction, delay propagation, and track allocation. In Part I, we provide mathematical background and describe software implementations for various tools that will be needed later on: implicit differentiation, temporal point processes, Hidden Markov Models and Multi-Agent Path Finding. Our publicly available code fills a void in the Julia package ecosystem, aiming at ease of use without compromising on performance. In Part II, we highlight theoretical contributions related to both statistics and decision-making. We consider a Vector AutoRegressive process with partial observations, and prove matching upper and lower bounds on the estimation error. We unify and extend the state of the art for combinatorial optimization layers in deep learning, gathering various approaches in a Julia library called InferOpt.jl. We also seek to differentiate through multi-objective optimization layers, which leads to a novel theory of lexicographic convex analysis. In Part III, these mathematical and algorithmic foundations come together to tackle railway problems. We design a hierarchical model of train failures, propose a graph-based framework for delay propagation, and suggest new avenues for track allocation, with the Flatland challenge as a testing ground.},
+  langid = {english},
+  pdf = {https://pastel.hal.science/tel-04053322},
+  school = {{\'E}cole des Ponts ParisTech},
+  annotation = {HAL\_ID: tel-04053322},
+  timestamp = {2025-07-19T19:20:19Z}
+}
+
+@misc{deepmind2020jax,
+  title = {The {{DeepMind JAX Ecosystem}}},
+  author = {{DeepMind} and Babuschkin, Igor and Baumli, Kate and Bell, Alison and Bhupatiraju, Surya and Bruce, Jake and Buchlovsky, Peter and Budden, David and Cai, Trevor and Clark, Aidan and Danihelka, Ivo and Dedieu, Antoine and Fantacci, Claudio and Godwin, Jonathan and Jones, Chris and Hemsley, Ross and Hennigan, Tom and Hessel, Matteo and Hou, Shaobo and Kapturowski, Steven and Keck, Thomas and Kemaev, Iurii and King, Michael and Kunesch, Markus and Martens, Lena and Merzic, Hamza and Mikulik, Vladimir and Norman, Tamara and Papamakarios, George and Quan, John and Ring, Roman and Ruiz, Francisco and Sanchez, Alvaro and Sartran, Laurent and Schneider, Rosalia and Sezener, Eren and Spencer, Stephen and Srinivasan, Srivatsan and Stanojevi{\'c}, Milo{\v s} and Stokowiec, Wojciech and Wang, Luyu and Zhou, Guangyao and Viola, Fabio},
+  year = {2020},
+  url = {http://github.com/google-deepmind},
+  timestamp = {2025-07-19T19:22:58Z}
+}
+
+@article{elmachtoubSmartPredictThen2022,
+  title = {Smart ``{{Predict}}, Then {{Optimize}}''},
+  author = {Elmachtoub, Adam N. and Grigas, Paul},
+  year = {2022},
+  month = jan,
+  journal = {Management Science},
+  volume = {68},
+  number = {1},
+  pages = {9--26},
+  issn = {0025-1909, 1526-5501},
+  doi = {10.1287/mnsc.2020.3922},
+  url = {http://pubsonline.informs.org/doi/10.1287/mnsc.2020.3922},
+  abstract = {Many real-world analytics problems involve two significant challenges: prediction and optimization. Because of the typically complex nature of each challenge, the standard paradigm is predict-then-optimize. By and large, machine learning tools are intended to minimize prediction error and do not account for how the predictions will be used in the downstream optimization problem. In contrast, we propose a new and very general framework, called Smart ``Predict, then Optimize'' (SPO), which directly leverages the optimization problem structure---that is, its objective and constraints---for designing better prediction models. A key component of our framework is the SPO loss function, which measures the decision error induced by a prediction. Training a prediction model with respect to the SPO loss is computationally challenging, and, thus, we derive, using duality theory, a convex surrogate loss function, which we call the SPO+ loss. Most importantly, we prove that the SPO+ loss is statistically consistent with respect to the SPO loss under mild conditions. Our SPO+ loss function can tractably handle any polyhedral, convex, or even mixed-integer optimization problem with a linear objective. Numerical experiments on shortest-path and portfolio-optimization problems show that the SPO framework can lead to significant improvement under the predict-then-optimize paradigm, in particular, when the prediction model being trained is misspecified. We find that linear models trained using SPO+ loss tend to dominate random-forest algorithms, even when the ground truth is highly nonlinear.             This paper was accepted by Yinyu Ye, optimization.             Supplemental Material: Data and the online appendix are available at https://doi.org/10.1287/mnsc.2020.3922},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:15Z}
+}
+
+@article{ferberMIPaaLMixedInteger2020,
+  title = {{{MIPaaL}}: {{Mixed Integer Program}} as a {{Layer}}},
+  shorttitle = {{{MIPaaL}}},
+  author = {Ferber, Aaron and Wilder, Bryan and Dilkina, Bistra and Tambe, Milind},
+  year = {2020},
+  month = apr,
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {34},
+  number = {02},
+  pages = {1504--1511},
+  issn = {2374-3468, 2159-5399},
+  doi = {10.1609/aaai.v34i02.5509},
+  url = {https://aaai.org/ojs/index.php/AAAI/article/view/5509},
+  abstract = {Machine learning components commonly appear in larger decision-making pipelines; however, the model training process typically focuses only on a loss that measures average accuracy between predicted values and ground truth values. Decision-focused learning explicitly integrates the downstream decision problem when training the predictive model, in order to optimize the quality of decisions induced by the predictions. It has been successfully applied to several limited combinatorial problem classes, such as those that can be expressed as linear programs (LP), and submodular optimization. However, these previous applications have uniformly focused on problems with simple constraints. Here, we enable decision-focused learning for the broad class of problems that can be encoded as a mixed integer linear program (MIP), hence supporting arbitrary linear constraints over discrete and continuous variables. We show how to differentiate through a MIP by employing a cutting planes solution approach, an algorithm that iteratively tightens the continuous relaxation by adding constraints removing fractional solutions. We evaluate our new end-to-end approach on several real world domains and show that it outperforms the standard two phase approaches that treat prediction and optimization separately, as well as a baseline approach of simply applying decision-focused learning to the LP relaxation of the MIP. Lastly, we demonstrate generalization performance in several transfer learning tasks.},
+  timestamp = {2025-07-19T17:11:03Z}
+}
+
+@article{gebremedhinColPackSoftwareGraph2013,
+  title = {{{ColPack}}: {{Software}} for Graph Coloring and Related Problems in Scientific Computing},
+  shorttitle = {{{ColPack}}},
+  author = {Gebremedhin, Assefaw H. and Nguyen, Duc and Patwary, Md. Mostofa Ali and Pothen, Alex},
+  year = {2013},
+  month = oct,
+  journal = {ACM Transactions on Mathematical Software},
+  volume = {40},
+  number = {1},
+  pages = {1:1--1:31},
+  issn = {0098-3500},
+  doi = {10.1145/2513109.2513110},
+  url = {https://dl.acm.org/doi/10.1145/2513109.2513110},
+  abstract = {We present a suite of fast and effective algorithms, encapsulated in a software package called ColPack, for a variety of graph coloring and related problems. Many of the coloring problems model partitioning needs arising in compression-based computation of Jacobian and Hessian matrices using Algorithmic Differentiation. Several of the coloring problems also find important applications in many areas outside derivative computation, including frequency assignment in wireless networks, scheduling, facility location, and concurrency discovery and data movement operations in parallel and distributed computing. The presentation in this article includes a high-level description of the various coloring algorithms within a common design framework, a detailed treatment of the theory and efficient implementation of known as well as new vertex ordering techniques upon which the coloring algorithms rely, a discussion of the package's software design, and an illustration of its usage. The article also includes an extensive experimental study of the major algorithms in the package using real-world as well as synthetically generated graphs.},
+  timestamp = {2025-06-18T08:11:16Z}
+}
+
+@article{gebremedhinEfficientComputationSparse2009,
+  title = {Efficient {{Computation}} of {{Sparse Hessians Using Coloring}} and {{Automatic Differentiation}}},
+  author = {Gebremedhin, Assefaw H. and Tarafdar, Arijit and Pothen, Alex and Walther, Andrea},
+  year = {2009},
+  month = may,
+  journal = {INFORMS Journal on Computing},
+  volume = {21},
+  number = {2},
+  pages = {209--223},
+  publisher = {INFORMS},
+  issn = {1091-9856},
+  doi = {10.1287/ijoc.1080.0286},
+  url = {https://pubsonline.informs.org/doi/abs/10.1287/ijoc.1080.0286},
+  abstract = {The computation of a sparse Hessian matrix H using automatic differentiation (AD) can be made efficient using the following four-step procedure: (1) Determine the sparsity structure of H, (2) obtain a seed matrix S that defines a column partition of H using a specialized coloring on the adjacency graph of H, (3) compute the compressed Hessian matrix B {$\equiv$} HS, and (4) recover the numerical values of the entries of H from B. The coloring variant used in the second step depends on whether the recovery in the fourth step is direct or indirect: a direct method uses star coloring and an indirect method uses acyclic coloring. In an earlier work, we had designed and implemented effective heuristic algorithms for these two NP-hard coloring problems. Recently, we integrated part of the developed software with the AD tool ADOL-C, which has recently acquired a sparsity detection capability. In this paper, we provide a detailed description and analysis of the recovery algorithms and experimentally demonstrate the efficacy of the coloring techniques in the overall process of computing the Hessian of a given function using ADOL-C as an example of an AD tool. We also present new analytical results on star and acyclic coloring of chordal graphs. The experimental results show that sparsity exploitation via coloring yields enormous savings in runtime and makes the computation of Hessians of very large size feasible. The results also show that evaluating a Hessian via an indirect method is often faster than a direct evaluation. This speedup is achieved without compromising numerical accuracy.},
+  timestamp = {2025-03-06T16:57:55Z}
+}
+
+@article{gebremedhinNewAcyclicStar2007,
+  title = {New {{Acyclic}} and {{Star Coloring Algorithms}} with {{Application}} to {{Computing Hessians}}},
+  author = {Gebremedhin, Assefaw H. and Tarafdar, Arijit and Manne, Fredrik and Pothen, Alex},
+  year = {2007},
+  month = jan,
+  journal = {SIAM Journal on Scientific Computing},
+  volume = {29},
+  number = {3},
+  pages = {1042--1072},
+  publisher = {{Society for Industrial and Applied Mathematics}},
+  issn = {1064-8275},
+  doi = {10.1137/050639879},
+  url = {https://epubs.siam.org/doi/abs/10.1137/050639879},
+  abstract = {It is proved that every graph embedded in a fixed surface with sufficiently large edge-width is acyclically 7-colorable and that its star chromatic number is at most \$2s\_0{\textasciicircum}*+3\$, where \$s\_0{\textasciicircum}*{\textbackslash}leq20\$ is the maximum star chromatic number for the class of all planar graphs.},
+  timestamp = {2025-03-06T16:58:00Z}
+}
+
+@article{gebremedhinWhatColorYour2005,
+  title = {What {{Color Is Your Jacobian}}? {{Graph Coloring}} for {{Computing Derivatives}}},
+  shorttitle = {What {{Color Is Your Jacobian}}?},
+  author = {Gebremedhin, Assefaw Hadish and Manne, Fredrik and Pothen, Alex},
+  year = {2005},
+  month = jan,
+  journal = {SIAM Review},
+  volume = {47},
+  number = {4},
+  pages = {629--705},
+  publisher = {{Society for Industrial and Applied Mathematics}},
+  issn = {0036-1445},
+  doi = {10/cmwds4},
+  url = {https://epubs.siam.org/doi/abs/10.1137/S0036144504444711},
+  abstract = {Graph coloring has been employed since the 1980s to efficiently compute sparse Jacobian and Hessian matrices using either finite differences or automatic differentiation. Several coloring problems occur in this context, depending on whether the matrix is a Jacobian or a Hessian, and on the specifics of the computational techniques employed. We consider eight variant vertex coloring problems here. This article begins with a gentle introduction to the problem of computing a sparse Jacobian, followed by an overview of the historical development of the research area. Then we present a unifying framework for the graph models of the variant matrix estimation problems. The framework is based upon the viewpoint that a partition of a matrix into structurally orthogonal groups of columns corresponds to distance-2 coloring an appropriate graph representation. The unified framework helps integrate earlier work and leads to fresh insights; enables the design of more efficient algorithms for many problems; leads to new algorithms for others; and eases the task of building graph models for new problems. We report computational results on two of the coloring problems to support our claims. Most of the methods for these problems treat a column or a row of a matrix as an atomic entity, and partition the columns or rows (or both). A brief review of methods that do not fit these criteria is provided. We also discuss results in discrete mathematics and theoretical computer science that intersect with the topics considered here.},
+  timestamp = {2025-04-09T15:54:54Z}
+}
+
+@article{gilesExtendedCollectionMatrix2008,
+  title = {An Extended Collection of Matrix Derivative Results for Forward and Reverse Mode Automatic Differentiation},
+  author = {Giles, M.},
+  year = {2008},
+  publisher = {Unspecified},
+  url = {https://ora.ox.ac.uk/objects/uuid:8d0c0a29-c92b-4153-a1d2-38b276e93124},
+  abstract = {This paper collects together a number of matrix derivative results which are very useful in forward and reverse mode algorithmic differentiation (AD). It highlights in particular the remarkable contribution of a 1948 paper by Dwyer and Macphail which derives the linear and adjoint sensitivities of a matrix product, inverse and determinant, and a number of related results motivated by applications in multivariate analysis in statistics. This is an extended version of a paper which will appear in the proceedings of AD2008, the 5th International Conference on Automatic Differentiation.},
+  langid = {english},
+  timestamp = {2025-07-10T14:45:24Z}
+}
+
+@misc{gouldDifferentiatingParameterizedArgmin2016,
+  title = {On {{Differentiating Parameterized Argmin}} and {{Argmax Problems}} with {{Application}} to {{Bi-level Optimization}}},
+  author = {Gould, Stephen and Fernando, Basura and Cherian, Anoop and Anderson, Peter and Cruz, Rodrigo Santa and Guo, Edison},
+  year = {2016},
+  month = jul,
+  number = {arXiv:1607.05447},
+  eprint = {1607.05447},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1607.05447},
+  url = {http://arxiv.org/abs/1607.05447},
+  abstract = {Some recent works in machine learning and computer vision involve the solution of a bi-level optimization problem. Here the solution of a parameterized lower-level problem binds variables that appear in the objective of an upper-level problem. The lower-level problem typically appears as an argmin or argmax optimization problem. Many techniques have been proposed to solve bi-level optimization problems, including gradient descent, which is popular with current end-to-end learning approaches. In this technical report we collect some results on differentiating argmin and argmax optimization problems with and without constraints and provide some insightful motivating examples.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T17:10:55Z}
+}
+
+@book{griewankEvaluatingDerivativesPrinciples2008,
+  title = {Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation},
+  shorttitle = {Evaluating Derivatives},
+  author = {Griewank, Andreas and Walther, Andrea},
+  year = {2008},
+  edition = {2nd ed},
+  publisher = {{Society for Industrial and Applied Mathematics}},
+  address = {Philadelphia, PA},
+  url = {https://epubs.siam.org/doi/book/10.1137/1.9780898717761},
+  abstract = {This title is a comprehensive treatment of algorithmic, or automatic, differentiation. The second edition covers recent developments in applications and theory, including an elegant NP completeness argument and an introduction to scarcity},
+  isbn = {978-0-89871-659-7},
+  lccn = {QA304 .G76 2008},
+  annotation = {OCLC: ocn227574816},
+  timestamp = {2025-04-09T12:24:59Z}
+}
+
+@inproceedings{hillIllustratedGuideAutomatic2025,
+  title = {An Illustrated Guide to Automatic Sparse Differentiation},
+  booktitle = {{{ICLR}} Blogposts 2025},
+  author = {Hill, Adrian and Dalle, Guillaume and Montoison, Alexis},
+  year = {2025},
+  month = apr,
+  url = {https://iclr-blogposts.github.io/2025/blog/sparse-autodiff/},
+  abbr = {Blog post},
+  abstract = {In numerous applications of machine learning, Hessians and Jacobians exhibit sparsity, a property that can be leveraged to vastly accelerate their computation. While the usage of automatic differentiation in machine learning is ubiquitous, automatic sparse differentiation (ASD) remains largely unknown. This post introduces ASD, explaining its key components and their roles in the computation of both sparse Jacobians and Hessians. We conclude with a practical demonstration showcasing the performance benefits of ASD.},
+  blog = {https://iclr-blogposts.github.io/2025/blog/sparse-autodiff/},
+  timestamp = {2025-06-18T08:10:51Z}
+}
+
+@article{hillSparserBetterFaster2025,
+  title = {Sparser, Better, Faster, Stronger: {{Sparsity}} Detection for Efficient Automatic Differentiation},
+  author = {Hill, Adrian and Dalle, Guillaume},
+  year = {2025},
+  journal = {Transactions on Machine Learning Research},
+  issn = {2835-8856},
+  url = {https://openreview.net/forum?id=GtXSN52nIW},
+  abbr = {Journal},
+  abstract = {From implicit differentiation to probabilistic modeling, Jacobian and Hessian matrices have many potential use cases in Machine Learning (ML), but they are viewed as computationally prohibitive. Fortunately, these matrices often exhibit sparsity, which can be leveraged to speed up the process of Automatic Differentiation (AD). This paper presents advances in sparsity detection, previously the performance bottleneck of Automatic Sparse Differentiation (ASD). Our implementation of sparsity detection is based on operator overloading, able to detect both local and global sparsity patterns, and supports flexible index set representations. It is fully automatic and requires no modification of user code, making it compatible with existing ML codebases. Most importantly, it is highly performant, unlocking Jacobians and Hessians at scales where they were considered too expensive to compute. On real-world problems from scientific ML, graph neural networks and optimization, we show significant speed-ups of up to three orders of magnitude. Notably, using our sparsity detection system, ASD outperforms standard AD for one-off computations, without amortization of either sparsity detection or matrix coloring.},
+  code = {https://github.com/adrhill/SparseConnectivityTracer.jl},
+  pdf = {https://openreview.net/pdf?id=GtXSN52nIW},
+  timestamp = {2025-06-18T08:10:51Z}
+}
+
+@article{huckelheimTaxonomyAutomaticDifferentiation2024,
+  title = {A Taxonomy of Automatic Differentiation Pitfalls},
+  author = {H{\"u}ckelheim, Jan and Menon, Harshitha and Moses, William and Christianson, Bruce and Hovland, Paul and Hasco{\"e}t, Laurent},
+  year = {2024},
+  journal = {WIREs Data Mining and Knowledge Discovery},
+  volume = {14},
+  number = {6},
+  pages = {e1555},
+  issn = {1942-4795},
+  doi = {10.1002/widm.1555},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/widm.1555},
+  abstract = {Automatic differentiation is a popular technique for computing derivatives of computer programs. While automatic differentiation has been successfully used in countless engineering, science, and machine learning applications, it can sometimes nevertheless produce surprising results. In this paper, we categorize problematic usages of automatic differentiation, and illustrate each category with examples such as chaos, time-averages, discretizations, fixed-point loops, lookup tables, linear solvers, and probabilistic programs, in the hope that readers may more easily avoid or detect such pitfalls. We also review debugging techniques and their effectiveness in these situations. This article is categorized under: Technologies {$>$} Machine Learning},
+  copyright = {{\copyright} 2024 UChicago Argonne, LLC and The Author(s). WIREs Data Mining and Knowledge Discovery published by Wiley Periodicals LLC. This article has been contributed to by U.S. Government employees and their work is in the public domain in the USA.},
+  langid = {english},
+  timestamp = {2025-07-10T16:19:29Z}
+}
+
+@misc{huckelheimUnderstandingAutomaticDifferentiation2023,
+  title = {Understanding {{Automatic Differentiation Pitfalls}}},
+  author = {H{\"u}ckelheim, Jan and Menon, Harshitha and Moses, William and Christianson, Bruce and Hovland, Paul and Hasco{\"e}t, Laurent},
+  year = {2023},
+  month = may,
+  number = {arXiv:2305.07546},
+  eprint = {2305.07546},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2305.07546},
+  url = {http://arxiv.org/abs/2305.07546},
+  abstract = {Automatic differentiation, also known as backpropagation, AD, autodiff, or algorithmic differentiation, is a popular technique for computing derivatives of computer programs accurately and efficiently. Sometimes, however, the derivatives computed by AD could be interpreted as incorrect. These pitfalls occur systematically across tools and approaches. In this paper we broadly categorize problematic usages of AD and illustrate each category with examples such as chaos, time-averaged oscillations, discretizations, fixed-point loops, lookup tables, and linear solvers. We also review debugging techniques and their effectiveness in these situations. With this article we hope to help readers avoid unexpected behavior, detect problems more easily when they occur, and have more realistic expectations from AD tools.},
+  archiveprefix = {arXiv},
+  timestamp = {2024-12-03T07:59:37Z}
+}
+
+@inproceedings{ibarzGeneralistNeuralAlgorithmic2022,
+  title = {A {{Generalist Neural Algorithmic Learner}}},
+  booktitle = {The {{First Learning}} on {{Graphs Conference}}},
+  author = {Ibarz, Borja and Kurin, Vitaly and Papamakarios, George and Nikiforou, Kyriacos and Bennani, Mehdi and Csord{\'a}s, R{\'o}bert and Dudzik, Andrew Joseph and Bo{\v s}njak, Matko and Vitvitskyi, Alex and Rubanova, Yulia and Deac, Andreea and Bevilacqua, Beatrice and Ganin, Yaroslav and Blundell, Charles and Veli{\v c}kovi{\'c}, Petar},
+  year = {2022},
+  month = nov,
+  url = {https://openreview.net/forum?id=FebadKZf6Gd},
+  abstract = {The cornerstone of neural algorithmic reasoning is the ability to solve algorithmic tasks, especially in a way that generalises out of distribution. While recent years have seen a surge in methodological improvements in this area, they mostly focused on building specialist models. Specialist models are capable of learning to neurally execute either only one algorithm or a collection of algorithms with identical control-flow backbone. Here, instead, we focus on constructing a generalist neural algorithmic learner---a single graph neural network processor capable of learning to execute a wide range of algorithms, such as sorting, searching, dynamic programming, path-finding and geometry. We leverage the CLRS benchmark to empirically show that, much like recent successes in the domain of perception, generalist algorithmic learners can be built by "incorporating" knowledge. That is, it is possible to effectively learn algorithms in a multi-task manner, so long as we can learn to execute them well in a single-task regime. Motivated by this, we present a series of improvements to the input representation, training regime and processor architecture over CLRS, improving average single-task performance by over 20\% from prior art. We then conduct a thorough ablation of multi-task learners leveraging these improvements. Our results demonstrate a generalist learner that effectively incorporates knowledge captured by specialist models.},
+  langid = {english},
+  timestamp = {2025-07-21T21:37:14Z}
+}
+
+@misc{jangCategoricalReparameterizationGumbelSoftmax2017,
+  title = {Categorical {{Reparameterization}} with {{Gumbel-Softmax}}},
+  author = {Jang, Eric and Gu, Shixiang and Poole, Ben},
+  year = {2017},
+  month = aug,
+  number = {arXiv:1611.01144},
+  eprint = {1611.01144},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1611.01144},
+  url = {http://arxiv.org/abs/1611.01144},
+  abstract = {Categorical variables are a natural choice for representing discrete structure in the world. However, stochastic neural networks rarely use categorical latent variables due to the inability to backpropagate through samples. In this work, we present an efficient gradient estimator that replaces the non-differentiable sample from a categorical distribution with a differentiable sample from a novel Gumbel-Softmax distribution. This distribution has the essential property that it can be smoothly annealed into a categorical distribution. We show that our Gumbel-Softmax estimator outperforms state-of-the-art gradient estimators on structured output prediction and unsupervised generative modeling tasks with categorical latent variables, and enables large speedups on semi-supervised classification.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-21T20:30:13Z}
+}
+
+@article{karaliasNeuralSetFunction2022,
+  title = {Neural {{Set Function Extensions}}: {{Learning}} with {{Discrete Functions}} in {{High Dimensions}}},
+  shorttitle = {Neural {{Set Function Extensions}}},
+  author = {Karalias, Nikolaos and Robinson, Joshua and Loukas, Andreas and Jegelka, Stefanie},
+  year = {2022},
+  month = dec,
+  journal = {Advances in Neural Information Processing Systems},
+  volume = {35},
+  pages = {15338--15352},
+  url = {https://papers.nips.cc/paper_files/paper/2022/hash/6294a235c0b80f0a2b224375c546c750-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-07-19T17:11:26Z}
+}
+
+@misc{kramerTutorialAutomaticDifferentiation2024,
+  title = {A Tutorial on Automatic Differentiation with Complex Numbers},
+  author = {Kr{\"a}mer, Nicholas},
+  year = {2024},
+  month = dec,
+  number = {arXiv:2409.06752},
+  eprint = {2409.06752},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2409.06752},
+  url = {http://arxiv.org/abs/2409.06752},
+  abstract = {Automatic differentiation is everywhere, but there exists only minimal documentation of how it works in complex arithmetic beyond stating "derivatives in \${\textbackslash}mathbb\{C\}{\textasciicircum}d\$" \${\textbackslash}cong\$ "derivatives in \${\textbackslash}mathbb\{R\}{\textasciicircum}\{2d\}\$" and, at best, shallow references to Wirtinger calculus. Unfortunately, the equivalence \${\textbackslash}mathbb\{C\}{\textasciicircum}d {\textbackslash}cong {\textbackslash}mathbb\{R\}{\textasciicircum}\{2d\}\$ becomes insufficient as soon as we need to derive custom gradient rules, e.g., to avoid differentiating "through" expensive linear algebra functions or differential equation simulators. To combat such a lack of documentation, this article surveys forward- and reverse-mode automatic differentiation with complex numbers, covering topics such as Wirtinger derivatives, a modified chain rule, and different gradient conventions while explicitly avoiding holomorphicity and the Cauchy--Riemann equations (which would be far too restrictive). To be precise, we will derive, explain, and implement a complex version of Jacobian-vector and vector-Jacobian products almost entirely with linear algebra without relying on complex analysis or differential geometry. This tutorial is a call to action, for users and developers alike, to take complex values seriously when implementing custom gradient propagation rules -- the manuscript explains how.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-10T15:44:47Z}
+}
+
+@misc{laueEquivalenceAutomaticSymbolic2022,
+  title = {On the {{Equivalence}} of {{Automatic}} and {{Symbolic Differentiation}}},
+  author = {Laue, Soeren},
+  year = {2022},
+  month = dec,
+  number = {arXiv:1904.02990},
+  eprint = {1904.02990},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1904.02990},
+  url = {http://arxiv.org/abs/1904.02990},
+  abstract = {We show that reverse mode automatic differentiation and symbolic differentiation are equivalent in the sense that they both perform the same operations when computing derivatives. This is in stark contrast to the common claim that they are substantially different. The difference is often illustrated by claiming that symbolic differentiation suffers from "expression swell" whereas automatic differentiation does not. Here, we show that this statement is not true. "Expression swell" refers to the phenomenon of a much larger representation of the derivative as opposed to the representation of the original function.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-09T15:26:40Z}
+}
+
+@inproceedings{liEndtoEndLearningIntervention2020,
+  title = {End-to-{{End Learning}} and {{Intervention}} in {{Games}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Li, Jiayang and Yu, Jing and Nie, Yu and Wang, Zhaoran},
+  year = {2020},
+  volume = {33},
+  pages = {16653--16665},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2020/hash/c21f4ce780c5c9d774f79841b81fdc6d-Abstract.html},
+  abstract = {In a social system, the self-interest of agents can be detrimental to the collective good, sometimes leading to social dilemmas. To resolve such a conflict,  a central designer may intervene by either redesigning the system or incentivizing the agents to change their behaviors. To be effective, the designer must anticipate how the agents react to the intervention, which is dictated by their often unknown payoff functions. Therefore, learning about the agents is a prerequisite for intervention. In this paper, we provide a unified framework for learning and intervention in games. We cast the equilibria of games as individual layers and integrate them into an end-to-end optimization framework. To enable the backward propagation through the equilibria of games, we propose two approaches, respectively based on explicit and implicit differentiation.  Specifically, we cast the equilibria as the solutions to variational inequalities (VIs). The explicit approach unrolls the projection method for solving VIs, while the implicit approach exploits the sensitivity of the solutions to VIs. At the core of both approaches is the differentiation through a projection operator. Moreover, we establish the correctness of both approaches and identify the conditions under which one approach is more desirable than the other.  The analytical results are validated using several real-world problems.},
+  timestamp = {2025-07-21T21:11:06Z}
+}
+
+@inproceedings{lingWhatGameAre2018,
+  title = {What {{Game Are We Playing}}? {{End-to-end Learning}} in {{Normal}} and {{Extensive Form Games}}},
+  shorttitle = {What {{Game Are We Playing}}?},
+  booktitle = {Proceedings of the {{Twenty-Seventh International Joint Conference}} on {{Artificial Intelligence}}},
+  author = {Ling, Chun Kai and Fang, Fei and Kolter, J. Zico},
+  year = {2018},
+  month = jul,
+  pages = {396--402},
+  publisher = {International Joint Conferences on Artificial Intelligence Organization},
+  address = {Stockholm, Sweden},
+  doi = {10.24963/ijcai.2018/55},
+  url = {https://www.ijcai.org/proceedings/2018/55},
+  abstract = {Although recent work in AI has made great progress in solving large, zero-sum, extensive-form games, the underlying assumption in most past work is that the parameters of the game itself are known to the agents. This paper deals with the relatively under-explored but equally important ``inverse'' setting, where the parameters of the underlying game are not known to all agents, but must be learned through observations. We propose a differentiable, end-to-end learning framework for addressing this task. In particular, we consider a regularized version of the game, equivalent to a particular form of quantal response equilibrium, and develop 1) a primal-dual Newton method for finding such equilibrium points in both normal and extensive form games; and 2) a backpropagation method that lets us analytically compute gradients of all relevant game parameters through the solution itself. This ultimately lets us learn the game by training in an end-to-end fashion, effectively by integrating a ``differentiable game solver'' into the loop of larger deep network architectures. We demonstrate the effectiveness of the learning method in several settings including poker and security game tasks.},
+  isbn = {978-0-9992411-2-7},
+  langid = {english},
+  timestamp = {2025-07-21T21:11:05Z}
+}
+
+@misc{luMPAXMathematicalProgramming2024,
+  title = {{{MPAX}}: {{Mathematical Programming}} in {{JAX}}},
+  shorttitle = {{{MPAX}}},
+  author = {Lu, Haihao and Peng, Zedong and Yang, Jinwen},
+  year = {2024},
+  month = dec,
+  number = {arXiv:2412.09734},
+  eprint = {2412.09734},
+  primaryclass = {math},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2412.09734},
+  url = {http://arxiv.org/abs/2412.09734},
+  abstract = {We introduce MPAX (Mathematical Programming in JAX), a versatile and efficient toolbox for integrating mathematical programming into machine learning workflows. MPAX implemented firstorder methods in JAX, providing native support for hardware accelerations along with features like batch solving, auto-differentiation, and device parallelism. Currently in beta version, MPAX supports linear programming and will be extended to solve more general mathematical programming problems and specialized modules for common machine learning tasks. The solver is available at https://github.com/MIT-Lu-Lab/MPAX.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:29:03Z}
+}
+
+@misc{luOverviewGPUbasedFirstOrder2025,
+  title = {An {{Overview}} of {{GPU-based First-Order Methods}} for {{Linear Programming}} and {{Extensions}}},
+  author = {Lu, Haihao and Yang, Jinwen},
+  year = {2025},
+  month = jun,
+  number = {arXiv:2506.02174},
+  eprint = {2506.02174},
+  primaryclass = {math},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2506.02174},
+  url = {http://arxiv.org/abs/2506.02174},
+  abstract = {The rapid progress in GPU computing has revolutionized many fields, yet its potential in mathematical programming, such as linear programming (LP), has only recently begun to be realized. This survey aims to provide a comprehensive overview of recent advancements in GPU-based first-order methods for LP, with a particular focus on the design and development of cuPDLP. We begin by presenting the design principles and algorithmic foundation of the primal-dual hybrid gradient (PDHG) method, which forms the core of the solver. Practical enhancements, such as adaptive restarts, preconditioning, Halpern-type acceleration and infeasibility detection, are discussed in detail, along with empirical comparisons against industrial-grade solvers, highlighting the scalability and efficiency of cuPDLP. We also provide a unified theoretical framework for understanding PDHG, covering both classical and recent results on sublinear and linear convergence under sharpness conditions. Finally, we extend the discussion to GPU-based optimization beyond LP, including quadratic, semidefinite, conic, and nonlinear programming.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:31:44Z}
+}
+
+@misc{maddisonConcreteDistributionContinuous2017,
+  title = {The {{Concrete Distribution}}: {{A Continuous Relaxation}} of {{Discrete Random Variables}}},
+  shorttitle = {The {{Concrete Distribution}}},
+  author = {Maddison, Chris J. and Mnih, Andriy and Teh, Yee Whye},
+  year = {2017},
+  month = mar,
+  number = {arXiv:1611.00712},
+  eprint = {1611.00712},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1611.00712},
+  url = {http://arxiv.org/abs/1611.00712},
+  abstract = {The reparameterization trick enables optimizing large scale stochastic computation graphs via gradient descent. The essence of the trick is to refactor each stochastic node into a differentiable function of its parameters and a random variable with fixed distribution. After refactoring, the gradients of the loss propagated by the chain rule through the graph are low variance unbiased estimators of the gradients of the expected loss. While many continuous random variables have such reparameterizations, discrete random variables lack useful reparameterizations due to the discontinuous nature of discrete states. In this work we introduce Concrete random variables---continuous relaxations of discrete random variables. The Concrete distribution is a new family of distributions with closed form densities and a simple reparameterization. Whenever a discrete stochastic node of a computation graph can be refactored into a one-hot bit representation that is treated continuously, Concrete stochastic nodes can be used with automatic differentiation to produce low-variance biased gradients of objectives (including objectives that depend on the log-probability of latent stochastic nodes) on the corresponding discrete graph. We demonstrate the effectiveness of Concrete relaxations on density estimation and structured prediction tasks using neural networks.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-21T20:30:15Z}
+}
+
+@article{mandiDecisionFocusedLearningFoundations2024,
+  title = {Decision-{{Focused Learning}}: {{Foundations}}, {{State}} of the {{Art}}, {{Benchmark}} and {{Future Opportunities}}},
+  shorttitle = {Decision-{{Focused Learning}}},
+  author = {Mandi, Jayanta and Kotary, James and Berden, Senne and Mulamba, Maxime and Bucarey, Victor and Guns, Tias and Fioretto, Ferdinando},
+  year = {2024},
+  month = aug,
+  journal = {Journal of Artificial Intelligence Research},
+  volume = {80},
+  pages = {1623--1701},
+  issn = {1076-9757},
+  doi = {10.1613/jair.1.15320},
+  url = {https://www.jair.org/index.php/jair/article/view/15320},
+  abstract = {Decision-focused learning (DFL) is an emerging paradigm that integrates machine learning (ML) and constrained optimization to enhance decision quality by training ML models in an end-to-end system. This approach shows significant potential to revolutionize combinatorial decision-making in real-world applications that operate under uncertainty, where estimating unknown parameters within decision models is a major challenge. This paper presents a comprehensive review of DFL, providing an in-depth analysis of both gradient-based and gradient-free techniques used to combine ML and constrained optimization. It evaluates the strengths and limitations of these techniques and includes an extensive empirical evaluation of eleven methods across seven problems. The survey also offers insights into recent advancements and future research directions in DFL.},
+  copyright = {Copyright (c) 2024 Journal of Artificial Intelligence Research},
+  langid = {english},
+  timestamp = {2025-06-12T10:38:19Z}
+}
+
+@inproceedings{mandiInteriorPointSolving2020,
+  title = {Interior {{Point Solving}} for {{LP-based}} Prediction+optimisation},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Mandi, Jayanta and Guns, Tias},
+  year = {2020},
+  volume = {33},
+  pages = {7272--7282},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2020/hash/51311013e51adebc3c34d2cc591fefee-Abstract.html},
+  abstract = {Solving optimization problem is the key to decision making in many real-life analytics applications. However, the coefficients of the optimization problems are often uncertain and dependent on external factors, such as future demand or energy- or stock prices. Machine learning (ML) models, especially neural networks, are increasingly being used to estimate these coefficients in a data-driven way. Hence, end-to-end predict-and-optimize approaches, which consider how effective the predicted values are to solve the optimization problem, have received increasing attention. In case of integer linear programming problems, a popular approach to overcome their non-differentiabilty is to add a quadratic penalty term to the continuous relaxation, such that results from differentiating over quadratic programs can be used. Instead we investigate the use of the more principled logarithmic barrier term, as widely used in interior point solvers for linear programming. Instead of differentiating the KKT conditions, we consider the homogeneous self-dual formulation of the LP and we show the relation between the interior point step direction and corresponding gradients needed for learning. Finally, our empirical experiments demonstrate our approach performs as good as if not better than the state-of-the-art QPTL (Quadratic Programming task loss) formulation of Wilder et al. and SPO approach of Elmachtoub and Grigas.},
+  timestamp = {2025-07-19T17:11:06Z}
+}
+
+@article{margossianReviewAutomaticDifferentiation2019,
+  title = {A Review of Automatic Differentiation and Its Efficient Implementation},
+  author = {Margossian, Charles C.},
+  year = {2019},
+  journal = {WIREs Data Mining and Knowledge Discovery},
+  volume = {9},
+  number = {4},
+  pages = {e1305},
+  issn = {1942-4795},
+  doi = {10.1002/widm.1305},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/widm.1305},
+  abstract = {Derivatives play a critical role in computational statistics, examples being Bayesian inference using Hamiltonian Monte Carlo sampling and the training of neural networks. Automatic differentiation (AD) is a powerful tool to automate the calculation of derivatives and is preferable to more traditional methods, especially when differentiating complex algorithms and mathematical functions. The implementation of AD, however, requires some care to insure efficiency. Modern differentiation packages deploy a broad range of computational techniques to improve applicability, run time, and memory management. Among these techniques are operation overloading, region-based memory, and expression templates. There also exist several mathematical techniques which can yield high performance gains when applied to complex algorithms. For example, semi-analytical derivatives can reduce by orders of magnitude the runtime required to numerically solve and differentiate an algebraic equation. Open and practical problems include the extension of current packages to provide more specialized routines, and finding optimal methods to perform higher-order differentiation. This article is categorized under: Algorithmic Development {$>$} Scalable Statistical Methods},
+  langid = {english},
+  timestamp = {2025-04-09T12:24:45Z}
+}
+
+@article{mohamedMonteCarloGradient2020,
+  title = {Monte {{Carlo Gradient Estimation}} in {{Machine Learning}}},
+  author = {Mohamed, Shakir and Rosca, Mihaela and Figurnov, Michael and Mnih, Andriy},
+  year = {2020},
+  journal = {Journal of Machine Learning Research},
+  volume = {21},
+  number = {132},
+  pages = {1--62},
+  issn = {1533-7928},
+  url = {http://jmlr.org/papers/v21/19-346.html},
+  abstract = {This paper is a broad and accessible survey of the methods we have at our disposal for Monte Carlo gradient estimation in machine learning and across the statistical sciences: the problem of computing the gradient of an expectation of a function with respect to parameters defining the distribution that is integrated; the problem of sensitivity analysis. In machine learning research, this gradient problem lies at the core of many learning problems, in supervised, unsupervised and reinforcement learning. We will generally seek to rewrite such gradients in a form that allows for Monte Carlo estimation, allowing them to be easily and efficiently used and analysed. We explore three strategies---the pathwise, score function, and measure-valued gradient estimators---exploring their historical development, derivation, and underlying assumptions. We describe their use in other fields, show how they are related and can be combined, and expand on their possible generalisations. Wherever Monte Carlo gradient estimators have been derived and deployed in the past, important advances have followed. A deeper and more widely-held understanding of this problem will lead to further advances, and it is these advances that we wish to support.},
+  timestamp = {2024-12-03T08:01:29Z}
+}
+
+@misc{montoisonRevisitingSparseMatrix2025,
+  title = {Revisiting {{Sparse Matrix Coloring}} and {{Bicoloring}}},
+  author = {Montoison, Alexis and Dalle, Guillaume and Gebremedhin, Assefaw},
+  year = {2025},
+  month = may,
+  number = {arXiv:2505.07308},
+  eprint = {2505.07308},
+  primaryclass = {math},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.07308},
+  url = {http://arxiv.org/abs/2505.07308},
+  abbr = {Preprint},
+  abstract = {Sparse matrix coloring and bicoloring are fundamental building blocks of sparse automatic differentiation. Bicoloring is particularly advantageous for rectangular Jacobian matrices with at least one dense row and column. Indeed, in such cases, unidirectional row or column coloring demands a number of colors equal to the number of rows or columns. We introduce a new strategy for bicoloring that encompasses both direct and substitution-based decompression approaches. Our method reformulates the two variants of bicoloring as star and acyclic colorings of an augmented symmetric matrix. We extend the concept of neutral colors, previously exclusive to bicoloring, to symmetric colorings, and we propose a post-processing routine that neutralizes colors to further reduce the overall color count. We also present the Julia package SparseMatrixColorings, which includes these new bicoloring algorithms alongside all standard coloring methods for sparse derivative matrix computation. Compared to ColPack, the Julia package also offers enhanced implementations for star and acyclic coloring, vertex ordering, as well as decompression.},
+  archiveprefix = {arXiv},
+  code = {https://github.com/gdalle/SparseMatrixColorings.jl},
+  timestamp = {2025-06-18T08:10:51Z}
+}
+
+@inproceedings{mosesInsteadRewritingForeign2020,
+  title = {Instead of {{Rewriting Foreign Code}} for {{Machine Learning}}, {{Automatically Synthesize Fast Gradients}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Moses, William and Churavy, Valentin},
+  year = {2020},
+  volume = {33},
+  pages = {12472--12485},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2020/hash/9332c513ef44b682e9347822c2e457ac-Abstract.html},
+  abstract = {Applying differentiable programming techniques and machine learning algorithms to foreign programs requires developers to either rewrite their code in a machine learning framework, or otherwise provide derivatives of the foreign code. This paper presents Enzyme, a high-performance automatic differentiation (AD) compiler plugin for the LLVM compiler framework capable of synthesizing gradients of statically analyzable programs expressed in the LLVM intermediate representation (IR). Enzyme synthesizes gradients for programs written in any language whose compiler targets LLVM IR including C, C++, Fortran, Julia, Rust, Swift, MLIR, etc., thereby providing native AD capabilities in these languages. Unlike traditional source-to-source and operator-overloading tools, Enzyme performs AD on optimized IR. On a machine-learning focused benchmark suite including Microsoft's ADBench, AD on optimized IR achieves a geometric mean speedup of 4.2 times over AD on IR before optimization allowing Enzyme to achieve state-of-the-art performance. Packaging Enzyme for PyTorch and TensorFlow provides convenient access to gradients of foreign code with state-of-the-art performance, enabling foreign code to be directly incorporated into existing machine learning workflows.},
+  timestamp = {2025-07-19T14:05:18Z}
+}
+
+@inproceedings{mosesReversemodeAutomaticDifferentiation2021,
+  title = {Reverse-Mode Automatic Differentiation and Optimization of {{GPU}} Kernels via {{Enzyme}}},
+  booktitle = {Proceedings of the {{International Conference}} for {{High Performance Computing}}, {{Networking}}, {{Storage}} and {{Analysis}}},
+  author = {Moses, William S. and Churavy, Valentin and Paehler, Ludger and H{\"u}ckelheim, Jan and Narayanan, Sri Hari Krishna and Schanen, Michel and Doerfert, Johannes},
+  year = {2021},
+  month = nov,
+  series = {{{SC}} '21},
+  pages = {1--16},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  doi = {10.1145/3458817.3476165},
+  url = {https://doi.org/10.1145/3458817.3476165},
+  abstract = {Computing derivatives is key to many algorithms in scientific computing and machine learning such as optimization, uncertainty quantification, and stability analysis. Enzyme is a LLVM compiler plugin that performs reverse-mode automatic differentiation (AD) and thus generates high performance gradients of programs in languages including C/C++, Fortran, Julia, and Rust. Prior to this work, Enzyme and other AD tools were not capable of generating gradients of GPU kernels. Our paper presents a combination of novel techniques that make Enzyme the first fully automatic reversemode AD tool to generate gradients of GPU kernels. Since unlike other tools Enzyme performs automatic differentiation within a general-purpose compiler, we are able to introduce several novel GPU and AD-specific optimizations. To show the generality and efficiency of our approach, we compute gradients of five GPU-based HPC applications, executed on NVIDIA and AMD GPUs. All benchmarks run within an order of magnitude of the original program's execution time. Without GPU and AD-specific optimizations, gradients of GPU kernels either fail to run from a lack of resources or have infeasible overhead. Finally, we demonstrate that increasing the problem size by either increasing the number of threads or increasing the work per thread, does not substantially impact the overhead from differentiation.},
+  isbn = {978-1-4503-8442-1},
+  timestamp = {2025-07-19T14:05:21Z}
+}
+
+@inproceedings{niepertImplicitMLEBackpropagating2021,
+  title = {Implicit {{MLE}}: {{Backpropagating Through Discrete Exponential Family Distributions}}},
+  shorttitle = {Implicit {{MLE}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Niepert, Mathias and Minervini, Pasquale and Franceschi, Luca},
+  year = {2021},
+  volume = {34},
+  pages = {14567--14579},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2021/hash/7a430339c10c642c4b2251756fd1b484-Abstract.html},
+  abstract = {Combining discrete probability distributions and combinatorial optimization problems with neural network components has numerous applications but poses several challenges. We propose Implicit Maximum Likelihood Estimation (I-MLE), a framework for end-to-end learning of models combining discrete exponential family distributions and differentiable neural components. I-MLE is widely applicable as it only requires the ability to compute the most probable states and does not rely on smooth relaxations. The framework encompasses several approaches such as perturbation-based implicit differentiation and recent methods to differentiate through black-box combinatorial solvers. We introduce a novel class of noise distributions for approximating marginals via perturb-and-MAP. Moreover, we show that I-MLE simplifies to maximum likelihood estimation when used in some recently studied learning settings that involve combinatorial solvers. Experiments on several datasets suggest that I-MLE is competitive with and often outperforms existing approaches which rely on problem-specific relaxations.},
+  timestamp = {2025-07-19T17:11:15Z}
+}
+
+@inproceedings{paszkePyTorchImperativeStyle2019,
+  title = {{{PyTorch}}: {{An Imperative Style}}, {{High-Performance Deep Learning Library}}},
+  shorttitle = {{{PyTorch}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and Kopf, Andreas and Yang, Edward and DeVito, Zachary and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+  year = {2019},
+  volume = {32},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2019/hash/bdbca288fee7f92f2bfa9f7012727740-Abstract.html},
+  abstract = {Deep learning frameworks have often focused on either usability or speed, but not both. PyTorch is a machine learning library that shows that these two goals are in fact compatible: it was designed from first principles to support an imperative and Pythonic programming style that supports code as a model, makes debugging easy and is consistent with other popular scientific computing libraries, while remaining efficient and supporting hardware accelerators such as GPUs. In this paper, we detail the principles that drove the implementation of PyTorch and how they are reflected in its architecture. We emphasize that every aspect of PyTorch is a regular Python program under the full control of its user. We also explain how the careful and pragmatic implementation of the key components of its runtime enables them to work together to achieve compelling performance. We demonstrate the efficiency of individual subsystems, as well as the overall speed of PyTorch on several commonly used benchmarks.},
+  timestamp = {2025-02-18T18:23:21Z}
+}
+
+@inproceedings{paulusCombOptNetFitRight2021,
+  title = {{{CombOptNet}}: {{Fit}} the {{Right NP-Hard Problem}} by {{Learning Integer Programming Constraints}}},
+  shorttitle = {{{CombOptNet}}},
+  booktitle = {Proceedings of the 38th {{International Conference}} on {{Machine Learning}}},
+  author = {Paulus, Anselm and Rolinek, Michal and Musil, Vit and Amos, Brandon and Martius, Georg},
+  year = {2021},
+  month = jul,
+  pages = {8443--8453},
+  publisher = {PMLR},
+  issn = {2640-3498},
+  url = {https://proceedings.mlr.press/v139/paulus21a.html},
+  abstract = {Bridging logical and algorithmic reasoning with modern machine learning techniques is a fundamental challenge with potentially transformative impact. On the algorithmic side, many NP-hard problems can be expressed as integer programs, in which the constraints play the role of their 'combinatorial specification'. In this work, we aim to integrate integer programming solvers into neural network architectures as layers capable of learning both the cost terms and the constraints. The resulting end-to-end trainable architectures jointly extract features from raw data and solve a suitable (learned) combinatorial problem with state-of-the-art integer programming solvers. We demonstrate the potential of such layers with an extensive performance analysis on synthetic data and with a demonstration on a competitive computer vision keypoint matching benchmark.},
+  langid = {english},
+  timestamp = {2025-07-19T17:10:59Z}
+}
+
+@inproceedings{paulusGradientEstimationStochastic2020,
+  title = {Gradient {{Estimation}} with {{Stochastic Softmax Tricks}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Paulus, Max and Choi, Dami and Tarlow, Daniel and Krause, Andreas and Maddison, Chris J},
+  year = {2020},
+  volume = {33},
+  pages = {5691--5704},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2020/hash/3df80af53dce8435cf9ad6c3e7a403fd-Abstract.html},
+  abstract = {The Gumbel-Max trick is the basis of many relaxed gradient estimators. These estimators are easy to implement and low variance, but the goal of scaling them comprehensively to large combinatorial distributions is still outstanding. Working within the perturbation model framework, we introduce stochastic softmax tricks, which generalize the Gumbel-Softmax trick to combinatorial spaces. Our framework is a unified perspective on existing relaxed estimators for perturbation models, and it contains many novel relaxations. We design structured relaxations for subset selection, spanning trees, arborescences, and others. When compared to less structured baselines, we find that stochastic softmax tricks can be used to train latent variable models that perform better and discover more latent structure.},
+  timestamp = {2025-07-19T15:15:59Z}
+}
+
+@article{pearlmutterFastExactMultiplication1994,
+  title = {Fast {{Exact Multiplication}} by the {{Hessian}}},
+  author = {Pearlmutter, Barak A.},
+  year = {1994},
+  month = jan,
+  journal = {Neural Computation},
+  volume = {6},
+  number = {1},
+  pages = {147--160},
+  issn = {0899-7667},
+  doi = {10.1162/neco.1994.6.1.147},
+  url = {https://ieeexplore.ieee.org/abstract/document/6796137},
+  abstract = {Just storing the Hessian H (the matrix of second derivatives {$\delta$}2E/{$\delta$}wi{$\delta$}wj of the error E with respect to each pair of weights) of a large neural network is difficult. Since a common use of a large matrix like H is to compute its product with various vectors, we derive a technique that directly calculates Hv, where v is an arbitrary vector. To calculate Hv, we first define a differential operator Rvf(w) = ({$\delta$}/{$\delta$}r)f(w + rv){\textbar}r=0, note that Rv{$\bigtriangledown$}w = Hv and Rvw = v, and then apply Rv{$\cdot$} to the equations used to compute {$\bigtriangledown$}w. The result is an exact and numerically stable procedure for computing Hv, which takes about as much computation, and is about as local, as a gradient evaluation. We then apply the technique to a one pass gradient calculation algorithm (backpropagation), a relaxation gradient calculation algorithm (recurrent backpropagation), and two stochastic gradient calculation algorithms (Boltzmann machines and weight perturbation). Finally, we show that this technique can be used at the heart of many iterative techniques for computing various properties of H, obviating any need to calculate the full Hessian.},
+  timestamp = {2025-06-18T10:55:23Z}
+}
+
+@inproceedings{petersenLearningAlgorithmicSupervision2021,
+  title = {Learning with {{Algorithmic Supervision}} via {{Continuous Relaxations}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Petersen, Felix and Borgelt, Christian and Kuehne, Hilde and Deussen, Oliver},
+  year = {2021},
+  volume = {34},
+  pages = {16520--16531},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper/2021/hash/89ae0fe22c47d374bc9350ef99e01685-Abstract.html},
+  abstract = {The integration of algorithmic components into neural architectures has gained increased attention recently, as it allows training neural networks with new forms of supervision such as ordering constraints or silhouettes instead of using ground truth labels. Many approaches in the field focus on the continuous relaxation of a specific task and show promising results in this context. But the focus on single tasks also limits the applicability of the proposed concepts to a narrow range of applications. In this work, we build on those ideas to propose an approach that allows to integrate algorithms into end-to-end trainable neural network architectures based on a general approximation of discrete conditions. To this end, we relax these conditions in control structures such as conditional statements, loops, and indexing, so that resulting algorithms are smoothly differentiable. To obtain meaningful gradients, each relevant variable is perturbed via logistic distributions and the expectation value under this perturbation is approximated. We evaluate the proposed continuous relaxation model on four challenging tasks and show that it can keep up with relaxations specifically designed for each individual task.},
+  timestamp = {2025-07-19T17:11:24Z}
+}
+
+@unpublished{petersenMatrixCookbook2012,
+  title = {The Matrix Cookbook},
+  author = {Petersen, K. B. and Pedersen, M. S.},
+  year = {2012},
+  url = {https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf},
+  timestamp = {2025-07-10T09:24:23Z}
+}
+
+@misc{pinedaTheseusLibraryDifferentiable2022,
+  title = {Theseus: {{A Library}} for {{Differentiable Nonlinear Optimization}}},
+  shorttitle = {Theseus},
+  author = {Pineda, Luis and Fan, Taosha and Monge, Maurizio and Venkataraman, Shobha and Sodhi, Paloma and Chen, Ricky and Ortiz, Joseph and DeTone, Daniel and Wang, Austin and Anderson, Stuart and Dong, Jing and Amos, Brandon and Mukadam, Mustafa},
+  year = {2022},
+  month = jul,
+  number = {arXiv:2207.09442},
+  eprint = {2207.09442},
+  primaryclass = {cs, math},
+  publisher = {arXiv},
+  url = {http://arxiv.org/abs/2207.09442},
+  abstract = {We present Theseus, an efficient application-agnostic open source library for differentiable nonlinear least squares (DNLS) optimization built on PyTorch, providing a common framework for end-to-end structured learning in robotics and vision. Existing DNLS implementations are application specific and do not always incorporate many ingredients important for efficiency. Theseus is application-agnostic, as we illustrate with several example applications that are built using the same underlying differentiable components, such as second-order optimizers, standard costs functions, and Lie groups. For efficiency, Theseus incorporates support for sparse solvers, automatic vectorization, batching, GPU acceleration, and gradient computation with implicit differentiation and direct loss minimization. We do extensive performance evaluation in a set of applications, demonstrating significant efficiency gains and better scalability when these features are incorporated. Project page: https://sites.google.com/view/theseus-ai},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:21:14Z}
+}
+
+@article{renTorchOptEfficientLibrary2023,
+  title = {{{TorchOpt}}: {{An Efficient Library}} for {{Differentiable Optimization}}},
+  shorttitle = {{{TorchOpt}}},
+  author = {Ren, Jie and Feng, Xidong and Liu, Bo and Pan, Xuehai and Fu, Yao and Mai, Luo and Yang, Yaodong},
+  year = {2023},
+  journal = {Journal of Machine Learning Research},
+  volume = {24},
+  number = {367},
+  pages = {1--14},
+  issn = {1533-7928},
+  url = {http://jmlr.org/papers/v24/23-0191.html},
+  abstract = {Differentiable optimization algorithms often involve expensive computations of various meta-gradients. To address this, we design and implement TorchOpt, a new PyTorch-based differentiable optimization library. TorchOpt provides an expressive and unified programming interface that simplifies the implementation of explicit, implicit, and zero-order gradients. Moreover, TorchOpt has a distributed execution runtime capable of parallelizing diverse operations linked to differentiable optimization tasks across CPU and GPU devices. Experimental results demonstrate that TorchOpt achieves a 5.2{\texttimes} training time speedup in a cluster. TorchOpt is open-sourced at https://github.com/metaopt/torchopt and has become a PyTorch Ecosystem project.},
+  timestamp = {2025-07-19T19:23:53Z}
+}
+
+@misc{revelsForwardModeAutomaticDifferentiation2016,
+  title = {Forward-{{Mode Automatic Differentiation}} in {{Julia}}},
+  author = {Revels, Jarrett and Lubin, Miles and Papamarkou, Theodore},
+  year = {2016},
+  month = jul,
+  number = {arXiv:1607.07892},
+  eprint = {1607.07892},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1607.07892},
+  url = {http://arxiv.org/abs/1607.07892},
+  abstract = {We present ForwardDiff, a Julia package for forward-mode automatic differentiation (AD) featuring performance competitive with low-level languages like C++. Unlike recently developed AD tools in other popular high-level languages such as Python and MATLAB, ForwardDiff takes advantage of just-in-time (JIT) compilation to transparently recompile AD-unaware user code, enabling efficient support for higher-order differentiation and differentiation using custom number types (including complex numbers). For gradient and Jacobian calculations, ForwardDiff provides a variant of vector-forward mode that avoids expensive heap allocation and makes better use of memory bandwidth than traditional vector mode. In our numerical experiments, we demonstrate that for nontrivially large dimensions, ForwardDiff's gradient computations can be faster than a reverse-mode implementation from the Python-based autograd package. We also illustrate how ForwardDiff is used effectively within JuMP, a modeling language for optimization. According to our usage statistics, 41 unique repositories on GitHub depend on ForwardDiff, with users from diverse fields such as astronomy, optimization, finite element analysis, and statistics. This document is an extended abstract that has been accepted for presentation at the AD2016 7th International Conference on Algorithmic Differentiation.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-10T16:06:45Z}
+}
+
+@misc{sahooBackpropagationCombinatorialAlgorithms2023,
+  title = {Backpropagation through {{Combinatorial Algorithms}}: {{Identity}} with {{Projection Works}}},
+  shorttitle = {Backpropagation through {{Combinatorial Algorithms}}},
+  author = {Sahoo, Subham Sekhar and Paulus, Anselm and Vlastelica, Marin and Musil, V{\'i}t and Kuleshov, Volodymyr and Martius, Georg},
+  year = {2023},
+  month = mar,
+  number = {arXiv:2205.15213},
+  eprint = {2205.15213},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2205.15213},
+  url = {http://arxiv.org/abs/2205.15213},
+  abstract = {Embedding discrete solvers as differentiable layers has given modern deep learning architectures combinatorial expressivity and discrete reasoning capabilities. The derivative of these solvers is zero or undefined, therefore a meaningful replacement is crucial for effective gradient-based learning. Prior works rely on smoothing the solver with input perturbations, relaxing the solver to continuous problems, or interpolating the loss landscape with techniques that typically require additional solver calls, introduce extra hyper-parameters, or compromise performance. We propose a principled approach to exploit the geometry of the discrete solution space to treat the solver as a negative identity on the backward pass and further provide a theoretical justification. Our experiments demonstrate that such a straightforward hyper-parameter-free approach is able to compete with previous more complex methods on numerous experiments such as backpropagation through discrete samplers, deep graph matching, and image retrieval. Furthermore, we substitute the previously proposed problem-specific and label-dependent margin with a generic regularization procedure that prevents cost collapse and increases robustness.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T17:10:05Z}
+}
+
+@misc{sapienzaDifferentiableProgrammingDifferential2024,
+  title = {Differentiable {{Programming}} for {{Differential Equations}}: {{A Review}}},
+  shorttitle = {Differentiable {{Programming}} for {{Differential Equations}}},
+  author = {Sapienza, Facundo and Bolibar, Jordi and Sch{\"a}fer, Frank and Groenke, Brian and Pal, Avik and Boussange, Victor and Heimbach, Patrick and Hooker, Giles and P{\'e}rez, Fernando and Persson, Per-Olof and Rackauckas, Christopher},
+  year = {2024},
+  month = jun,
+  number = {arXiv:2406.09699},
+  eprint = {2406.09699},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2406.09699},
+  url = {http://arxiv.org/abs/2406.09699},
+  abstract = {The differentiable programming paradigm is a cornerstone of modern scientific computing. It refers to numerical methods for computing the gradient of a numerical model's output. Many scientific models are based on differential equations, where differentiable programming plays a crucial role in calculating model sensitivities, inverting model parameters, and training hybrid models that combine differential equations with data-driven approaches. Furthermore, recognizing the strong synergies between inverse methods and machine learning offers the opportunity to establish a coherent framework applicable to both fields. Differentiating functions based on the numerical solution of differential equations is non-trivial. Numerous methods based on a wide variety of paradigms have been proposed in the literature, each with pros and cons specific to the type of problem investigated. Here, we provide a comprehensive review of existing techniques to compute derivatives of numerical solutions of differential equations. We first discuss the importance of gradients of solutions of differential equations in a variety of scientific domains. Second, we lay out the mathematical foundations of the various approaches and compare them with each other. Third, we cover the computational considerations and explore the solutions available in modern scientific software. Last but not least, we provide best-practices and recommendations for practitioners. We hope that this work accelerates the fusion of scientific models and data, and fosters a modern approach to scientific modelling.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-02-27T08:08:10Z}
+}
+
+@misc{scardapaneAlicesAdventuresDifferentiable2024,
+  title = {Alice's {{Adventures}} in a {{Differentiable Wonderland}} -- {{Volume I}}, {{A Tour}} of the {{Land}}},
+  author = {Scardapane, Simone},
+  year = {2024},
+  month = jul,
+  number = {arXiv:2404.17625},
+  eprint = {2404.17625},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2404.17625},
+  url = {http://arxiv.org/abs/2404.17625},
+  abstract = {Neural networks surround us, in the form of large language models, speech transcription systems, molecular discovery algorithms, robotics, and much more. Stripped of anything else, neural networks are compositions of differentiable primitives, and studying them means learning how to program and how to interact with these models, a particular example of what is called differentiable programming. This primer is an introduction to this fascinating field imagined for someone, like Alice, who has just ventured into this strange differentiable wonderland. I overview the basics of optimizing a function via automatic differentiation, and a selection of the most common designs for handling sequences, graphs, texts, and audios. The focus is on a intuitive, self-contained introduction to the most important design techniques, including convolutional, attentional, and recurrent blocks, hoping to bridge the gap between theory and code (PyTorch and JAX) and leaving the reader capable of understanding some of the most advanced models out there, such as large language models (LLMs) and multimodal architectures.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-10T09:07:41Z}
+}
+
+@article{schulmanGradientEstimationUsing2015,
+  title = {Gradient {{Estimation Using Stochastic Computation Graphs}}},
+  author = {Schulman, John and Heess, Nicolas and Weber, Theophane and Abbeel, Pieter},
+  year = {2015},
+  month = jun,
+  journal = {arXiv:1506.05254 [cs]},
+  eprint = {1506.05254},
+  primaryclass = {cs},
+  url = {http://arxiv.org/abs/1506.05254},
+  abstract = {In a variety of problems originating in supervised, unsupervised, and reinforcement learning, the loss function is defined by an expectation over a collection of random variables, which might be part of a probabilistic model or the external world. Estimating the gradient of this loss function, using samples, lies at the core of gradient-based learning algorithms for these problems. We introduce the formalism of stochastic computation graphs---directed acyclic graphs that include both deterministic functions and conditional probability distributions---and describe how to easily and automatically derive an unbiased estimator of the loss function's gradient. The resulting algorithm for computing the gradient estimator is a simple modification of the standard backpropagation algorithm. The generic scheme we propose unifies estimators derived in variety of prior work, along with variance-reduction techniques therein. It could assist researchers in developing intricate models involving a combination of stochastic and deterministic operations, enabling, for example, attention, memory, and control actions.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T16:13:13Z}
+}
+
+@inproceedings{shahDecisionFocusedLearningDecisionMaking2022,
+  title = {Decision-{{Focused Learning}} without {{Decision-Making}}: {{Learning Locally Optimized Decision Losses}}},
+  shorttitle = {Decision-{{Focused Learning}} without {{Decision-Making}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Shah, Sanket and Wang, Kai and Wilder, Bryan and Perrault, Andrew and Tambe, Milind},
+  year = {2022},
+  month = dec,
+  volume = {35},
+  pages = {1320--1332},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/0904c7edde20d7134a77fc7f9cd86ea2-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:44Z}
+}
+
+@misc{sharmaFlexibleDifferentiableOptimization2022,
+  title = {Flexible {{Differentiable Optimization}} via {{Model Transformations}}},
+  author = {Sharma, Akshay and Besan{\c c}on, Mathieu and Garcia, Joaquim Dias and Legat, Beno{\^i}t},
+  year = {2022},
+  month = jun,
+  number = {arXiv:2206.06135},
+  eprint = {2206.06135},
+  primaryclass = {cs, math},
+  publisher = {arXiv},
+  url = {http://arxiv.org/abs/2206.06135},
+  abstract = {We introduce DiffOpt.jl, a Julia library to differentiate through the solution of convex optimization problems with respect to arbitrary parameters present in the objective and/or constraints. The library builds upon MathOptInterface, thus leveraging the rich ecosystem of solvers and composing well with modelling languages like JuMP. DiffOpt offers both forward and reverse differentiation modes, enabling multiple use cases from hyperparameter optimization to backpropagation and sensitivity analysis, bridging constrained optimization with end-to-end differentiable programming.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T19:19:57Z}
+}
+
+@misc{shinAcceleratingOptimalPower2024,
+  title = {Accelerating {{Optimal Power Flow}} with {{GPUs}}: {{SIMD Abstraction}} of {{Nonlinear Programs}} and {{Condensed-Space Interior-Point Methods}}},
+  shorttitle = {Accelerating {{Optimal Power Flow}} with {{GPUs}}},
+  author = {Shin, Sungho and Pacaud, Fran{\c c}ois and Anitescu, Mihai},
+  year = {2024},
+  month = feb,
+  number = {arXiv:2307.16830},
+  eprint = {2307.16830},
+  primaryclass = {cs, math},
+  publisher = {arXiv},
+  url = {http://arxiv.org/abs/2307.16830},
+  abstract = {This paper introduces a framework for solving alternating current optimal power flow (ACOPF) problems using graphics processing units (GPUs). While GPUs have demonstrated remarkable performance in various computing domains, their application in ACOPF has been limited due to challenges associated with porting sparse automatic differentiation (AD) and sparse linear solver routines to GPUs. We address these issues with two key strategies. First, we utilize a single-instruction, multiple-data abstraction of nonlinear programs. This approach enables the specification of model equations while preserving their parallelizable structure and, in turn, facilitates the parallel AD implementation. Second, we employ a condensed-space interior-point method (IPM) with an inequality relaxation. This technique involves condensing the Karush--Kuhn--Tucker (KKT) system into a positive definite system. This strategy offers the key advantage of being able to factorize the KKT matrix without numerical pivoting, which has hampered the parallelization of the IPM algorithm. By combining these strategies, we can perform the majority of operations on GPUs while keeping the data residing in the device memory only. Comprehensive numerical benchmark results showcase the advantage of our approach. Remarkably, our implementations -- MadNLP.jl and ExaModels.jl -- running on NVIDIA GPUs achieve an order of magnitude speedup compared with state-of-the-art tools running on contemporary CPUs.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-06-18T08:11:37Z}
+}
+
+@book{suttonReinforcementLearningIntroduction2018,
+  title = {Reinforcement Learning: An Introduction},
+  shorttitle = {Reinforcement Learning},
+  author = {Sutton, Richard S. and Barto, Andrew G.},
+  year = {2018},
+  series = {Adaptive Computation and Machine Learning Series},
+  edition = {Second edition},
+  publisher = {The MIT Press},
+  address = {Cambridge, Massachusetts},
+  abstract = {"Reinforcement learning, one of the most active research areas in artificial intelligence, is a computational approach to learning whereby an agent tries to maximize the total amount of reward it receives while interacting with a complex, uncertain environment. In Reinforcement Learning, Richard Sutton and Andrew Barto provide a clear and simple account of the field's key ideas and algorithms."--},
+  isbn = {978-0-262-03924-6},
+  lccn = {Q325.6 .R45 2018},
+  timestamp = {2025-07-19T13:26:48Z}
+}
+
+@inproceedings{tangCaVEConeAlignedApproach2024,
+  title = {{{CaVE}}: {{A Cone-Aligned Approach}} for~{{Fast Predict-then-optimize}} with~{{Binary Linear Programs}}},
+  shorttitle = {{{CaVE}}},
+  booktitle = {Integration of {{Constraint Programming}}, {{Artificial Intelligence}}, and {{Operations Research}}},
+  author = {Tang, Bo and Khalil, Elias B.},
+  editor = {Dilkina, Bistra},
+  year = {2024},
+  pages = {193--210},
+  publisher = {Springer Nature Switzerland},
+  address = {Cham},
+  doi = {10.1007/978-3-031-60599-4_12},
+  abstract = {The end-to-end predict-then-optimize framework, also known as decision-focused learning, has gained popularity for its ability to integrate optimization into the training procedure of machine learning models that predict the unknown cost (objective function) coefficients of optimization problems from contextual instance information. Naturally, most of the problems of interest in this space can be cast as integer linear programs. In this work, we focus on binary linear programs (BLPs) and propose a new end-to-end training method to predict-then-optimize. Our method, Cone-aligned Vector Estimation (CaVE), aligns the predicted cost vectors with the normal cone corresponding to the true optimal solution of a training instance. When the predicted cost vector lies inside the cone, the optimal solution to the linear relaxation of the binary problem is optimal. This alignment not only produces decision-aware learning models, but also dramatically reduces training time as it circumvents the need to solve BLPs to compute a loss function with its gradients. Experiments across multiple datasets show that our method exhibits a favorable trade-off between training time and solution quality, particularly with large-scale optimization problems such as vehicle routing, a hard BLP that has yet to benefit from predict-then-optimize methods in the literature due to its difficulty.},
+  isbn = {978-3-031-60599-4},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:21Z}
+}
+
+@article{tangPyEPOPyTorchbasedEndtoend2024,
+  title = {{{PyEPO}}: A {{PyTorch-based}} End-to-End Predict-Then-Optimize Library for Linear and Integer Programming},
+  shorttitle = {{{PyEPO}}},
+  author = {Tang, Bo and Khalil, Elias B.},
+  year = {2024},
+  month = sep,
+  journal = {Mathematical Programming Computation},
+  volume = {16},
+  number = {3},
+  pages = {297--335},
+  issn = {1867-2957},
+  doi = {10.1007/s12532-024-00255-x},
+  url = {https://doi.org/10.1007/s12532-024-00255-x},
+  abstract = {In deterministic optimization, it is typically assumed that all problem parameters are fixed and known. In practice, however, some parameters may be a priori unknown but can be estimated from contextual information. A typical predict-then-optimize approach separates predictions and optimization into two distinct stages. Recently, end-to-end predict-then-optimize has emerged as an attractive alternative. This work introduces the PyEPO package, a PyTorch-based end-to-end predict-then-optimize library in Python. To the best of our knowledge, PyEPO (pronounced like pineapple with a silent ``n") is the first such generic tool for linear and integer programming with predicted objective function coefficients. It includes various algorithms such as surrogate decision losses, black-box solvers, and perturbated methods. PyEPO offers a user-friendly interface for defining new optimization problems, applying state-of-the-art algorithms, and using custom neural network architectures. We conducted experiments comparing various methods on problems such as the Shortest Path, the Multiple Knapsack, and the Traveling Salesperson Problem, discussing empirical insights that may guide future research.~PyEPO and its documentation are available at https://github.com/khalil-research/PyEPO.},
+  langid = {english},
+  timestamp = {2025-07-19T19:21:08Z}
+}
+
+@inproceedings{vaswaniAttentionAllYou2017,
+  title = {Attention Is {{All}} You {{Need}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  year = {2017},
+  volume = {30},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html},
+  abstract = {The dominant sequence transduction models are based on complex recurrent orconvolutional neural networks in an encoder and decoder configuration. The best performing such models also connect the encoder and decoder through an attentionm echanisms.  We propose a novel, simple network architecture based solely onan attention mechanism, dispensing with recurrence and convolutions entirely.Experiments on two machine translation tasks show these models to be superiorin quality while being more parallelizable and requiring significantly less timeto train. Our single model with 165 million parameters, achieves 27.5 BLEU onEnglish-to-German translation, improving over the existing best ensemble result by over 1 BLEU. On English-to-French translation, we outperform the previoussingle state-of-the-art with model by 0.7 BLEU, achieving a BLEU score of 41.1.},
+  timestamp = {2025-07-09T15:26:56Z}
+}
+
+@misc{velickovicCLRSAlgorithmicReasoning2022,
+  title = {The {{CLRS Algorithmic Reasoning Benchmark}}},
+  author = {Veli{\v c}kovi{\'c}, Petar and Badia, Adri{\`a} Puigdom{\`e}nech and Budden, David and Pascanu, Razvan and Banino, Andrea and Dashevskiy, Misha and Hadsell, Raia and Blundell, Charles},
+  year = {2022},
+  month = jun,
+  number = {arXiv:2205.15659},
+  eprint = {2205.15659},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2205.15659},
+  url = {http://arxiv.org/abs/2205.15659},
+  abstract = {Learning representations of algorithms is an emerging area of machine learning, seeking to bridge concepts from neural networks with classical algorithms. Several important works have investigated whether neural networks can effectively reason like algorithms, typically by learning to execute them. The common trend in the area, however, is to generate targeted kinds of algorithmic data to evaluate specific hypotheses, making results hard to transfer across publications, and increasing the barrier of entry. To consolidate progress and work towards unified evaluation, we propose the CLRS Algorithmic Reasoning Benchmark, covering classical algorithms from the Introduction to Algorithms textbook. Our benchmark spans a variety of algorithmic reasoning procedures, including sorting, searching, dynamic programming, graph algorithms, string algorithms and geometric algorithms. We perform extensive experiments to demonstrate how several popular algorithmic reasoning baselines perform on these tasks, and consequently, highlight links to several open challenges. Our library is readily available at https://github.com/deepmind/clrs.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T17:16:43Z}
+}
+
+@misc{velickovicMessagePassingAll2022,
+  title = {Message Passing All the Way Up},
+  author = {Veli{\v c}kovi{\'c}, Petar},
+  year = {2022},
+  month = feb,
+  number = {arXiv:2202.11097},
+  eprint = {2202.11097},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  url = {http://arxiv.org/abs/2202.11097},
+  abstract = {The message passing framework is the foundation of the immense success enjoyed by graph neural networks (GNNs) in recent years. In spite of its elegance, there exist many problems it provably cannot solve over given input graphs. This has led to a surge of research on going "beyond message passing", building GNNs which do not suffer from those limitations -- a term which has become ubiquitous in regular discourse. However, have those methods truly moved beyond message passing? In this position paper, I argue about the dangers of using this term -- especially when teaching graph representation learning to newcomers. I show that any function of interest we want to compute over graphs can, in all likelihood, be expressed using pairwise message passing -- just over a potentially modified graph, and argue how most practical implementations subtly do this kind of trick anyway. Hoping to initiate a productive discussion, I propose replacing "beyond message passing" with a more tame term, "augmented message passing".},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-21T21:23:20Z}
+}
+
+@inproceedings{velickovicNeuralExecutionGraph2019,
+  title = {Neural {{Execution}} of {{Graph Algorithms}}},
+  booktitle = {International {{Conference}} on {{Learning Representations}}},
+  author = {Veli{\v c}kovi{\'c}, Petar and Ying, Rex and Padovano, Matilde and Hadsell, Raia and Blundell, Charles},
+  year = {2019},
+  month = dec,
+  url = {https://openreview.net/forum?id=SkgKO0EtvS},
+  abstract = {Graph Neural Networks (GNNs) are a powerful representational tool for solving problems on graph-structured inputs. In almost all cases so far, however, they have been applied to directly recovering a final solution from raw inputs, without explicit guidance on how to structure their problem-solving. Here, instead, we focus on learning in the space of algorithms: we train several state-of-the-art GNN architectures to imitate individual steps of classical graph algorithms, parallel (breadth-first search, Bellman-Ford) as well as sequential (Prim's algorithm). As graph algorithms usually rely on making discrete decisions within neighbourhoods, we hypothesise that maximisation-based message passing neural networks are best-suited for such objectives, and validate this claim empirically. We also demonstrate how learning in the space of algorithms can yield new opportunities for positive transfer between tasks---showing how learning a shortest-path algorithm can be substantially improved when simultaneously learning a reachability algorithm.},
+  langid = {english},
+  timestamp = {2025-07-19T17:16:38Z}
+}
+
+@misc{vivier-ardissonLearningLocalSearch2025,
+  title = {Learning with {{Local Search MCMC Layers}}},
+  author = {{Vivier-Ardisson}, Germain and Blondel, Mathieu and Parmentier, Axel},
+  year = {2025},
+  month = may,
+  number = {arXiv:2505.14240},
+  eprint = {2505.14240},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.14240},
+  url = {http://arxiv.org/abs/2505.14240},
+  abstract = {Integrating combinatorial optimization layers into neural networks has recently attracted significant research interest. However, many existing approaches lack theoretical guarantees or fail to perform adequately when relying on inexact solvers. This is a critical limitation, as many operations research problems are NP-hard, often necessitating the use of neighborhood-based local search heuristics. These heuristics iteratively generate and evaluate candidate solutions based on an acceptance rule. In this paper, we introduce a theoretically-principled approach for learning with such inexact combinatorial solvers. Inspired by the connection between simulated annealing and Metropolis-Hastings, we propose to transform problem-specific neighborhood systems used in local search heuristics into proposal distributions, implementing MCMC on the combinatorial space of feasible solutions. This allows us to construct differentiable combinatorial layers and associated loss functions. Replacing an exact solver by a local search strongly reduces the computational burden of learning on many applications. We demonstrate our approach on a large-scale dynamic vehicle routing problem with time windows.},
+  archiveprefix = {arXiv},
+  timestamp = {2025-07-19T18:40:07Z}
+}
+
+@inproceedings{vlastelicaDifferentiationBlackboxCombinatorial2020,
+  title = {Differentiation of {{Blackbox Combinatorial Solvers}}},
+  booktitle = {8th {{International Conference}} on {{Learning Representations}}},
+  author = {Vlastelica, Marin and Paulus, Anselm and Musil, Vit and Martius, Georg and Rolinek, Michal},
+  year = {2020},
+  month = mar,
+  url = {https://openreview.net/forum?id=BkevoJSYPB},
+  abstract = {Achieving fusion of deep learning with combinatorial algorithms promises transformative changes to artificial intelligence. One possible approach is to introduce combinatorial building blocks into neural networks. Such end-to-end architectures have the potential to tackle combinatorial problems on raw input data such as ensuring global consistency in multi-object tracking or route planning on maps in robotics. In this work, we present a method that implements an efficient backward pass through blackbox implementations of combinatorial solvers with linear objective functions. We provide both theoretical and experimental backing. In particular, we incorporate the Gurobi MIP solver, Blossom V algorithm, and Dijkstra's algorithm into architectures that extract suitable features from raw inputs for the traveling salesman problem, the min-cost perfect matching problem and the shortest path problem.},
+  langid = {english},
+  timestamp = {2025-07-19T17:10:03Z}
+}
+
+@article{waltherComputingSparseHessians2008,
+  title = {Computing Sparse {{Hessians}} with Automatic Differentiation},
+  author = {Walther, Andrea},
+  year = {2008},
+  month = jan,
+  journal = {ACM Transactions on Mathematical Software},
+  volume = {34},
+  number = {1},
+  pages = {3:1--3:15},
+  issn = {0098-3500},
+  doi = {10.1145/1322436.1322439},
+  url = {https://dl.acm.org/doi/10.1145/1322436.1322439},
+  abstract = {A new approach for computing a sparsity pattern for a Hessian is presented: nonlinearity information is propagated through the function evaluation yielding the nonzero structure. A complexity analysis of the proposed algorithm is given. Once the sparsity pattern is available, coloring algorithms can be applied to compute a seed matrix. To evaluate the product of the Hessian and the seed matrix, a vector version for evaluating second order adjoints is analysed. New drivers of ADOL-C are provided implementing the presented algorithms. Runtime analyses are given for some problems of the CUTE collection.},
+  timestamp = {2025-03-06T13:48:55Z}
+}
+
+@article{wilderMeldingDataDecisionsPipeline2019,
+  title = {Melding the {{Data-Decisions Pipeline}}: {{Decision-Focused Learning}} for {{Combinatorial Optimization}}},
+  shorttitle = {Melding the {{Data-Decisions Pipeline}}},
+  author = {Wilder, Bryan and Dilkina, Bistra and Tambe, Milind},
+  year = {2019},
+  month = jul,
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {33},
+  pages = {1658--1665},
+  issn = {2374-3468, 2159-5399},
+  doi = {10.1609/aaai.v33i01.33011658},
+  url = {https://aaai.org/ojs/index.php/AAAI/article/view/3982},
+  abstract = {Creating impact in real-world settings requires artificial intelligence techniques to span the full pipeline from data, to predictive models, to decisions. These components are typically approached separately: a machine learning model is first trained via a measure of predictive accuracy, and then its predictions are used as input into an optimization algorithm which produces a decision. However, the loss function used to train the model may easily be misaligned with the end goal, which is to make the best decisions possible. Hand-tuning the loss function to align with optimization is a difficult and error-prone process (which is often skipped entirely).We focus on combinatorial optimization problems and introduce a general framework for decision-focused learning, where the machine learning model is directly trained in conjunction with the optimization algorithm to produce highquality decisions. Technically, our contribution is a means of integrating common classes of discrete optimization problems into deep learning or other predictive models, which are typically trained via gradient descent. The main idea is to use a continuous relaxation of the discrete problem to propagate gradients through the optimization procedure. We instantiate this framework for two broad classes of combinatorial problems: linear programs and submodular maximization. Experimental results across a variety of domains show that decisionfocused learning often leads to improved optimization performance compared to traditional methods. We find that standard measures of accuracy are not a reliable proxy for a predictive model's utility in optimization, and our method's ability to specify the true goal as the model's training objective yields substantial dividends across a range of decision problems.},
+  timestamp = {2025-07-21T09:11:09Z}
+}
+
+@article{yangGraphBLASTHighPerformanceLinear2022,
+  title = {{{GraphBLAST}}: {{A High-Performance Linear Algebra-based Graph Framework}} on the {{GPU}}},
+  shorttitle = {{{GraphBLAST}}},
+  author = {Yang, Carl and Bulu{\c c}, Ayd{\i}n and Owens, John D.},
+  year = {2022},
+  month = feb,
+  journal = {ACM Trans. Math. Softw.},
+  volume = {48},
+  number = {1},
+  pages = {1:1--1:51},
+  issn = {0098-3500},
+  doi = {10.1145/3466795},
+  url = {https://dl.acm.org/doi/10.1145/3466795},
+  abstract = {High-performance implementations of graph algorithms are challenging to implement on new parallel hardware such as GPUs because of three challenges: (1)\&nbsp;the difficulty of coming up with graph building blocks, (2)\&nbsp;load imbalance on parallel hardware, and (3)\&nbsp;graph problems having low arithmetic intensity. To address some of these challenges, GraphBLAS is an innovative, on-going effort by the graph analytics community to propose building blocks based on sparse linear algebra, which allow graph algorithms to be expressed in a performant, succinct, composable, and portable manner. In this paper, we examine the performance challenges of a linear-algebra-based approach to building graph frameworks and describe new design principles for overcoming these bottlenecks. Among the new design principles is exploiting input sparsity, which allows users to write graph algorithms without specifying push and pull direction. Exploiting output sparsity allows users to tell the backend which values of the output in a single vectorized computation they do not want computed. Load-balancing is an important feature for balancing work amongst parallel workers. We describe the important load-balancing features for handling graphs with different characteristics. The design principles described in this paper have been implemented in ``GraphBLAST'', the first high-performance linear algebra-based graph framework on NVIDIA GPUs that is open-source. The results show that on a single GPU, GraphBLAST has on average at least an order of magnitude speedup over previous GraphBLAS implementations SuiteSparse and GBTL, comparable performance to the fastest GPU hardwired primitives and shared-memory graph frameworks Ligra and Gunrock, and better performance than any other GPU graph framework, while offering a simpler and more concise programming model.},
+  timestamp = {2025-07-19T19:33:01Z}
+}
+
+@article{zharmagambetovLandscapeSurrogateLearning2023,
+  title = {Landscape {{Surrogate}}: {{Learning Decision Losses}} for {{Mathematical Optimization Under Partial Information}}},
+  shorttitle = {Landscape {{Surrogate}}},
+  author = {Zharmagambetov, Arman and Amos, Brandon and Ferber, Aaron and Huang, Taoan and Dilkina, Bistra and Tian, Yuandong},
+  year = {2023},
+  month = dec,
+  journal = {Advances in Neural Information Processing Systems},
+  volume = {36},
+  pages = {27332--27350},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/574f145eac328cc4aaf9358e27120eb5-Abstract-Conference.html},
+  langid = {english},
+  timestamp = {2025-07-21T09:37:34Z}
+}
